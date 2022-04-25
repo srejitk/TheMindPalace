@@ -1,3 +1,48 @@
 @import "https://iridescent.vercel.app/stylesheets/reset.css";
 @import "https://iridescent.vercel.app/stylesheets/utils.css";
-@import "https://iridescent.vercel.app/stylesheets/components/Button/button.css";
+@import "https://iridescent.vercel.app/stylesheets/index.css";
+
+:root {
+  --BG: hsla(0, 0%, 100%, 1);
+  --PRIMARY: var(--component-red-05);
+  --PRIMARY-LIGHT: var(--component-red-02);
+  --TEXT: hsla(0, 0%, 0%, 1);
+  --TEXT_INVERSE: #ffffff;
+  --GREY_TEXT: var(--component-grey-04);
+  --HOVER_BG: transparent;
+  --HOVER_BG_ACTIVE: hsla(0, 0%, 80%, 0.3);
+  --BORDER: 2px solid var(--component-grey-01);
+  --ANIM: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.App {
+  text-align: center;
+  font-family: "Manrope", sans-serif;
+  min-width: 100vw;
+  background-color: var(--CARD_BG);
+  color: var(--TEXT);
+  min-height: 100vh;
+  height: fit-content;
+  position: relative;
+}
+
+.transparent-btn {
+  background-color: transparent;
+  border: 0px;
+}
+
+.btn_action {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--HOVER_BG);
+  color: var(--TEXT);
+  border-radius: 50px;
+}
+
+.btn_action:hover {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--HOVER_BG_ACTIVE);
+  color: var(--TEXT);
+  border: var(--BORDER);
+}
