@@ -4,6 +4,7 @@
 
 :root {
   --BG: hsla(0, 0%, 100%, 1);
+  --BG_LIGHT: white;
   --PRIMARY: var(--component-red-05);
   --PRIMARY-LIGHT: var(--component-red-02);
   --TEXT: hsla(0, 0%, 0%, 1);
@@ -16,7 +17,6 @@
 }
 
 .App {
-  text-align: center;
   font-family: "Manrope", sans-serif;
   min-width: 100vw;
   background-color: var(--CARD_BG);
@@ -24,6 +24,39 @@
   min-height: 100vh;
   height: fit-content;
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem auto;
+  grid-template-areas: "navbar" "content";
+  transition: background-color var(--ANIM) 1000ms;
+}
+
+.dark-mode {
+  --BG: #151316;
+  --BG_LIGHT: #272528;
+  --PRIMARY: var(--component-red-05);
+  --PRIMARY-LIGHT: var(--component-red-02);
+  --TEXT: white;
+  --TEXT_INVERSE: #ffffff;
+  --GREY_TEXT: var(--component-grey-04);
+  --HOVER_BG: transparent;
+  --HOVER_BG_ACTIVE: hsla(0, 0%, 80%, 0.3);
+  --BORDER: 2px solid transparent;
+  --ANIM: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.light-mode {
+  --BG: white;
+  --BG_LIGHT: white;
+  --PRIMARY: var(--component-red-05);
+  --PRIMARY-LIGHT: var(--component-red-02);
+  --TEXT: hsla(0, 0%, 0%, 1);
+  --TEXT_INVERSE: #ffffff;
+  --GREY_TEXT: var(--component-grey-04);
+  --HOVER_BG: transparent;
+  --HOVER_BG_ACTIVE: hsla(0, 0%, 80%, 0.3);
+  --BORDER: 2px solid var(--component-grey-01);
+  --ANIM: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .transparent-btn {
@@ -45,4 +78,14 @@
   background-color: var(--HOVER_BG_ACTIVE);
   color: var(--TEXT);
   border: var(--BORDER);
+}
+
+.content {
+  grid-area: content;
+}
+
+.default {
+  background-color: var(--BG);
+  color: var(--TEXT);
+  width: 100%;
 }
