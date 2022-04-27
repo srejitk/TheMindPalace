@@ -1,0 +1,90 @@
+.videos_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  /* flex-wrap: wrap;
+  justify-content: flex-start; */
+  background-color: var(--BG);
+  padding: 0 1rem;
+  width: 100%;
+  margin: auto;
+}
+
+.video_card {
+  width: 14rem;
+  height: 18rem;
+  margin: 8px;
+  background-color: var(--BG_LIGHT);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+}
+
+.videoCover {
+  width: 100%;
+}
+
+.thumbnail {
+  object-fit: contain;
+  width: 100%;
+  display: block;
+}
+
+.preview {
+  display: none;
+}
+
+.videoCover:hover > .thumbnail {
+  display: none;
+}
+
+.videoCover:hover > .preview {
+  display: block;
+}
+
+.videoText {
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.title {
+  height: 50px;
+  overflow: scroll;
+}
+
+.verified {
+  color: var(--component-blue-04);
+  font-size: 1.3rem;
+  padding: 0 0.5rem;
+}
+
+.pill {
+  border: 2px solid var(--GREY_TEXT);
+  align-items: center;
+  border-radius: 1.5rem;
+  padding: 0;
+  padding: 0.25rem 0.75rem;
+}
+
+.pill_container {
+  justify-content: flex-start;
+  padding: 1rem 2rem;
+}
+
+.anim_btn {
+}
+
+@media only screen and (max-width: 600px) {
+  /* .video_card {
+    width: 20rem;
+    height: 21rem;
+    margin: 8px;
+    background-color: var(--BG_LIGHT);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    cursor: pointer;
+  } */
+}
