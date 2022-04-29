@@ -3,10 +3,10 @@
 @import "https://iridescent.vercel.app/stylesheets/index.css";
 
 :root {
-  --BG: hsla(0, 0%, 100%, 1);
+  --BG: hsl(0, 0%, 100%);
   --BG_LIGHT: white;
   --PRIMARY: var(--component-red-05);
-  --PRIMARY-LIGHT: var(--component-red-02);
+  --PRIMARY_LIGHT: var(--component-red-01);
   --TEXT: hsla(0, 0%, 0%, 1);
   --TEXT_INVERSE: #ffffff;
   --GREY_TEXT: var(--component-grey-04);
@@ -88,4 +88,10 @@
   background-color: var(--BG);
   color: var(--TEXT);
   width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .App {
+    grid-template-rows: 9rem auto;
+  }
 }

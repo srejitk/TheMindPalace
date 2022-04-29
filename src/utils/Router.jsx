@@ -15,14 +15,7 @@ import RequireAuth from "./RequireAuth";
 export default function Router() {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <RequireAuth>
-            <Explore />
-          </RequireAuth>
-        }
-      />
+      <Route path="/" element={<Explore />} />
       <Route
         path="/history"
         element={

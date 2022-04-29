@@ -10,7 +10,6 @@ const useAxios = (pathname) => {
     try {
       const response = await axios.get(pathname);
       if (response.status === 200) {
-        console.log(response);
         setResponseData(response.data);
       }
     } catch (error) {
