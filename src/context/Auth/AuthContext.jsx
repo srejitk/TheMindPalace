@@ -23,7 +23,6 @@ const AuthProvider = ({ children }) => {
   const logoutHandler = () => {
     localStorage.removeItem("Token");
     navigate("/");
-    console.log("LOGGED IN");
   };
 
   return (

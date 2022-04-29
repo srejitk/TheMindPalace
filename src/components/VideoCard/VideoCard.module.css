@@ -1,0 +1,120 @@
+.video_card {
+  width: 16rem;
+  height: 17rem;
+  margin: 1rem;
+  background-color: var(--BG_LIGHT);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--ANIM) 500ms;
+}
+
+.video_card:hover .videoCover {
+  transform: scale(1.1);
+  z-index: 2;
+  transition: transform var(--ANIM) 600ms;
+}
+
+.videoCover {
+  width: 100%;
+}
+
+.thumbnail {
+  object-fit: contain;
+  width: 100%;
+  display: block;
+}
+
+.preview {
+  display: none;
+}
+
+.videoCover:hover > .thumbnail {
+  display: none;
+}
+
+.videoCover:hover > .preview {
+  display: block;
+}
+
+.videoText {
+  padding: 0.5rem 1.2rem;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.title {
+  height: 50px;
+  width: 80%;
+  overflow: scroll;
+}
+
+.verified {
+  color: var(--component-blue-04);
+  font-size: 1.3rem;
+  padding: 0 0.5rem;
+}
+
+.options {
+  top: 6.25rem;
+  right: 10px;
+  transform: scale(0.8);
+  cursor: pointer;
+  z-index: 2;
+  background-color: var(--BG);
+  border: 2px solid var(--component-grey-01);
+}
+
+.options:hover {
+  filter: brightness(0.9);
+}
+
+.dialog {
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  outline: 2px solid;
+  padding: 0.25 rem 0px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: small;
+  font-weight: bold;
+  background-color: inherit;
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.dialog:hover {
+  background-color: var(--HOVER_BG_ACTIVE);
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.dialog_container {
+  position: absolute;
+  width: 100%;
+  background-color: var(--BG);
+  border-radius: 8px;
+  padding: 1rem 0.75rem 0.25rem 0.75rem;
+}
+
+.showDialog {
+  bottom: 0px;
+  transition: bottom var(--ANIM) 600ms;
+}
+
+.hideDialog {
+  bottom: -180px;
+  transition: bottom var(--ANIM) 600ms;
+}
+
+@media only screen and (max-width: 768px) {
+  .video_card {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .options {
+    top: 8rem;
+  }
+}

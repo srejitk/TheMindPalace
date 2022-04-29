@@ -10,16 +10,39 @@ import {
   Watchlist,
   Error,
 } from "../pages";
+import RequireAuth from "./RequireAuth";
 
 export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<Explore />} />
-      <Route path="/history" element={<History />} />
-      <Route path="/liked" element={<Liked />} />
+      <Route
+        path="/history"
+        element={
+          <RequireAuth>
+            <History />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/liked"
+        element={
+          <RequireAuth>
+            <Liked />
+          </RequireAuth>
+        }
+      />
+
+      <Route
+        path="/watchlist"
+        element={
+          <RequireAuth>
+            <Watchlist />
+          </RequireAuth>
+        }
+      />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/watchlist" element={<Watchlist />} />
       <Route path="/mockman" element={<Mockman />} />
       <Route path="*" element={<Error />} />
     </Routes>

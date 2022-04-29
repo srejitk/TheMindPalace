@@ -6,6 +6,7 @@ import { useTheme } from "../../context/Theme/ThemeContext";
 
 export default function Header() {
   const { isLogged, logoutHandler } = useAuth();
+
   const { sidebar, setSidebar, theme, setTheme } = useTheme();
 
   const handleSidebar = (e) => {
@@ -38,7 +39,7 @@ export default function Header() {
       {isLogged ? (
         <div className={`flex-row-wrap flex-mid-center gap20`}>
           <Link
-            to="sign-up"
+            to="/"
             onClick={logoutHandler}
             className="links  btn btn_action subtitle-1"
           >
