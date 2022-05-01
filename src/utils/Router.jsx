@@ -10,6 +10,8 @@ import {
   Watchlist,
   Error,
   PlayVideo,
+  Playlist,
+  SinglePlaylist,
 } from "../pages";
 import RequireAuth from "./RequireAuth";
 
@@ -22,6 +24,22 @@ export default function Router() {
         element={
           <RequireAuth>
             <History />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/playlist"
+        element={
+          <RequireAuth>
+            <Playlist />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path={`/playlist/:playlistID`}
+        element={
+          <RequireAuth>
+            <SinglePlaylist />
           </RequireAuth>
         }
       />

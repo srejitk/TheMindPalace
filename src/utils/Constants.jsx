@@ -19,4 +19,9 @@ export const sidebarItems = [
     icon: `thumb_up`,
     label: "Liked",
   },
+  {
+    path: "/playlist",
+    icon: `playlist`,
+    label: "Playlists",
+  },
 ];

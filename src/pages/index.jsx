@@ -5,8 +5,11 @@ import Explore from "./Explore/Explore";
 import History from "./History/History";
 import Liked from "./Liked/Liked";
 import Mockman from "./Mockman/Mockman";
+import Playlist from "./Playlist/Playlist";
 import PlayVideo from "./PlayVideo/PlayVideo";
+import SinglePlaylist from "./SinglePlaylist/SinglePlaylist";
 import Watchlist from "./Watchlist/Watchlist";
+
 export {
   Login,
   Signup,
@@ -17,4 +20,6 @@ export {
   Watchlist,
   Mockman,
   Error,
+  Playlist,
+  SinglePlaylist,
 };

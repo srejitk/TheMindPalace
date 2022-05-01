@@ -11,6 +11,7 @@ const UserProvider = ({ children }) => {
     watchlater: [],
     history: [],
     liked: [],
+    playlists: [],
   });
   return (
     <UserContext.Provider value={{ userState, userDispatch }}>
