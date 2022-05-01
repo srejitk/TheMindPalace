@@ -1,8 +1,8 @@
 .video_card {
-  min-width: fit-content;
+  width: 40rem;
   height: fit-content;
   min-height: 8rem;
-  margin: 1rem;
+  margin: 1rem 2rem;
   background-color: var(--BG_LIGHT);
   display: flex;
   border-radius: 8px;
@@ -13,11 +13,11 @@
 }
 
 .videoCover {
-  width: 100%;
+  width: 20rem;
 }
 
 .thumbnail {
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
   height: 100%;
   display: block;
@@ -34,6 +34,7 @@
 .videoCover:hover > .preview {
   display: block;
   width: 100%;
+  height: 100%;
 }
 
 .videoText {
@@ -91,7 +92,7 @@
 
 .dialog_container {
   position: absolute;
-  width: 50%;
+  width: 20rem;
   height: 100%;
   background-color: var(--BG);
   border-radius: 8px;
@@ -106,4 +107,105 @@
 .hideDialog {
   bottom: -180px;
   transition: bottom var(--ANIM) 600ms;
+}
+
+@media only screen and (max-width: 600px) {
+  .video_card {
+    width: 80%;
+    margin: 1rem auto;
+    min-height: 6rem;
+    height: fit-content;
+  }
+
+  .videoCover {
+    width: 11rem;
+    height: 100%;
+  }
+
+  .dialog_container {
+    width: 44%;
+    z-index: 2;
+  }
+  .videoText {
+    padding: 0.5rem 2rem;
+    display: flex;
+    height: 100%;
+    gap: 4px;
+  }
+
+  .title {
+    height: 4rem;
+    width: 100%;
+    font-size: small;
+  }
+
+  .verified {
+    font-size: 14px;
+  }
+
+  .creator {
+    font-size: smaller;
+  }
+
+  .views {
+    font-weight: 400;
+  }
+
+  .options {
+    top: 3rem;
+    right: 0.25rem;
+  }
+
+  .thumbnail {
+    transform: scale(1.3);
+  }
+
+  .preview {
+    display: none;
+    transform: scale(1.3);
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  .video_card {
+    width: 90%;
+    margin: 1rem auto;
+    min-height: 6rem;
+    height: fit-content;
+  }
+
+  .videoCover {
+    width: 10rem;
+    height: 100%;
+  }
+
+  .dialog_container {
+    width: 44%;
+    z-index: 2;
+  }
+  .videoText {
+    padding: 0.5rem 1rem;
+    display: flex;
+    height: 100%;
+    gap: 4px;
+  }
+
+  .thumbnail {
+    transform: scale(1);
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .preview {
+    display: none;
+    transform: scale(1);
+    object-fit: cover;
+  }
+
+  .dialog_container {
+    position: absolute;
+    width: 45%;
+    height: 100%;
+    padding: 1rem 0.45rem;
+  }
 }

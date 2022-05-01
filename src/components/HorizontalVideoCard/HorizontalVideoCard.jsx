@@ -72,11 +72,11 @@ export default function HorizontalVideoCard({ video }) {
       <div className={`${styles.videoText} `}>
         <h4 className={`${styles.title} body-2`}>{title}</h4>
         <div className="flex-row-wrap flex-mid-left">
-          <p className="subtitle-2">{creator}</p>
+          <p className={`subtitle-2 ${styles.creator}`}>{creator}</p>
           <span className={` ${styles.verified} material-icons`}>verified</span>
         </div>
 
-        <p>{views} Views</p>
+        <p className={`subtitle-2 ${styles.views} `}>{views} Views</p>
       </div>
     </div>
   );
