@@ -9,6 +9,7 @@ import {
   Signup,
   Watchlist,
   Error,
+  PlayVideo,
 } from "../pages";
 import RequireAuth from "./RequireAuth";
 
@@ -32,6 +33,7 @@ export default function Router() {
           </RequireAuth>
         }
       />
+      <Route path="/video/:videoID" element={<PlayVideo />} />
 
       <Route
         path="/watchlist"

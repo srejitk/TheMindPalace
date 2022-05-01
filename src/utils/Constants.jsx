@@ -14,4 +14,9 @@ export const sidebarItems = [
     icon: `history`,
     label: "History",
   },
+  {
+    path: "/liked",
+    icon: `thumb_up`,
+    label: "Liked",
+  },
 ];

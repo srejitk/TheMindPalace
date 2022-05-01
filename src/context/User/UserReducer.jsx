@@ -4,6 +4,25 @@ export const userReducer = (state, { type, payload }) => {
     case "DELETE_FROM_WATCHLATER":
     case "GET_WATCHLATER":
       return { ...state, watchlater: payload };
+
+    case "LIKE_VIDEO":
+      if (state.liked?.includes(payload)) {
+        return {
+          ...state,
+          liked: [
+            ...state.liked.filter((video) => video?._id !== payload?._id),
+          ],
+        };
+      } else {
+        return { ...state, liked: [...state.liked, payload] };
+      }
+    case "ADD_TO_HISTORY":
+    case "REMOVE_FROM_HISTORY":
+    case "CLEAR_HISTORY":
+      return {
+        ...state,
+        history: action.payload,
+      };
     default:
       break;
   }

@@ -2,8 +2,6 @@ import { createContext, useContext, useReducer, useEffect } from "react";
 import useAxios from "../../utils/useAxios";
 import { VideoReducer } from "./VideoReducer";
 
-VideoReducer;
-
 const VideoContext = createContext();
 
 const useVideo = () => useContext(VideoContext);
