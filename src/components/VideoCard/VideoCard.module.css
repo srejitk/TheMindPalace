@@ -28,6 +28,7 @@
 
 .preview {
   display: none;
+  width: 100%;
 }
 
 .videoCover:hover > .thumbnail {
@@ -58,11 +59,11 @@
 }
 
 .options {
-  top: 6.25rem;
+  top: 7.25rem;
   right: 10px;
   transform: scale(0.8);
   cursor: pointer;
-  z-index: 2;
+  z-index: 3;
   background-color: var(--BG);
   border: 2px solid var(--component-grey-01);
 }
@@ -75,10 +76,10 @@
   gap: 10px;
   align-items: center;
   justify-content: flex-start;
-  outline: 2px solid;
   padding: 0.25 rem 0px;
   margin-bottom: 1rem;
   border-radius: 8px;
+
   font-size: small;
   font-weight: bold;
   background-color: inherit;
@@ -93,6 +94,7 @@
 .dialog_container {
   position: absolute;
   width: 100%;
+  z-index: 2;
   background-color: var(--BG);
   border-radius: 8px;
   padding: 1rem 0.75rem 0.25rem 0.75rem;
@@ -106,6 +108,10 @@
 .hideDialog {
   bottom: -180px;
   transition: bottom var(--ANIM) 600ms;
+}
+
+.mini {
+  width: 20rem;
 }
 
 @media only screen and (max-width: 768px) {

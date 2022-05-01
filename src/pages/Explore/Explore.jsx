@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Explore.module.css";
-import { videos } from "../../backend/db/videos";
 import { VideoCard } from "../../components";
 import { useVideo } from "../../context/Video/VideoContext";
+import { Link } from "react-router-dom";
 
 export default function Explore() {
   const { videoState } = useVideo();
@@ -17,7 +17,7 @@ export default function Explore() {
       </div>
       <div className={`${styles.videos_container} `}>
         {videolist?.map((video) => (
-          <VideoCard key={video._id} video={video} />
+          <VideoCard key={video._id} video={video} videoID={video.videoID} />
         ))}
       </div>
     </div>

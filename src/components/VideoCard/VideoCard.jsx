@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useUserDetails } from "../../context/User/UserContext";
 import {
   addToWatchlater,
@@ -6,7 +7,7 @@ import {
 } from "../../context/Video/Watchlater";
 import styles from "./VideoCard.module.css";
 
-export default function VideoCard({ video }) {
+export default function VideoCard({ video, mini }) {
   const { thumbnail, preview, title, creator, views } = video;
   const [options, setOptions] = useState(false);
   const { userState, userDispatch } = useUserDetails();
@@ -20,7 +21,11 @@ export default function VideoCard({ video }) {
     return watchlater?.some((item) => video._id === item._id);
   };
   return (
-    <div className={`${styles.video_card} box-shadow position-relative`}>
+    <div
+      className={`${styles.video_card} ${
+        mini ? styles.mini : ""
+      } box-shadow position-relative`}
+    >
       <div onClick={optionsHandler}>
         <span
           className={`position-absolute ${
@@ -57,16 +62,18 @@ export default function VideoCard({ video }) {
           <input id="watchlater" type="checkbox" />
         </div>
       </div>
+      <Link to={`/video/${video.videoID}`}>
+        <div className={styles.videoCover}>
+          <img
+            src={thumbnail}
+            className={styles.thumbnail}
+            alt="video-thumbnail"
+          />
 
-      <div className={styles.videoCover}>
-        <img
-          src={thumbnail}
-          className={styles.thumbnail}
-          alt="video-thumbnail"
-        />
+          <img src={preview} className={styles.preview} alt="video-thumbnail" />
+        </div>
+      </Link>
 
-        <img src={preview} className={styles.preview} alt="video-thumbnail" />
-      </div>
       <div className={styles.videoText}>
         <h4 className={`${styles.title} body-2`}>{title}</h4>
         <div className="flex-row-wrap flex-mid-left">

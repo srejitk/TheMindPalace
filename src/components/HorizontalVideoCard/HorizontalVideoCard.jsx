@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useUserDetails } from "../../context/User/UserContext";
+import { Link } from "react-router-dom";
 import {
   addToWatchlater,
   removeFromWatchlater,
@@ -57,15 +58,17 @@ export default function HorizontalVideoCard({ video }) {
           <input id="watchlater" type="checkbox" />
         </div>
       </div>
-      <div className={`${styles.videoCover}`}>
-        <img
-          src={thumbnail}
-          className={styles.thumbnail}
-          alt="video-thumbnail"
-        />
+      <Link to={`/video/${video.videoID}`}>
+        <div className={`${styles.videoCover}`}>
+          <img
+            src={thumbnail}
+            className={styles.thumbnail}
+            alt="video-thumbnail"
+          />
 
-        <img src={preview} className={styles.preview} alt="video-thumbnail" />
-      </div>
+          <img src={preview} className={styles.preview} alt="video-thumbnail" />
+        </div>
+      </Link>
       <div className={`${styles.videoText} `}>
         <h4 className={`${styles.title} body-2`}>{title}</h4>
         <div className="flex-row-wrap flex-mid-left">
