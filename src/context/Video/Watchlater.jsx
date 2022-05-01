@@ -1,7 +1,8 @@
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 import Toast from "../../components/Toast/Toast";
 
-export const getWatchlater = async (videoDispatch) => {
+export const getWatchlater = async (userDispatch) => {
   try {
     const response = await axios.get("/api/user/watchlater", {
       headers: {
@@ -10,7 +11,7 @@ export const getWatchlater = async (videoDispatch) => {
     });
     const { status, data } = response;
     if (status === 200) {
-      videoDispatch({ type: "GET_WATCHLATER", payload: data?.watchlater });
+      userDispatch({ type: "GET_WATCHLATER", payload: data?.watchlater });
     }
   } catch (error) {
     Toast({ message: "Couldn't fetch Watchlist", type: "error" });
@@ -18,7 +19,7 @@ export const getWatchlater = async (videoDispatch) => {
   }
 };
 
-export const addToWatchlater = async (video, videoDispatch) => {
+export const addToWatchlater = async (video, userDispatch) => {
   try {
     const response = await axios.post(
       "/api/user/watchlater",
@@ -32,16 +33,18 @@ export const addToWatchlater = async (video, videoDispatch) => {
     );
     const { status, data } = response;
     if (status === 200 || status === 201) {
-      videoDispatch({ type: "ADD_TO_WATCHLATER", payload: data?.watchlater });
-      Toast({ message: "Added to Watchlist", type: "success" });
+      userDispatch({ type: "ADD_TO_WATCHLATER", payload: data?.watchlater });
+      toast.success("Saved to Watchlist");
+    } else if (status === 409) {
+      toast.error("Video already saved to watch later");
     }
   } catch (error) {
-    Toast({ message: "Couldn't add to Watchlist", type: "error" });
+    toast.error("Something went wrong");
     console.log(error);
   }
 };
 
-export const removeFromWatchlater = async (video, videoDispatch) => {
+export const removeFromWatchlater = async (video, userDispatch) => {
   try {
     const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
       headers: {
@@ -50,14 +53,14 @@ export const removeFromWatchlater = async (video, videoDispatch) => {
     });
     const { status, data } = response;
     if (status === 200) {
-      videoDispatch({
+      userDispatch({
         type: "DELETE_FROM_WATCHLATER",
         payload: data?.watchlater,
       });
-      Toast({ message: "Deleted from Watchlist", type: "success" });
+      toast.success("Deleted from Watchlist");
     }
   } catch (error) {
-    Toast({ message: "Couldn't delete from Watchlist", type: "error" });
+    toast.error("Couldn't delete from Watch later");
     console.log(error);
   }
 };

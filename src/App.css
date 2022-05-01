@@ -7,9 +7,10 @@
   --BG_LIGHT: white;
   --PRIMARY: var(--component-red-05);
   --PRIMARY_LIGHT: var(--component-red-01);
+  --PRIMARY_HOVER: var(--component-red-04);
   --TEXT: hsla(0, 0%, 0%, 1);
   --TEXT_INVERSE: #ffffff;
-  --GREY_TEXT: var(--component-grey-04);
+  --GREY_TEXT: var(--component-grey-02);
   --HOVER_BG: transparent;
   --HOVER_BG_ACTIVE: hsla(0, 0%, 80%, 0.3);
   --BORDER: 2px solid var(--component-grey-01);
@@ -88,6 +89,23 @@
   background-color: var(--BG);
   color: var(--TEXT);
   width: 100%;
+}
+
+.grey_text {
+  color: var(--GREY_TEXT);
+}
+
+.bottom_border {
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--component-grey-01);
+}
+
+.m1t {
+  margin-top: 1rem;
+}
+
+.p1side {
+  padding: 0 1rem;
 }
 
 @media only screen and (max-width: 768px) {

@@ -492,6 +492,8 @@ export const videos = [
   {
     _id: "e310aca4-3884-4a95-ab90-4a3467ae2932",
     title: "How Ocean Shipping Works (And Why It's Broken)",
+    channelArt:
+      "https://yt3.ggpht.com/Qs26R6RA_ZNwCyPLsdtOS-8sM6k_TFVa6vNgFWbezvDr_mN097YVwT8fKGj5P_pY6midBYy6fQ=s176-c-k-c0x00ffffff-no-rj-mo",
 
     videoID: "8d5d_HXGeMA",
     description: "How Ocean Shipping Works (And Why It's Broken)",
