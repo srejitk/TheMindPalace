@@ -9,6 +9,7 @@ const UserProvider = ({ children }) => {
   const [userState, userDispatch] = useReducer(userReducer, {
     isLogged: false,
     watchlater: [],
+    liked: [],
   });
   return (
     <UserContext.Provider value={{ userState, userDispatch }}>
