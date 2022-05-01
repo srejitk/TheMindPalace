@@ -3,20 +3,22 @@ import { useParams } from "react-router";
 import styles from "./PlayVideo.module.css";
 import ReactPlayer from "react-player";
 import { useVideo } from "../../context/Video/VideoContext";
-import { useEffect, useState } from "react";
-import { ActionBtn, VideoCard } from "../../components";
+import { useState } from "react";
+import { Modal, VideoCard } from "../../components";
 import { useUserDetails } from "../../context/User/UserContext";
 import {
   addToWatchlater,
   removeFromWatchlater,
 } from "../../context/Video/Watchlater";
 import toast from "react-hot-toast";
+import { addToHistory } from "../../context/Video/HandleHistory";
 
 export default function PlayVideo() {
   const { videoID } = useParams();
-  const { videoState } = useVideo();
+  const { videoState, isLoading } = useVideo();
   const { userState, userDispatch } = useUserDetails();
   const { videolist } = videoState;
+  const [showModal, setShowModal] = useState(true);
   const [dislike, setDislike] = useState(false);
 
   const getVideoData = (videoID, videolist) =>
@@ -50,6 +52,14 @@ export default function PlayVideo() {
     });
   };
 
+  const addToHistoryHandler = () => {
+    addToHistory(videoData, userDispatch);
+  };
+
+  const playlistHandler = (e) => {
+    setShowModal((showModal) => !showModal);
+  };
+
   const watchlaterHandler = (video) => {
     return userState.watchlater?.some((item) => video._id === item._id);
   };
@@ -68,6 +78,7 @@ export default function PlayVideo() {
             className={styles.video}
             width="100%"
             height="100%"
+            onReady={addToHistoryHandler}
           />
         </div>
 
@@ -125,15 +136,19 @@ export default function PlayVideo() {
               </button>
               <p className="subtitle-1">Watch Later</p>
             </div>
-            {/* <div
-              onClick={() => addToWatchlater(videoData, videoDispatch)}
+            <div
+              onClick={(e) => playlistHandler(e)}
               className="flex-column-wrap flex-mid-center"
             >
-              <button className={`btn btn_action  `}>
+              <button
+                className={`btn btn_action ${
+                  watchlaterHandler(videoData) ? styles.active : ""
+                }  `}
+              >
                 <span className={`material-icons`}>playlist_add</span>
               </button>
               <p className="subtitle-1">Watch Later</p>
-            </div> */}
+            </div>
           </div>
           <div className="flex-row-wrap p1side gap20 flex-mid-left">
             <img
@@ -158,6 +173,13 @@ export default function PlayVideo() {
             placeholder="Create a note..."
           />
         </div>
+        {showModal ? null : (
+          <Modal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            videoData={videoData}
+          />
+        )}
         <div className={styles.suggested_container}>
           <h5 className="subtitle-1 m1t">RELATED VIDEOS</h5>
           <div
