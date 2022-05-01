@@ -16,6 +16,13 @@ export const userReducer = (state, { type, payload }) => {
       } else {
         return { ...state, liked: [...state.liked, payload] };
       }
+    case "ADD_TO_HISTORY":
+    case "REMOVE_FROM_HISTORY":
+    case "CLEAR_HISTORY":
+      return {
+        ...state,
+        history: action.payload,
+      };
     default:
       break;
   }
