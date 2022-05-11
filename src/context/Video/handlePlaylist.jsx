@@ -54,7 +54,7 @@ export const addToPlaylist = async (playlistID, video, userDispatch) => {
     );
     const { status, data } = response;
     if (status === 200 || status === 201) {
-      userDispatch({ type: "ADD_TO_PLAYLIST", payload: data?.playlists });
+      userDispatch({ type: "ADD_TO_PLAYLIST", payload: data?.playlist });
       toast.success("Video added to playlist!");
     }
   } catch (error) {
