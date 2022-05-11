@@ -1,11 +1,12 @@
 .modal_container {
   min-width: 20rem;
-  min-height: 20rem;
+  min-height: 22rem;
   position: fixed;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
   background-color: var(--BG);
+  border-radius: 8px;
   z-index: 6;
   flex-direction: column;
 }
@@ -26,7 +27,7 @@
 
 .new_playlist {
   margin: 0 1rem;
-  background-color: var(--BG);
+  background-color: var(--BG_LIGHT);
   color: var(--TEXT);
 }
 
@@ -41,9 +42,15 @@
   border-radius: 8px;
   color: var(--white);
   border: 2px solid transparent;
-  background-color: var(--BG);
-  color: var(--PRIMARY);
+  background-color: var(--BG_LIGHT);
+  color: var(--TEXT);
+  margin: 0.5rem;
   transition: all var(--ANIM) 500ms;
+}
+
+.btn:hover {
+  color: var(--PRIMARY);
+  border: 2px solid var(--TEXT);
 }
 
 .btn_container {
@@ -53,12 +60,13 @@
 }
 
 .playlist_container {
-  outline: 2px solid;
   width: 90%;
   height: 10rem;
   padding: 1rem;
   overflow-y: scroll;
   margin: 1rem 0;
+  border-radius: 16px;
+  background-color: var(--BG_LIGHT);
 }
 
 .playlist {

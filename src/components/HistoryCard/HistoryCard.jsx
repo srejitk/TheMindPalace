@@ -6,7 +6,7 @@ import {
   removeFromWatchlater,
 } from "../../context/Video/Watchlater";
 import styles from "./HistoryCard.module.css";
-import { removeFromHistory } from "../../context/Video/History";
+import { removeFromHistory } from "../../context/Video/HandleHistory";
 
 export default function HistoryCard({ video }) {
   const { thumbnail, preview, title, creator, views } = video;
