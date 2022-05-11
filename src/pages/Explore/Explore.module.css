@@ -22,6 +22,25 @@
   padding: 1rem 2rem;
 }
 
+.dialog {
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.25 rem 0px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+
+  font-size: small;
+  font-weight: bold;
+  background-color: inherit;
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.dialog:hover {
+  background-color: var(--HOVER_BG_ACTIVE);
+  transition: background-color var(--ANIM) 300ms;
+}
+
 @media only screen and (max-width: 768px) {
   .pill_container {
     justify-content: center;

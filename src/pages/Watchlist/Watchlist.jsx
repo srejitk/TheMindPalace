@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./Watchlist.module.css";
-import HorizontalVideoCard from "../../components/HorizontalVideoCard/HorizontalVideoCard";
 import { useUserDetails } from "../../context/User/UserContext";
-import { useVideo } from "../../context/Video/VideoContext";
+import { WatchlaterCard } from "../../components";
 
 export default function Watchlist() {
   const { userState } = useUserDetails();
@@ -30,7 +29,7 @@ export default function Watchlist() {
         </div>
 
         {userState.watchlater?.map((video) => (
-          <HorizontalVideoCard key={video._id} video={video} />
+          <WatchlaterCard key={video._id} video={video} />
         ))}
       </div>
     </div>

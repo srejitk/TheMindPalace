@@ -3,8 +3,8 @@
 @import "https://iridescent.vercel.app/stylesheets/index.css";
 
 :root {
-  --BG: hsl(0, 0%, 100%);
-  --BG_LIGHT: white;
+  --BG: #fefefe;
+  --BG_LIGHT: #fdfeff;
   --PRIMARY: var(--component-red-05);
   --PRIMARY_LIGHT: var(--component-red-01);
   --PRIMARY_HOVER: var(--component-red-04);
@@ -47,8 +47,8 @@
 }
 
 .light-mode {
-  --BG: white;
-  --BG_LIGHT: white;
+  --BG: #fffefd;
+  --BG_LIGHT: #f6f6f6;
   --PRIMARY: var(--component-red-05);
   --PRIMARY-LIGHT: var(--component-red-02);
   --TEXT: hsla(0, 0%, 0%, 1);
@@ -91,6 +91,10 @@
   width: 100%;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .grey_text {
   color: var(--GREY_TEXT);
 }
@@ -106,6 +110,14 @@
 
 .p1side {
   padding: 0 1rem;
+}
+
+.p1b {
+  padding-bottom: 1rem;
+}
+
+.brand-color {
+  color: var(--PRIMARY);
 }
 
 @media only screen and (max-width: 768px) {

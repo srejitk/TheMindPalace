@@ -5,9 +5,10 @@ import {
   addToWatchlater,
   removeFromWatchlater,
 } from "../../context/Video/Watchlater";
-import styles from "./HorizontalVideoCard.module.css";
+import styles from "./HistoryCard.module.css";
+import { removeFromHistory } from "../../context/Video/HandleHistory";
 
-export default function HorizontalVideoCard({ video }) {
+export default function HistoryCard({ video }) {
   const { thumbnail, preview, title, creator, views } = video;
   const [options, setOptions] = useState(false);
   const { userState, userDispatch } = useUserDetails();
@@ -52,10 +53,12 @@ export default function HorizontalVideoCard({ video }) {
               : "Add to Watch Later"}
           </p>
         </div>
-        <div className={`${styles.dialog} flex-row-nowrap`}>
-          <span className="material-icons">playlist_add</span>
-          <label htmlFor="watchlater">Add to Playlist</label>
-          <input id="watchlater" type="checkbox" />
+        <div
+          className={`${styles.dialog} flex-row-nowrap`}
+          onClick={(e) => removeFromHistory(video, userDispatch)}
+        >
+          <span className="material-icons">manage_history</span>
+          <label htmlFor="watchlater">Remove from History</label>
         </div>
       </div>
       <Link to={`/video/${video.videoID}`}>

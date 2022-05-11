@@ -4,7 +4,6 @@ export const userReducer = (state, { type, payload }) => {
     case "DELETE_FROM_WATCHLATER":
     case "GET_WATCHLATER":
       return { ...state, watchlater: payload };
-
     case "LIKE_VIDEO":
       if (state.liked?.includes(payload)) {
         return {
@@ -21,8 +20,21 @@ export const userReducer = (state, { type, payload }) => {
     case "CLEAR_HISTORY":
       return {
         ...state,
-        history: action.payload,
+        history: payload,
       };
+    case "ADD_PLAYLIST":
+    case "DELETE_PLAYLIST":
+      return { ...state, playlists: payload };
+    case "ADD_TO_PLAYLIST":
+      const updatedPlaylist = state.playlists?.map((item) =>
+        item._id === payload?._id ? payload : item
+      );
+      return { ...state, playlists: updatedPlaylist };
+    case "DELETE_FROM_PLAYLIST":
+      const playlistUpdated = state.playlists?.map((item) =>
+        item._id === findPlaylist?._id ? payload : item
+      );
+      return { ...state, playlists: playlistUpdated };
     default:
       break;
   }

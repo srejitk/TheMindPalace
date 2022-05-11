@@ -1,9 +1,8 @@
 import { Toaster } from "react-hot-toast";
-import { ToastContainer } from "react-toastify";
 import "./App.css";
-import { Header, Sidebar } from "./components";
+import { Header, Modal, Sidebar } from "./components";
 import { useTheme } from "./context/Theme/ThemeContext";
-import logo from "./logo.png";
+
 import Router from "./utils/Router";
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
       <Router />
       <Sidebar />
       <Toaster />
-      <ToastContainer />
     </div>
   );
 }

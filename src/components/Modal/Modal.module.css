@@ -1,0 +1,93 @@
+.modal_container {
+  min-width: 20rem;
+  min-height: 22rem;
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  background-color: var(--BG);
+  border-radius: 8px;
+  z-index: 6;
+  flex-direction: column;
+}
+
+.hideModal {
+  transform: scale(0);
+  transition: transform var(--ANIM) 500ms;
+}
+
+.showModal {
+  transform: scale(1);
+  transition: transform var(--ANIM) 500ms;
+}
+
+.add_playlist {
+  width: 90%;
+}
+
+.new_playlist {
+  margin: 0 1rem;
+  background-color: var(--BG_LIGHT);
+  color: var(--TEXT);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: var(--white);
+  border: 2px solid transparent;
+  background-color: var(--BG_LIGHT);
+  color: var(--TEXT);
+  margin: 0.5rem;
+  transition: all var(--ANIM) 500ms;
+}
+
+.btn:hover {
+  color: var(--PRIMARY);
+  border: 2px solid var(--TEXT);
+}
+
+.btn_container {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playlist_container {
+  width: 90%;
+  height: 10rem;
+  padding: 1rem;
+  overflow-y: scroll;
+  margin: 1rem 0;
+  border-radius: 16px;
+  background-color: var(--BG_LIGHT);
+}
+
+.playlist {
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.dialog {
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.25 rem 0px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: small;
+  font-weight: bold;
+  background-color: inherit;
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.dialog:hover {
+  background-color: var(--HOVER_BG_ACTIVE);
+  transition: background-color var(--ANIM) 300ms;
+}
