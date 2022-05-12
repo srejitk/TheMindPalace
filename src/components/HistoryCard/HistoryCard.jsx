@@ -8,7 +8,7 @@ import {
 import styles from "./HistoryCard.module.css";
 import { removeFromHistory } from "../../context/Video/HandleHistory";
 
-export default function HistoryCard({ video }) {
+export default function HistoryCard({ video, children }) {
   const { thumbnail, preview, title, creator, views } = video;
   const [options, setOptions] = useState(false);
   const { userState, userDispatch } = useUserDetails();
@@ -18,9 +18,6 @@ export default function HistoryCard({ video }) {
     setOptions((prev) => !prev);
   };
 
-  const watchlaterHandler = (video) => {
-    return watchlater?.some((item) => video._id === item._id);
-  };
   return (
     <div className={`${styles.video_card} box-shadow position-relative`}>
       <div onClick={optionsHandler}>
@@ -38,28 +35,7 @@ export default function HistoryCard({ video }) {
           options ? styles.showDialog : styles.hideDialog
         }`}
       >
-        <div
-          onClick={() =>
-            watchlaterHandler(video)
-              ? removeFromWatchlater(video, userDispatch)
-              : addToWatchlater(video, userDispatch)
-          }
-          className={`${styles.dialog} flex-row-nowrap`}
-        >
-          <span className="material-icons">watch_later</span>
-          <p>
-            {watchlaterHandler(video)
-              ? "Del from Watch Later"
-              : "Add to Watch Later"}
-          </p>
-        </div>
-        <div
-          className={`${styles.dialog} flex-row-nowrap`}
-          onClick={(e) => removeFromHistory(video, userDispatch)}
-        >
-          <span className="material-icons">manage_history</span>
-          <label htmlFor="watchlater">Remove from History</label>
-        </div>
+        {children}
       </div>
       <Link to={`/video/${video.videoID}`}>
         <div className={`${styles.videoCover}`}>

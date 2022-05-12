@@ -72,30 +72,12 @@
   filter: brightness(0.9);
 }
 
-.dialog {
-  gap: 10px;
-  align-items: center;
-  justify-content: flex-start;
-  outline: 2px solid;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  font-size: small;
-  font-weight: bold;
-  background-color: inherit;
-  transition: background-color var(--ANIM) 300ms;
-}
-
-.dialog:hover {
-  background-color: var(--HOVER_BG_ACTIVE);
-  transition: background-color var(--ANIM) 300ms;
-}
-
 .dialog_container {
   position: absolute;
   width: 20rem;
   height: 100%;
   background-color: var(--BG);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 1rem 0.75rem;
 }
 

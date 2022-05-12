@@ -7,6 +7,15 @@ export default function Liked() {
   const { userState } = useUserDetails();
   return (
     <div className="flex-column-wrap content default">
+      <div className={styles.page_header}>
+        <h1>Liked</h1>
+
+        <h4 className="subtitle-1">
+          {/* Total Videos :{" "}
+          {findPlaylist.videos?.length ? findPlaylist.videos?.length : 0} */}
+        </h4>
+      </div>
+
       <div className={styles.watchlist_container}>
         <div className="flex-mid-center flex-column-wrap">
           <img

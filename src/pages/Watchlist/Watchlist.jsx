@@ -7,6 +7,19 @@ export default function Watchlist() {
   const { userState } = useUserDetails();
   return (
     <div className="flex-column-wrap content default">
+      <div className={styles.page_header}>
+        <h1>Watch Later</h1>
+        <button
+          // onClick={() => deleteHis(playlistID, userState)}
+          className={`${styles.trash_btn} btn btn_action`}
+        >
+          <span className="material-icons">delete</span>
+        </button>
+        <h4 className="subtitle-1">
+          {/* Total Videos :{" "}
+          {findPlaylist.videos?.length ? findPlaylist.videos?.length : 0} */}
+        </h4>
+      </div>
       <div className={styles.watchlist_container}>
         <div className="flex-mid-center flex-column-wrap">
           <img

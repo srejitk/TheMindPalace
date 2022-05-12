@@ -28,6 +28,37 @@
   transition: filter, display var(--ANIM) 1000ms;
 }
 
+.dialog {
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  outline: 2px solid;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: small;
+  font-weight: bold;
+  background-color: inherit;
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.dialog:hover {
+  background-color: var(--HOVER_BG_ACTIVE);
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.page_header {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.trash_btn {
+  margin-left: auto;
+}
+
 @media only screen and (max-width: 479px) {
   .emptyImage {
     margin-top: 3rem;
