@@ -42,7 +42,7 @@
   --GREY_TEXT: var(--component-grey-04);
   --HOVER_BG: transparent;
   --HOVER_BG_ACTIVE: hsla(0, 0%, 80%, 0.3);
-  --BORDER: 2px solid transparent;
+  --BORDER: 2px solid #f6f6f6;
   --ANIM: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 

@@ -12,22 +12,26 @@ import {
 } from "../../context/Video/Watchlater";
 import toast from "react-hot-toast";
 import { addToHistory } from "../../context/Video/HandleHistory";
+import {
+  getRelated,
+  getVideoData,
+  watchlaterHandler,
+} from "../../services/ApiCalls";
 
 export default function PlayVideo() {
   const { videoID } = useParams();
-  const { videoState, isLoading } = useVideo();
+  const {
+    videoState,
+    isLoading,
+    dislike,
+    setDislike,
+    showModal,
+    setShowModal,
+  } = useVideo();
   const { userState, userDispatch } = useUserDetails();
   const { videolist } = videoState;
-  const [showModal, setShowModal] = useState(true);
-  const [dislike, setDislike] = useState(false);
-
-  const getVideoData = (videoID, videolist) =>
-    videolist?.find((video) => video.videoID === videoID);
 
   const videoData = getVideoData(videoID, videolist);
-
-  const getRelated = (videoData, videolist) =>
-    videolist?.filter((video) => video.category === videoData.category);
 
   const related_videos = getRelated(videoData, videolist);
 
@@ -35,15 +39,14 @@ export default function PlayVideo() {
     if (dislike) {
       setDislike(() => !dislike);
     }
-
     userDispatch({ type: "LIKE_VIDEO", payload: videoData });
     toast("Liked!", {
       icon: "❤️",
     });
   };
 
-  const dislikeHandler = (videoData) => {
-    if (userState.liked?.includes(videoData)) {
+  const dislikeHandler = (videoData, userState) => {
+    if (userState.liked?.some(videoData)) {
       userDispatch({ type: "LIKE_VIDEO", payload: videoData });
     }
     setDislike(() => !dislike);
@@ -60,23 +63,19 @@ export default function PlayVideo() {
     setShowModal((showModal) => !showModal);
   };
 
-  const watchlaterHandler = (video) => {
-    return userState.watchlater?.some((item) => video._id === item._id);
-  };
-
   return (
     <>
-      {showModal ? null : (
+      {showModal ? (
         <Modal
           showModal={showModal}
           setShowModal={setShowModal}
           videoData={videoData}
         />
-      )}
+      ) : null}
       <div
         className={`content flex-row-wrap flex-mid-center default ${
           styles.container
-        } ${!showModal ? styles.blurBG : ""}`}
+        } ${showModal ? styles.blurBG : ""}`}
       >
         <div
           className={`${styles.videoSection} flex-column-wrap flex-mid-center`}
@@ -119,7 +118,7 @@ export default function PlayVideo() {
                 <p className="subtitle-1">Like</p>
               </div>
               <div
-                onClick={() => dislikeHandler(videoData)}
+                onClick={() => dislikeHandler(videoData, userState)}
                 className="flex-column-wrap flex-mid-center"
               >
                 <button
@@ -131,7 +130,7 @@ export default function PlayVideo() {
               </div>
               <div
                 onClick={() =>
-                  watchlaterHandler(videoData)
+                  watchlaterHandler(videoData, userState)
                     ? removeFromWatchlater(videoData, userDispatch)
                     : addToWatchlater(videoData, userDispatch)
                 }

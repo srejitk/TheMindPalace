@@ -24,3 +24,27 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.trash_btn {
+  color: var(--TEXT);
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.dialog {
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  outline: 2px solid;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: small;
+  font-weight: bold;
+  background-color: inherit;
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.dialog:hover {
+  background-color: var(--HOVER_BG_ACTIVE);
+  transition: background-color var(--ANIM) 300ms;
+}

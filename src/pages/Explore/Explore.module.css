@@ -9,19 +9,6 @@
   overflow: hidden;
 }
 
-.pill {
-  border: 2px solid var(--GREY_TEXT);
-  align-items: center;
-  border-radius: 1.5rem;
-  padding: 0;
-  padding: 0.25rem 0.75rem;
-}
-
-.pill_container {
-  justify-content: center;
-  padding: 1rem 2rem;
-}
-
 .dialog {
   gap: 10px;
   align-items: center;
@@ -41,9 +28,6 @@
   transition: background-color var(--ANIM) 300ms;
 }
 
-@media only screen and (max-width: 768px) {
-  .pill_container {
-    justify-content: center;
-    padding: 1rem 2rem;
-  }
+.openSesame {
+  filter: blur(4px);
 }
