@@ -3,6 +3,7 @@ import { useUserDetails } from "../../context/User/UserContext";
 import { toast } from "react-toastify";
 import styles from "./Modal.module.css";
 import { addToPlaylist, addPlaylist } from "../../context/Video/HandlePlaylist";
+
 export default function Modal({ showModal, setShowModal, videoData }) {
   const { userState, userDispatch } = useUserDetails();
   const { playlists } = userState;
