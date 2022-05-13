@@ -28,7 +28,7 @@ export default function Header() {
           <div className={`flex-mid-center ${styles.logo_container}`}>
             <img
               className={styles.logo}
-              src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1649100763/Brain%20Dump/Brain_dlnboa.svg"
+              src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1652438523/TheMindPalace/Creator/Film_Reel_mfcwyg.png"
               alt="BrainDump Logo"
             />
           </div>

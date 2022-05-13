@@ -13,7 +13,7 @@ export default function Modal({ showModal, setShowModal, videoData }) {
   });
 
   const addPlaylistHandler = () => {
-    if (newPlaylist.title === "") {
+    if (newPlaylist.title === " " || newPlaylist.title === "") {
       toast.error("Playlist name can't be empty");
       return;
     }
@@ -38,14 +38,14 @@ export default function Modal({ showModal, setShowModal, videoData }) {
         {playlists?.map((playlist) => (
           <div
             key={playlist._id}
+            onClick={(e) =>
+              findIfVideoInPlaylist(playlist)
+                ? toast.error("Video already exists in playlist")
+                : addVideoHandler(playlist._id)
+            }
             className={`${styles.dialog} flex-row-nowrap`}
           >
             <span
-              onClick={(e) =>
-                findIfVideoInPlaylist(playlist)
-                  ? toast.error("Video already exists in playlist")
-                  : addVideoHandler(playlist._id)
-              }
               className={`material-icons ${
                 findIfVideoInPlaylist(playlist) ? "brand-color" : ""
               }`}
