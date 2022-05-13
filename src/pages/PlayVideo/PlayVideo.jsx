@@ -40,19 +40,25 @@ export default function PlayVideo() {
       setDislike(() => !dislike);
     }
     userDispatch({ type: "LIKE_VIDEO", payload: videoData });
-    toast("Liked!", {
-      icon: "❤️",
-    });
+    userState?.liked?.includes(videoData)
+      ? toast("Unliked!", {
+          icon: "💔",
+        })
+      : toast("Liked!", {
+          icon: "❤️",
+        });
   };
 
   const dislikeHandler = (videoData, userState) => {
-    if (userState.liked?.some(videoData)) {
+    if (userState.liked?.includes(videoData)) {
       userDispatch({ type: "LIKE_VIDEO", payload: videoData });
     }
     setDislike(() => !dislike);
-    toast("Disliked", {
-      icon: "💔",
-    });
+    dislike
+      ? null
+      : toast("Disliked", {
+          icon: "💔",
+        });
   };
 
   const addToHistoryHandler = () => {
@@ -138,7 +144,7 @@ export default function PlayVideo() {
               >
                 <button
                   className={`btn btn_action ${
-                    watchlaterHandler(videoData) ? styles.active : ""
+                    watchlaterHandler(videoData, userState) ? styles.active : ""
                   }  `}
                 >
                   <span className={`material-icons`}>watch_later</span>
@@ -189,7 +195,30 @@ export default function PlayVideo() {
               className={` flex-mid-center flex-column-wrap ${styles.related_videos}`}
             >
               {related_videos?.map((video) => (
-                <VideoCard key={video._id} video={video} mini={true} />
+                <VideoCard key={video._id} video={video} mini={true}>
+                  <div
+                    onClick={() =>
+                      watchlaterHandler(video, userState)
+                        ? removeFromWatchlater(video, userDispatch)
+                        : addToWatchlater(video, userDispatch)
+                    }
+                    className={`${styles.dialog} flex-row-nowrap`}
+                  >
+                    <span className="material-icons">watch_later</span>
+                    <p>
+                      {watchlaterHandler(video, userState)
+                        ? "Delete from Watch Later"
+                        : "Add to Watch Later"}
+                    </p>
+                  </div>
+                  <div
+                    onClick={() => likeHandler(video, userDispatch, userState)}
+                    className={`${styles.dialog} flex-row-nowrap`}
+                  >
+                    <span className="material-icons">thumb_up</span>
+                    <p>Add to Liked</p>
+                  </div>
+                </VideoCard>
               ))}
             </div>
           </div>
