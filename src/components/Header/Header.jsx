@@ -41,17 +41,23 @@ export default function Header() {
           <Link
             to="/"
             onClick={logoutHandler}
-            className={`btn btn_action subtitle-1`}
+            className={`${styles.link} btn btn_action subtitle-1`}
           >
             Logout
           </Link>
         </div>
       ) : (
         <div className={`${styles.links} flex-row-wrap flex-mid-center gap20`}>
-          <Link to="/login" className={`btn btn_action subtitle-1`}>
+          <Link
+            to="/login"
+            className={` ${styles.link}  btn btn_action subtitle-1`}
+          >
             Sign In
           </Link>
-          <Link to="sign-up" className="links btn btn_action subtitle-1">
+          <Link
+            to="sign-up"
+            className={`${styles.link} btn btn_action subtitle-1`}
+          >
             Sign Up
           </Link>
         </div>

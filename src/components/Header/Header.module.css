@@ -34,8 +34,18 @@
 
 .links {
   margin-left: auto;
-  margin-right: 2rem;
+  margin-right: 0;
+}
+
+.link {
   padding: 0;
+  width: unset;
+  padding: 1rem;
+}
+
+.link:hover {
+  width: fit-content;
+  padding: 1rem;
 }
 
 .Avatar_options {
