@@ -40,10 +40,11 @@ export default function Watchlist() {
             A bit quiet here innit??
           </h5>
         </div>
-
-        {userState.watchlater?.map((video) => (
-          <WatchlaterCard key={video._id} video={video} />
-        ))}
+        <div className={styles.video_container}>
+          {userState.watchlater?.map((video) => (
+            <WatchlaterCard key={video._id} video={video} />
+          ))}
+        </div>
       </div>
     </div>
   );

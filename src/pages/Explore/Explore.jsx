@@ -22,11 +22,6 @@ export default function Explore() {
     >
       <div className={styles.page_header}>
         <h1>Explore</h1>
-
-        <h4 className="subtitle-1">
-          {/* Total Videos :{" "}
-          {findPlaylist.videos?.length ? findPlaylist.videos?.length : 0} */}
-        </h4>
       </div>
       <CategoryChips />
       <div className={`${styles.videos_container} `}>
