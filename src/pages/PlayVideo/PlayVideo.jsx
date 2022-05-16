@@ -12,22 +12,26 @@ import {
 } from "../../context/Video/Watchlater";
 import toast from "react-hot-toast";
 import { addToHistory } from "../../context/Video/HandleHistory";
+import {
+  getRelated,
+  getVideoData,
+  watchlaterHandler,
+} from "../../services/ApiCalls";
 
 export default function PlayVideo() {
   const { videoID } = useParams();
-  const { videoState, isLoading } = useVideo();
+  const {
+    videoState,
+    isLoading,
+    dislike,
+    setDislike,
+    showModal,
+    setShowModal,
+  } = useVideo();
   const { userState, userDispatch } = useUserDetails();
   const { videolist } = videoState;
-  const [showModal, setShowModal] = useState(true);
-  const [dislike, setDislike] = useState(false);
-
-  const getVideoData = (videoID, videolist) =>
-    videolist?.find((video) => video.videoID === videoID);
 
   const videoData = getVideoData(videoID, videolist);
-
-  const getRelated = (videoData, videolist) =>
-    videolist?.filter((video) => video.category === videoData.category);
 
   const related_videos = getRelated(videoData, videolist);
 
@@ -35,21 +39,26 @@ export default function PlayVideo() {
     if (dislike) {
       setDislike(() => !dislike);
     }
-
     userDispatch({ type: "LIKE_VIDEO", payload: videoData });
-    toast("Liked!", {
-      icon: "❤️",
-    });
+    userState?.liked?.includes(videoData)
+      ? toast("Unliked!", {
+          icon: "💔",
+        })
+      : toast("Liked!", {
+          icon: "❤️",
+        });
   };
 
-  const dislikeHandler = (videoData) => {
+  const dislikeHandler = (videoData, userState) => {
     if (userState.liked?.includes(videoData)) {
       userDispatch({ type: "LIKE_VIDEO", payload: videoData });
     }
     setDislike(() => !dislike);
-    toast("Disliked", {
-      icon: "💔",
-    });
+    dislike
+      ? null
+      : toast("Disliked", {
+          icon: "💔",
+        });
   };
 
   const addToHistoryHandler = () => {
@@ -60,23 +69,19 @@ export default function PlayVideo() {
     setShowModal((showModal) => !showModal);
   };
 
-  const watchlaterHandler = (video) => {
-    return userState.watchlater?.some((item) => video._id === item._id);
-  };
-
   return (
     <>
-      {showModal ? null : (
+      {showModal ? (
         <Modal
           showModal={showModal}
           setShowModal={setShowModal}
           videoData={videoData}
         />
-      )}
+      ) : null}
       <div
         className={`content flex-row-wrap flex-mid-center default ${
           styles.container
-        } ${!showModal ? styles.blurBG : ""}`}
+        } ${showModal ? styles.blurBG : ""}`}
       >
         <div
           className={`${styles.videoSection} flex-column-wrap flex-mid-center`}
@@ -119,7 +124,7 @@ export default function PlayVideo() {
                 <p className="subtitle-1">Like</p>
               </div>
               <div
-                onClick={() => dislikeHandler(videoData)}
+                onClick={() => dislikeHandler(videoData, userState)}
                 className="flex-column-wrap flex-mid-center"
               >
                 <button
@@ -131,7 +136,7 @@ export default function PlayVideo() {
               </div>
               <div
                 onClick={() =>
-                  watchlaterHandler(videoData)
+                  watchlaterHandler(videoData, userState)
                     ? removeFromWatchlater(videoData, userDispatch)
                     : addToWatchlater(videoData, userDispatch)
                 }
@@ -139,7 +144,7 @@ export default function PlayVideo() {
               >
                 <button
                   className={`btn btn_action ${
-                    watchlaterHandler(videoData) ? styles.active : ""
+                    watchlaterHandler(videoData, userState) ? styles.active : ""
                   }  `}
                 >
                   <span className={`material-icons`}>watch_later</span>
@@ -190,7 +195,30 @@ export default function PlayVideo() {
               className={` flex-mid-center flex-column-wrap ${styles.related_videos}`}
             >
               {related_videos?.map((video) => (
-                <VideoCard key={video._id} video={video} mini={true} />
+                <VideoCard key={video._id} video={video} mini={true}>
+                  <div
+                    onClick={() =>
+                      watchlaterHandler(video, userState)
+                        ? removeFromWatchlater(video, userDispatch)
+                        : addToWatchlater(video, userDispatch)
+                    }
+                    className={`${styles.dialog} flex-row-nowrap`}
+                  >
+                    <span className="material-icons">watch_later</span>
+                    <p>
+                      {watchlaterHandler(video, userState)
+                        ? "Delete from Watch Later"
+                        : "Add to Watch Later"}
+                    </p>
+                  </div>
+                  <div
+                    onClick={() => likeHandler(video, userDispatch, userState)}
+                    className={`${styles.dialog} flex-row-nowrap`}
+                  >
+                    <span className="material-icons">thumb_up</span>
+                    <p>Add to Liked</p>
+                  </div>
+                </VideoCard>
               ))}
             </div>
           </div>

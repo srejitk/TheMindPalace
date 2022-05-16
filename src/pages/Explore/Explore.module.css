@@ -1,25 +1,14 @@
 .videos_container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
   background-color: var(--BG);
   padding: 0 1rem;
   width: 100%;
+  min-height: 100vh;
   margin: auto;
   overflow: hidden;
-}
-
-.pill {
-  border: 2px solid var(--GREY_TEXT);
-  align-items: center;
-  border-radius: 1.5rem;
-  padding: 0;
-  padding: 0.25rem 0.75rem;
-}
-
-.pill_container {
-  justify-content: center;
-  padding: 1rem 2rem;
 }
 
 .dialog {
@@ -29,7 +18,6 @@
   padding: 0.25 rem 0px;
   margin-bottom: 1rem;
   border-radius: 8px;
-
   font-size: small;
   font-weight: bold;
   background-color: inherit;
@@ -41,9 +29,21 @@
   transition: background-color var(--ANIM) 300ms;
 }
 
-@media only screen and (max-width: 768px) {
-  .pill_container {
-    justify-content: center;
-    padding: 1rem 2rem;
-  }
+.page_header {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--BG);
+  color: var(--TEXT);
+}
+
+.trash_btn {
+  margin-left: auto;
+}
+
+.openSesame {
+  filter: blur(4px);
 }

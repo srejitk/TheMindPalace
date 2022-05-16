@@ -6,7 +6,6 @@
   height: 100%;
   background-color: var(--BG);
   color: var(--TEXT);
-  justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
@@ -31,6 +30,22 @@
 .userAvatar {
   background-color: transparent;
   border: none;
+}
+
+.links {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.link {
+  padding: 0;
+  width: unset;
+  padding: 1rem;
+}
+
+.link:hover {
+  width: fit-content;
+  padding: 1rem;
 }
 
 .Avatar_options {

@@ -11,15 +11,9 @@ const UserProvider = ({ children }) => {
     watchlater: [],
     history: [],
     liked: [],
-    playlists: [
-      {
-        description: "",
-        title: "egdsgsd",
-        videos: [],
-        _id: "bdd7cb49-c3d5-4ed0-ac48-43f68c9e98ea",
-      },
-    ],
+    playlists: [],
   });
+
   return (
     <UserContext.Provider value={{ userState, userDispatch }}>
       {children}

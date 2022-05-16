@@ -7,7 +7,7 @@ import {
 } from "../../context/Video/Watchlater";
 import styles from "./HorizontalVideoCard.module.css";
 
-export default function HorizontalVideoCard({ video }) {
+export default function HorizontalVideoCard({ video, children }) {
   const { thumbnail, preview, title, creator, views } = video;
   const [options, setOptions] = useState(false);
   const { userState, userDispatch } = useUserDetails();
@@ -17,9 +17,6 @@ export default function HorizontalVideoCard({ video }) {
     setOptions((prev) => !prev);
   };
 
-  const watchlaterHandler = (video) => {
-    return watchlater?.some((item) => video._id === item._id);
-  };
   return (
     <div className={`${styles.video_card} box-shadow position-relative`}>
       <div onClick={optionsHandler}>
@@ -37,26 +34,7 @@ export default function HorizontalVideoCard({ video }) {
           options ? styles.showDialog : styles.hideDialog
         }`}
       >
-        <div
-          onClick={() =>
-            watchlaterHandler(video)
-              ? removeFromWatchlater(video, userDispatch)
-              : addToWatchlater(video, userDispatch)
-          }
-          className={`${styles.dialog} flex-row-nowrap`}
-        >
-          <span className="material-icons">watch_later</span>
-          <p>
-            {watchlaterHandler(video)
-              ? "Del from Watch Later"
-              : "Add to Watch Later"}
-          </p>
-        </div>
-        <div className={`${styles.dialog} flex-row-nowrap`}>
-          <span className="material-icons">playlist_add</span>
-          <label htmlFor="watchlater">Add to Playlist</label>
-          <input id="watchlater" type="checkbox" />
-        </div>
+        {children}
       </div>
       <Link to={`/video/${video.videoID}`}>
         <div className={`${styles.videoCover}`}>

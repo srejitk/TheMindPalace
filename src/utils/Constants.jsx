@@ -21,7 +21,7 @@ export const sidebarItems = [
   },
   {
     path: "/playlist",
-    icon: `playlist`,
+    icon: `playlist_play`,
     label: "Playlists",
   },
 ];

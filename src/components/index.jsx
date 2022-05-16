@@ -1,3 +1,4 @@
+import CategoryChips from "./CategoryChips/CategoryChips";
 import Header from "./Header/Header";
 import HistoryCard from "./HistoryCard/HistoryCard";
 import Modal from "./Modal/Modal";
@@ -14,4 +15,5 @@ export {
   Sidebar,
   WatchlaterCard,
   HistoryCard,
+  CategoryChips,
 };

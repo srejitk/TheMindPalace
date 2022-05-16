@@ -1,7 +1,7 @@
 /* Sign In Styles */
 
 .auth_content {
-  background-color: var(--white);
+  background-color: var(--BG);
   align-items: center;
 }
 
@@ -11,8 +11,8 @@
 }
 
 .glass__input {
-  background-color: var(--component-grey-01);
-  color: var(--black);
+  background-color: var(--BG_LIGHT);
+  color: var(--TEXT);
   font-weight: 500;
 }
 
@@ -22,6 +22,7 @@
 
 .glass__btn {
   width: 21.5rem;
+  background-color: var(--PRIMARY);
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 350ms;
   border: 2px solid transparent;
   transition: all var(--ANIM) 500ms;
@@ -33,30 +34,30 @@
 }
 
 .glass__btn_1:hover {
-  color: var(--CARD_BG);
-  background-color: var(--component-blue-06);
-  border: 2px solid var(--component-blue-05);
+  color: var(--BG);
+  background-color: var(--PRIMARY);
+  border: 2px solid var(--PRIMARY);
   transition: all var(--ANIM) 500ms;
 }
 
 .glass__btn_2 {
-  background-color: var(--white);
-  color: var(--component-blue-05);
+  background-color: var(--BG);
+  color: var(--PRIMARY);
   border: 2px solid var(--component-grey-01);
   font-weight: bold;
   transition: all var(--ANIM) 500ms;
 }
 
 .glass__btn_2:hover {
-  background-color: var(--CARD_BG);
-  color: var(--component-blue-05);
-  border: 2px solid var(--component-blue-05);
+  background-color: var(--BG);
+  color: var(--PRIMARY);
+  border: 2px solid var(--PRIMARY);
   font-weight: bolder;
   transition: all var(--ANIM) 500ms;
 }
 
 .glass__form__wrapper {
-  background-color: var(--white);
+  background-color: var(--BG);
   margin: 1rem auto;
   max-width: max-content;
   min-width: fit-content;
@@ -101,12 +102,13 @@
 .glass__input__guest {
   background-color: transparent;
   border: transparent;
-  color: var(--component-indigo-04);
+  color: var(--PRIMARY);
 }
 
 .passwordIcon {
   top: 0px;
   right: 0px;
+  color: var(--PRIMARY);
 }
 
 @media only screen and (max-width: 768px) {

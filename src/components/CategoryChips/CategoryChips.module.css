@@ -1,0 +1,32 @@
+.pill {
+  align-items: center;
+  border-radius: 1.5rem;
+  padding: 0;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--BG);
+  border: var(--BORDER);
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--TEXT);
+}
+
+.pill:hover {
+  filter: brightness(0.9);
+}
+
+.pill_container {
+  justify-content: center;
+  padding: 1rem 2rem;
+}
+
+.active {
+  background-color: var(--PRIMARY);
+  color: var(--BG);
+}
+
+@media only screen and (max-width: 768px) {
+  .pill_container {
+    justify-content: center;
+    padding: 1rem 2rem;
+  }
+}

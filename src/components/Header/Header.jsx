@@ -28,7 +28,7 @@ export default function Header() {
           <div className={`flex-mid-center ${styles.logo_container}`}>
             <img
               className={styles.logo}
-              src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1649100763/Brain%20Dump/Brain_dlnboa.svg"
+              src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1652438523/TheMindPalace/Creator/Film_Reel_mfcwyg.png"
               alt="BrainDump Logo"
             />
           </div>
@@ -37,21 +37,27 @@ export default function Header() {
       </div>
 
       {isLogged ? (
-        <div className={`flex-row-wrap flex-mid-center gap20`}>
+        <div className={`${styles.links} flex-row-wrap flex-mid-center gap20`}>
           <Link
             to="/"
             onClick={logoutHandler}
-            className="links  btn btn_action subtitle-1"
+            className={`${styles.link} btn btn_action subtitle-1`}
           >
             Logout
           </Link>
         </div>
       ) : (
-        <div className={`flex-row-wrap flex-mid-center gap20`}>
-          <Link to="/login" className="links btn btn_action subtitle-1">
+        <div className={`${styles.links} flex-row-wrap flex-mid-center gap20`}>
+          <Link
+            to="/login"
+            className={` ${styles.link}  btn btn_action subtitle-1`}
+          >
             Sign In
           </Link>
-          <Link to="sign-up" className="links btn btn_action subtitle-1">
+          <Link
+            to="sign-up"
+            className={`${styles.link} btn btn_action subtitle-1`}
+          >
             Sign Up
           </Link>
         </div>
