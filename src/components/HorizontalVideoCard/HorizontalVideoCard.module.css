@@ -1,5 +1,6 @@
 .video_card {
-  width: 40rem;
+  width: 90%;
+  min-width: 40rem;
   height: fit-content;
   min-height: 8rem;
   margin: 1rem 2rem;
@@ -93,7 +94,7 @@
 
 @media only screen and (max-width: 600px) {
   .video_card {
-    width: 80%;
+    min-width: unset;
     margin: 1rem auto;
     min-height: 6rem;
     height: fit-content;
@@ -105,7 +106,7 @@
   }
 
   .dialog_container {
-    width: 44%;
+    width: 12.5rem;
     z-index: 2;
   }
   .videoText {
@@ -148,7 +149,7 @@
   }
 }
 
-@media only screen and (max-width: 485px) {
+@media only screen and (max-width: 479px) {
   .video_card {
     width: 90%;
     margin: 1rem auto;
@@ -157,14 +158,10 @@
   }
 
   .videoCover {
-    width: 10rem;
+    width: 11rem;
     height: 100%;
   }
 
-  .dialog_container {
-    width: 44%;
-    z-index: 2;
-  }
   .videoText {
     padding: 0.5rem 1rem;
     display: flex;
@@ -186,8 +183,14 @@
 
   .dialog_container {
     position: absolute;
-    width: 45%;
+    width: 11rem;
     height: 100%;
     padding: 1rem 0.45rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .dialog_container {
+    width: 11rem;
   }
 }

@@ -38,7 +38,7 @@
   --PRIMARY: var(--component-red-05);
   --PRIMARY-LIGHT: var(--component-red-02);
   --TEXT: white;
-  --TEXT_INVERSE: #ffffff;
+  --TEXT_INVERSE: #000;
   --GREY_TEXT: var(--component-grey-04);
   --HOVER_BG: transparent;
   --HOVER_BG_ACTIVE: hsla(0, 0%, 80%, 0.3);
