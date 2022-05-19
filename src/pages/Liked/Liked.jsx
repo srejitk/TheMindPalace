@@ -12,9 +12,18 @@ export default function Liked() {
   return (
     <div className="flex-column-wrap content default">
       <div className={styles.page_header}>
-        <h1>Liked</h1>
+        <h1>
+          Liked |
+          <span className={`grey_text ${styles.subtext}`}>
+            All your liked videos
+          </span>
+        </h1>
       </div>
-      <div className={`${styles.content_wrapper} flex-row-wrap default`}>
+      <div
+        className={`${styles.content_wrapper} ${
+          userState.liked?.length === 0 ? styles.emptyTitle : null
+        } flex-row-wrap`}
+      >
         <div className={styles.watchlist_container}>
           {userState.liked?.map((video) => (
             <HorizontalVideoCard key={video._id} video={video}>
@@ -45,7 +54,7 @@ export default function Liked() {
         </div>
         <div
           className={`${styles.detail_card} ${
-            userState.liked?.length === 0 ? styles.emptyTitle : null
+            userState.liked?.length === 0 ? styles.expandbanner : null
           }`}
         >
           <h1 className={styles.detail_title}>
