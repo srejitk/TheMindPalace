@@ -6,7 +6,12 @@ import {
   useState,
 } from "react";
 import useAxios from "../../utils/useAxios";
-import { compose, filterByCategory, sortByLatest } from "./Utils";
+import {
+  compose,
+  filterByCategory,
+  searchByTitle,
+  sortByLatest,
+} from "./Utils";
 import { VideoReducer } from "./VideoReducer";
 
 const VideoContext = createContext();
@@ -20,6 +25,7 @@ const VideoProvider = ({ children }) => {
     videolist: [],
     category: "All",
     sortBy: "",
+    searchBy: "",
   });
 
   const { isLoading, responseData, errorFlag } = useAxios("/api/videos");
@@ -33,7 +39,8 @@ const VideoProvider = ({ children }) => {
   const filteredVideos = compose(
     videoState,
     filterByCategory,
-    sortByLatest
+    sortByLatest,
+    searchByTitle
   )(videolist);
   return (
     <VideoContext.Provider

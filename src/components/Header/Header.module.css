@@ -1,7 +1,7 @@
 .Navbar {
   width: 100%;
   max-width: 100vw;
-  padding: 0 1.5rem;
+  padding: 1rem 1.5rem;
   max-height: 5rem;
   height: 100%;
   background-color: var(--BG);
@@ -11,6 +11,7 @@
   top: 0;
   z-index: 10;
   grid-area: navbar;
+  gap: 1rem;
 }
 
 .Navbar_brand {
@@ -55,6 +56,22 @@
   border-radius: 4px;
   padding: 1rem;
   margin-left: left;
+}
+
+.search_bar {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: var(--BG_LIGHT);
+  width: 50%;
+  border: var(--BORDER);
+}
+
+.search_bar:focus {
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  width: 50%;
+  border: 2px solid var(--PRIMARY);
 }
 
 ul {

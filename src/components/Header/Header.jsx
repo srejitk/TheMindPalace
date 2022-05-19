@@ -3,9 +3,11 @@ import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/Auth/AuthContext";
 import { useTheme } from "../../context/Theme/ThemeContext";
+import { useVideo } from "../../context/Video/VideoContext";
 
 export default function Header() {
   const { isLogged, logoutHandler } = useAuth();
+  const { videoDispatch } = useVideo();
 
   const { sidebar, setSidebar, theme, setTheme } = useTheme();
 
@@ -32,9 +34,19 @@ export default function Header() {
               alt="BrainDump Logo"
             />
           </div>
-          <h5 className="header-5">The Mind Palace</h5>
+          <h5 className="header-5">
+            The <span className="brand-color">Mind</span>Palace
+          </h5>
         </Link>
       </div>
+      <input
+        type="text"
+        placeholder="Search..."
+        className={styles.search_bar}
+        onChange={(e) =>
+          videoDispatch({ type: "SET_SEARCH", payload: e.target.value })
+        }
+      />
 
       {isLogged ? (
         <div className={`${styles.links} flex-row-wrap flex-mid-center gap20`}>
