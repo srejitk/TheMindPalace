@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Liked.module.css";
 import HorizontalVideoCard from "../../components/HorizontalVideoCard/HorizontalVideoCard";
 import { useUserDetails } from "../../context/User/UserContext";
+import { likeHandler } from "../../services/ApiCalls";
 
 export default function Liked() {
   const { userState } = useUserDetails();
@@ -46,8 +47,16 @@ export default function Liked() {
                 onClick={() => likeHandler(video, userDispatch, userState)}
                 className={`${styles.dialog} flex-row-nowrap`}
               >
-                <span className="material-icons">thumb_up</span>
-                <p>Add to Liked</p>
+                <span className="material-icons">
+                  {userState?.liked?.includes(video)
+                    ? "thumb_down"
+                    : "thumb_up"}
+                </span>
+                <p>
+                  {userState?.liked?.includes(video)
+                    ? "Remove from liked"
+                    : "Add to liked"}
+                </p>
               </div>
             </HorizontalVideoCard>
           ))}

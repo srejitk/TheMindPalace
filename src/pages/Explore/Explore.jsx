@@ -47,8 +47,14 @@ export default function Explore() {
               onClick={() => likeHandler(video, userDispatch, userState)}
               className={`${styles.dialog} flex-row-nowrap`}
             >
-              <span className="material-icons">thumb_up</span>
-              <p>Add to Liked</p>
+              <span className="material-icons">
+                {userState?.liked?.includes(video) ? "thumb_down" : "thumb_up"}
+              </span>
+              <p>
+                {userState?.liked?.includes(video)
+                  ? "Remove from liked"
+                  : "Add to Liked"}
+              </p>
             </div>
           </VideoCard>
         ))}
