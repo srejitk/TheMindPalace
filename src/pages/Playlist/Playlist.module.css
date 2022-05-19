@@ -1,14 +1,21 @@
-.playlist_page_wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  min-height: calc(100vh - 9rem);
-  height: fit-content;
+.content_wrapper {
+  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.watchlist_container {
   width: 100%;
-  max-width: 100vw;
-  padding: 2rem;
-  gap: 2rem;
+  height: fit-content;
+  min-height: 100vh;
   background-color: var(--BG);
+  color: var(--TEXT);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .page_header {
@@ -17,32 +24,121 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem;
+  color: var(--TEXT);
+  background: var(--BG);
 }
 
-.page_content {
-  display: flex;
-  flex-wrap: wrap;
+.trash_btn {
+  margin-left: auto;
+}
+
+.dialog {
+  gap: 10px;
+  align-items: center;
   justify-content: flex-start;
-  gap: 3rem;
+  padding: 0.25 rem 0px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: small;
+  font-weight: bold;
+  background-color: inherit;
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.dialog:hover {
+  background-color: var(--HOVER_BG_ACTIVE);
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.detail_card {
+  width: 90%;
+  margin: 0rem 1rem;
+  height: 90%;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem;
+  background-color: var(--PRIMARY);
+  position: relative;
+  overflow: hidden;
+  font-size: 2rem;
+  color: var(--TEXT);
+}
+
+.detail_title {
+  z-index: 2;
+  color: var(--TEXT);
+}
+
+.subtext {
+  padding-left: 1rem;
+}
+
+.detail_banner {
+  font-size: 50rem;
+  position: absolute;
+  top: -10rem;
+  right: -5rem;
+  color: var(--PRIMARY);
+  filter: brightness(0.9);
+  z-index: 1;
+}
+
+.emptyTitle {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.expandbanner {
+  width: 95%;
+  height: 35rem;
+  margin: 0 auto;
+  order: -1;
+}
+
+.trash_btn {
+  margin-left: auto;
+  width: fit-content;
+  color: var(--TEXT_INVERSE);
+  background: var(--PRIMARY);
+  border: 2px solid transparent;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  height: 3rem;
+}
+
+.trash_btn:hover {
+  margin-left: auto;
+  width: fit-content;
+  color: var(--TEXT_INVERSE);
+  background: var(--PRIMARY);
+  font-weight: bold;
+  border: 2px solid var(--TEXT);
+  filter: brightness(0.95);
 }
 
 .playlist_card {
-  width: 20rem;
+  width: 90%;
+  margin: 1rem auto;
+  min-width: 20rem;
   height: 15rem;
-  background-color: var(--BG_LIGHT);
+  background-color: linear-gradient(to top, transparent, red);
   border-radius: 8px;
-  border: 2px solid var(--TEXT);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   font-size: xx-large;
   font-weight: bold;
-  transition: background-image var(--ANIM) 500ms;
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  flex-grow: 1;
 }
 
 .blob {
@@ -86,24 +182,91 @@
   background-color: inherit;
   height: 70%;
   border-radius: 8px;
+  background: linear-gradient(to top, transparent, var(--BG_LIGHT));
 }
 
 .card_title {
   z-index: 2;
   color: var(--TEXT);
+  height: fit-content;
   width: 100%;
-  text-align: center;
+  border-radius: 0 0 12px;
+  background-color: var(--HOVER_BG_ACTIVE);
+  justify-content: center;
+  align-items: center;
   overflow-y: scroll;
   height: 3rem;
+  position: absolute;
+  bottom: 0;
+  text-transform: capitalize;
+  gap: 0.5rem;
 }
 
+.dummy_text {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 4rem;
+}
+
+.thumb_wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card_thumb {
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.playlistLength {
+  bottom: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  .content_wrapper {
+    grid-template-columns: 1fr;
+  }
+  .detail_card {
+    width: 95%;
+    height: 20rem;
+    margin: 1.5rem auto;
+    order: -1;
+    padding: 2rem;
+    font-size: 1rem;
+    order: -1;
+  }
+
+  .detail_banner {
+    font-size: 27rem;
+    top: -7rem;
+    right: 0rem;
+  }
+
+  .watchlist_container {
+    width: 100%;
+    min-height: unset;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .trash_btn {
+    margin-left: auto;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+  }
+
+  .trash_btn > span {
+    display: none;
+  }
+}
 @media only screen and (max-width: 600px) {
   .playlist_card {
     flex-direction: column;
   }
-
-  .page_content {
-    flex-direction: column;
-    align-items: center;
-  }
-} ;
+}
