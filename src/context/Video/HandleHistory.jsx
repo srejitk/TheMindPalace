@@ -38,7 +38,7 @@ export const removeFromHistory = async (video, userDispatch) => {
   }
 };
 
-export const clearHistory = async (video, userDispatch) => {
+export const clearHistory = async (userDispatch) => {
   try {
     const response = await axios.delete(`/api/user/history/all`, {
       headers: {
