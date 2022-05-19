@@ -48,3 +48,24 @@
   background-color: var(--HOVER_BG_ACTIVE);
   transition: background-color var(--ANIM) 300ms;
 }
+
+.emptyImage {
+  margin-top: 4rem;
+  width: 24rem;
+  height: 24rem;
+  filter: opacity(1);
+  transition: filter var(--ANIM) 1000ms;
+}
+
+.emptyTitle {
+  filter: opacity(1);
+  transition: filter var(--ANIM) 500ms;
+  color: var(--TEXT);
+}
+
+.hide {
+  filter: opacity(0);
+  display: none;
+  color: var(--TEXT);
+  transition: filter, display var(--ANIM) 1000ms;
+}
