@@ -1,5 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 export const addPlaylist = async (playlistData, userDispatch) => {
   try {
@@ -25,16 +26,16 @@ export const addPlaylist = async (playlistData, userDispatch) => {
   }
 };
 
-export const deletePlaylist = async (playlistID, userDispatch) => {
+export const deletePlaylist = async (playlist, userDispatch) => {
   try {
-    const response = await axios.delete(`/api/user/playlists/${playlistID}`, {
+    const response = await axios.delete(`/api/user/playlists/${playlist._id}`, {
       headers: {
         authorization: localStorage.getItem("Token"),
       },
     });
     const { status, data } = response;
     if (status === 200 || status === 201) {
-      userDispatch({ type: "DELETE_PLAYLIST", payload: data?.playlists });
+      userDispatch({ type: "DELETE_PLAYLIST", payload: data?.playlist });
     }
   } catch (error) {}
 };
@@ -63,10 +64,10 @@ export const addToPlaylist = async (playlistID, video, userDispatch) => {
   }
 };
 
-export const deleteFromPlaylist = async (playlistID, videoID, userDispatch) => {
+export const deleteFromPlaylist = async (playlist, video, userDispatch) => {
   try {
     const response = await axios.delete(
-      `/api/user/playlists/${playlistID}/${videoID}`,
+      `/api/user/playlists/${playlist?._id}/${video?._id}`,
       {
         headers: {
           authorization: localStorage.getItem("Token"),
@@ -75,7 +76,7 @@ export const deleteFromPlaylist = async (playlistID, videoID, userDispatch) => {
     );
     const { status, data } = response;
     if (status === 200 || status === 201) {
-      userDispatch({ type: "DELETE_FROM_PLAYLIST", payload: data?.playlists });
+      userDispatch({ type: "DELETE_FROM_PLAYLIST", payload: data?.playlist });
       toast.success("Video deleted from playlist!");
     }
   } catch (error) {
