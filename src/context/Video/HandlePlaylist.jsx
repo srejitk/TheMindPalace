@@ -35,7 +35,7 @@ export const deletePlaylist = async (playlist, userDispatch) => {
     });
     const { status, data } = response;
     if (status === 200 || status === 201) {
-      userDispatch({ type: "DELETE_PLAYLIST", payload: data?.playlist });
+      userDispatch({ type: "DELETE_PLAYLIST", payload: data?.playlists });
     }
   } catch (error) {}
 };
