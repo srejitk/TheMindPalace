@@ -4,16 +4,15 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/Auth/AuthContext";
 import { useTheme } from "../../context/Theme/ThemeContext";
 import { useVideo } from "../../context/Video/VideoContext";
+import { useState } from "react";
 
 export default function Header() {
   const { isLogged, logoutHandler } = useAuth();
   const { videoDispatch } = useVideo();
+  const [showSearch, setShowSearch] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
 
-  const { sidebar, setSidebar, theme, setTheme } = useTheme();
-
-  const handleSidebar = (e) => {
-    setSidebar((prev) => !prev);
-  };
+  const { theme, setTheme } = useTheme();
 
   const handleTheme = (e) => {
     setTheme(!theme);
@@ -22,10 +21,6 @@ export default function Header() {
   return (
     <div className={`flex-row-wrap position-relative ${styles.Navbar}`}>
       <div className={`flex-row-wrap gap20 ${styles.Navbar_brand}`}>
-        <button onClick={(e) => handleSidebar(e)} className="btn btn_action ">
-          <span className="material-icons">{sidebar ? `close` : `menu`}</span>
-        </button>
-
         <Link to="/" className={`flex-row-wrap gap20 ${styles.Navbar_brand}`}>
           <div className={`flex-mid-center ${styles.logo_container}`}>
             <img
@@ -42,43 +37,90 @@ export default function Header() {
       <input
         type="text"
         placeholder="Search..."
-        className={styles.search_bar}
+        className={`${styles.search_bar} ${
+          showSearch ? styles.showSearch : null
+        }`}
         onChange={(e) =>
           videoDispatch({ type: "SET_SEARCH", payload: e.target.value })
         }
       />
 
-      {isLogged ? (
-        <div className={`${styles.links} flex-row-wrap flex-mid-center gap20`}>
-          <Link
-            to="/"
-            onClick={logoutHandler}
-            className={`${styles.link} btn btn_action subtitle-1`}
+      <div className="flex-row-wrap flex-mid-center margin-left relative">
+        <button
+          onClick={(e) => setShowSearch((prev) => !prev)}
+          className="btn btn_action "
+        >
+          <span className={`material-icons`}>
+            {showSearch ? "close" : "search"}
+          </span>
+        </button>
+        <button onClick={(e) => handleTheme(e)} className="btn btn_action ">
+          <span className="material-icons">
+            {theme ? `light_mode` : `dark_mode`}
+          </span>
+        </button>
+
+        <button
+          onClick={(e) => setShowOptions((prev) => !prev)}
+          className="btn btn_action"
+        >
+          <span className="material-icons">person_pin</span>
+        </button>
+        <div
+          className={`flex-column-wrap box-shadow ${
+            showOptions ? styles.showOptions : null
+          } ${styles.userOptions}`}
+        >
+          <div
+            className={`${styles.links} full-width flex-column-wrap flex-mid-center`}
           >
-            Logout
-          </Link>
+            <Link
+              to="/profile"
+              className={`${styles.link} ${
+                showOptions ? styles.showOption : null
+              } btn btn_action subtitle-1`}
+            >
+              <span className="material-icons">person</span>
+              Profile
+            </Link>
+            {isLogged ? (
+              <Link
+                to="/"
+                onClick={logoutHandler}
+                className={`${styles.link} ${
+                  showOptions ? styles.showOption : null
+                } btn btn_action subtitle-1`}
+              >
+                <span className="material-icons">logout</span>
+                Logout
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className={` ${styles.link} ${
+                    showOptions ? styles.showOption : null
+                  }  btn btn_action subtitle-1`}
+                >
+                  {" "}
+                  <span className="material-icons">login</span>
+                  Sign In
+                </Link>
+                <Link
+                  to="signup"
+                  className={`${styles.link}  ${
+                    showOptions ? styles.showOption : null
+                  } btn btn_action subtitle-1`}
+                >
+                  {" "}
+                  <span className="material-icons">person_add_alt</span>
+                  Sign Up
+                </Link>
+              </>
+            )}
+          </div>
         </div>
-      ) : (
-        <div className={`${styles.links} flex-row-wrap flex-mid-center gap20`}>
-          <Link
-            to="/login"
-            className={` ${styles.link}  btn btn_action subtitle-1`}
-          >
-            Sign In
-          </Link>
-          <Link
-            to="sign-up"
-            className={`${styles.link} btn btn_action subtitle-1`}
-          >
-            Sign Up
-          </Link>
-        </div>
-      )}
-      <button onClick={(e) => handleTheme(e)} className="btn btn_action ">
-        <span className="material-icons">
-          {theme ? `light_mode` : `dark_mode`}
-        </span>
-      </button>
+      </div>
     </div>
   );
 }
