@@ -29,7 +29,7 @@ export default function Watchlist() {
         </h1>
         <button
           onClick={() => clearHistory(userDispatch)}
-          className={`${styles.trash_btn}`}
+          className={`trash_btn`}
         >
           Clear
           <span className="material-icons">delete</span>

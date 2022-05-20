@@ -16,7 +16,7 @@ export default function Watchlist() {
         </h1>
         <button
           onClick={() => userDispatch({ type: "CLEAR_ALL_PLAYLIST" })}
-          className={`${styles.trash_btn}`}
+          className={`trash_btn`}
         >
           Clear
           <span className="material-icons">delete</span>
@@ -24,7 +24,7 @@ export default function Watchlist() {
       </div>
       <div
         className={`${styles.content_wrapper} ${
-          history?.length === 0 ? styles.emptyTitle : null
+          playlists?.length === 0 ? styles.emptyTitle : null
         } flex-row-wrap`}
       >
         <div className={styles.watchlist_container}>
@@ -54,6 +54,7 @@ export default function Watchlist() {
                     <p className="subtitle-1"> Why was I made...</p>
                     <p className="subtitle-1">Help...</p>
                     <div className={styles.blob}></div>
+                    <div className={styles.emptyText}>emptyness</div>
                   </div>
                 )}
                 <h4

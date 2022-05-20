@@ -21,7 +21,7 @@ export default function Liked() {
         </h1>
         <button
           onClick={() => userDispatch({ type: "CLEAR_ALL_LIKES" })}
-          className={`${styles.trash_btn}`}
+          className={`trash_btn`}
         >
           Clear
           <span className="material-icons">delete</span>

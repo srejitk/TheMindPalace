@@ -8,6 +8,7 @@
   --PRIMARY: var(--component-red-05);
   --PRIMARY_LIGHT: var(--component-red-01);
   --PRIMARY_HOVER: var(--component-red-04);
+  --PRIMARY_DARK: #c40e0a;
   --TEXT: hsla(0, 0%, 0%, 1);
   --TEXT_INVERSE: #ffffff;
   --GREY_TEXT: var(--component-grey-02);
@@ -26,9 +27,9 @@
   height: fit-content;
   position: relative;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 5rem auto;
-  grid-template-areas: "navbar" "content";
+  grid-template-columns: 6rem 1fr;
+  grid-template-rows: 9rem auto;
+  grid-template-areas: "navbar navbar" "sidebar content";
   transition: background-color var(--ANIM) 1000ms;
 }
 
@@ -37,12 +38,13 @@
   --BG_LIGHT: #272528;
   --PRIMARY: var(--component-red-05);
   --PRIMARY-LIGHT: var(--component-red-02);
+  --PRIMARY_DARK: #c40e0a;
   --TEXT: white;
   --TEXT_INVERSE: #000;
   --GREY_TEXT: var(--component-grey-04);
   --HOVER_BG: transparent;
   --HOVER_BG_ACTIVE: hsla(0, 0%, 80%, 0.3);
-  --BORDER: 2px solid #f6f6f6;
+  --BORDER: 2px solid var(--BG_LIGHT);
   --ANIM: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
@@ -51,6 +53,7 @@
   --BG_LIGHT: #f6f6f6;
   --PRIMARY: var(--component-red-05);
   --PRIMARY-LIGHT: var(--component-red-02);
+  --PRIMARY_DARK: #c40e0a;
   --TEXT: hsla(0, 0%, 0%, 1);
   --TEXT_INVERSE: #ffffff;
   --GREY_TEXT: var(--component-grey-04);
@@ -81,6 +84,32 @@
   border: var(--BORDER);
 }
 
+.trash_btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 3rem;
+  width: fit-content;
+  margin-left: auto;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  color: var(--TEXT_INVERSE);
+  background: var(--PRIMARY);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.trash_btn:hover {
+  width: fit-content;
+  margin-left: auto;
+  font-weight: bold;
+  color: var(--TEXT_INVERSE);
+  background: var(--PRIMARY);
+  border: 2px solid var(--TEXT);
+  filter: brightness(0.95);
+}
+
 .content {
   grid-area: content;
 }
@@ -100,16 +129,15 @@
 }
 
 .bottom_border {
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--component-grey-01);
+  border-bottom: var(--BORDER);
 }
 
 .m1t {
   margin-top: 1rem;
 }
 
-.p1side {
-  padding: 0 1rem;
+.p2side {
+  padding: 0 2rem;
 }
 
 .p1b {
@@ -120,8 +148,26 @@
   color: var(--PRIMARY);
 }
 
+.margin-left {
+  margin-left: auto;
+}
+
+.relative {
+  display: relative;
+}
+
+.absolute {
+  display: absolute;
+}
+
 @media only screen and (max-width: 768px) {
   .App {
     grid-template-rows: 9rem auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    grid-template-columns: 1fr;
   }
 }

@@ -29,10 +29,6 @@
   background: var(--BG);
 }
 
-.trash_btn {
-  margin-left: auto;
-}
-
 .dialog {
   gap: 10px;
   align-items: center;
@@ -97,38 +93,17 @@
   order: -1;
 }
 
-.trash_btn {
-  margin-left: auto;
-  width: fit-content;
-  color: var(--TEXT_INVERSE);
-  background: var(--PRIMARY);
-  border: 2px solid transparent;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  cursor: pointer;
-  padding: 0.75rem 1rem;
-  border-radius: 50px;
-  height: 3rem;
-}
-
-.trash_btn:hover {
-  margin-left: auto;
-  width: fit-content;
-  color: var(--TEXT_INVERSE);
-  background: var(--PRIMARY);
-  font-weight: bold;
-  border: 2px solid var(--TEXT);
-  filter: brightness(0.95);
-}
-
 .playlist_card {
   width: 90%;
   margin: 1rem auto;
   min-width: 20rem;
   height: 15rem;
-  background-color: linear-gradient(to top, transparent, red);
+  background: linear-gradient(
+    90deg,
+    var(--BG) 0%,
+    var(--PRIMARY_LIGHT) 35%,
+    var(--PRIMARY) 100%
+  );
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -147,10 +122,18 @@
   height: 10rem;
   top: 0;
   left: 0;
-  background-color: #f7716e;
+  background-color: #c40e0a;
   border-radius: 25% 75% 50%;
   filter: blur(95px);
   animation: move 10s var(--ANIM) infinite;
+}
+
+.emptyText {
+  position: absolute;
+  font-size: 6rem;
+  color: var(--PRIMARY_DARK);
+  filter: opacity(0.1);
+  top: 1rem;
 }
 
 @keyframes move {
@@ -182,7 +165,6 @@
   background-color: inherit;
   height: 70%;
   border-radius: 8px;
-  background: linear-gradient(to top, transparent, var(--BG_LIGHT));
 }
 
 .card_title {
@@ -253,20 +235,12 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .trash_btn {
-    margin-left: auto;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 12px;
-  }
-
-  .trash_btn > span {
-    display: none;
-  }
-}
 @media only screen and (max-width: 600px) {
   .playlist_card {
     flex-direction: column;
+  }
+
+  .watchlist_container {
+    margin-bottom: 8rem;
   }
 }

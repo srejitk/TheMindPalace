@@ -23,6 +23,13 @@ export default function Watchlist() {
             Videos to watch later
           </span>
         </h1>
+        <button
+          onClick={() => userDispatch({ type: "CLEAR_ALL_WATCHLATER" })}
+          className={`trash_btn`}
+        >
+          Clear
+          <span className="material-icons">delete</span>
+        </button>
       </div>
       <div
         className={`${styles.content_wrapper} ${
@@ -75,7 +82,7 @@ export default function Watchlist() {
             {userState.watchlater?.length === 0
               ? 0
               : userState.watchlater?.length}{" "}
-            videos.
+            videos to watchlater.
           </h1>
           <h1 className={styles.detail_banner}>
             {userState.watchlater?.length === 0

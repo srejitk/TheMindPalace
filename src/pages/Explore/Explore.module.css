@@ -1,7 +1,7 @@
 .videos_container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-content: flex-start;
   flex-wrap: wrap;
   background-color: var(--BG);
   padding: 0 1rem;
@@ -48,7 +48,7 @@
   .videos_container {
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-content: flex-start;
     flex-grow: 1;
     padding: 0;
   }
