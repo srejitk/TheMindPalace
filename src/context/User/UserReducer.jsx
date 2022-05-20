@@ -11,6 +11,8 @@ export const userReducer = (state, { type, payload }) => {
         ...state,
         liked: [...state.liked?.filter((video) => video?._id !== payload?._id)],
       };
+    case "CLEAR_ALL_LIKES":
+      return { ...state, liked: [] };
 
     case "ADD_TO_HISTORY":
     case "REMOVE_FROM_HISTORY":

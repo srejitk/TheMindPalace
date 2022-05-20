@@ -97,6 +97,32 @@
   order: -1;
 }
 
+.trash_btn {
+  margin-left: auto;
+  width: fit-content;
+  color: var(--TEXT_INVERSE);
+  background: var(--PRIMARY);
+  border: 2px solid transparent;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  height: 3rem;
+}
+
+.trash_btn:hover {
+  margin-left: auto;
+  width: fit-content;
+  color: var(--TEXT_INVERSE);
+  background: var(--PRIMARY);
+  font-weight: bold;
+  border: 2px solid var(--TEXT);
+  filter: brightness(0.95);
+}
+
 @media only screen and (max-width: 1024px) {
   .content_wrapper {
     grid-template-columns: 1fr;

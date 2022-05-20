@@ -5,7 +5,7 @@ import { useUserDetails } from "../../context/User/UserContext";
 import { likeHandler } from "../../services/ApiCalls";
 
 export default function Liked() {
-  const { userState } = useUserDetails();
+  const { userState, userDispatch } = useUserDetails();
   const { watchlater } = userState;
   const watchlaterHandler = (video) => {
     return watchlater?.some((item) => video._id === item._id);
@@ -19,6 +19,13 @@ export default function Liked() {
             All your liked videos
           </span>
         </h1>
+        <button
+          onClick={() => userDispatch({ type: "CLEAR_ALL_LIKES" })}
+          className={`${styles.trash_btn}`}
+        >
+          Clear
+          <span className="material-icons">delete</span>
+        </button>
       </div>
       <div
         className={`${styles.content_wrapper} ${
