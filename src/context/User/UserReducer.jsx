@@ -4,6 +4,8 @@ export const userReducer = (state, { type, payload }) => {
     case "DELETE_FROM_WATCHLATER":
     case "GET_WATCHLATER":
       return { ...state, watchlater: payload };
+    case "CLEAR_ALL_WATCHLATER":
+      return { ...state, watchlater: [] };
     case "LIKE_VIDEO":
       return { ...state, liked: [...state.liked, payload] };
     case "UNLIKE_VIDEO":
