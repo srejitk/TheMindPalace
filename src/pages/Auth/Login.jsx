@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Auth.module.css";
 import axios from "axios";
-import { Toast } from "../../components";
 import { useAuth } from "../../context/Auth/AuthContext";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const defaultData = {
@@ -11,10 +11,11 @@ export default function Login() {
     password: "",
   };
   const navigate = useNavigate();
+  const location = useLocation();
   const [loginData, setLoginData] = useState(defaultData);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { isLogged, setIsLogged, userDetails, setUserDetails } = useAuth();
+  const { setIsLogged, setUserDetails } = useAuth();
   const guest = {
     email: "test@gmail.com",
     password: "test123",
@@ -31,13 +32,13 @@ export default function Login() {
         setUserDetails(response.data.foundUser);
         localStorage.setItem("Token", response.data.encodedToken);
         setLoginData(defaultData);
-        navigate("/");
-        <Toast type={"success"} message={"Welcome back 007!"} />;
+        toast.success("You're signed in.");
+        navigate(location.state?.from?.pathname || "/");
       }
     } catch (error) {
       setError("No user exists!");
       console.log(error);
-      <Toast type={"error"} message={"You're not a part of our cult yet!"} />;
+      toast.error("We couldn't sign you in.");
     }
   };
 
@@ -48,8 +49,9 @@ export default function Login() {
     e.preventDefault();
     handleLogin(loginData);
   };
-  const handleGuest = () => {
-    handleLogin(guest);
+  const handleGuest = (e) => {
+    e.preventDefault();
+    setLoginData(guest);
   };
   return (
     <main className={`${styles.auth_content} content grid col2x2`}>
@@ -111,7 +113,7 @@ export default function Login() {
               />
             </div>
             <button
-              onClick={() => handleGuest()}
+              onClick={(e) => handleGuest(e)}
               className={`${styles.glass__input__guest} btn subtitle-1`}
             >
               Login as guest
