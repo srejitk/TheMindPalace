@@ -1,15 +1,15 @@
 ![Logo](https://res.cloudinary.com/dkqrmlxlg/image/upload/v1652438526/TheMindPalace/Creator/Cinema_Ticket_ulbniu.png)
 
 <h1 align="left">
-  <a href="https://avavya-tv.vercel.app/">
+  <a href="https://the-mind-palace.vercel.app/">
    Mind Palace
   </a>
 </h1>
 
 <p align="left">
-    MindPalace is a mock project created as an online Video Library that deserve.
+    MindPalace is a mock project created as an online Video Library focused on being that small corner of comfort for you.
   <br>
-  <a href="https://avavya-tv.vercel.app/"><strong>Explore Mind Palace</strong></a>
+  <a href="https://the-mind-palace.vercel.app/"><strong>Explore Mind Palace</strong></a>
   <br>
   <br>
   <a href="https://github.com/srejitk/TheMindPalace">Suggestions / Bug</a>
@@ -29,7 +29,7 @@
 
 ## Use the app:
 
-<p><a href="https://avavya-tv.vercel.app/">
+<p><a href="https://the-mind-palace.vercel.app/">
    Mind Palace
   </a></p>
 
