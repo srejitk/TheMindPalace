@@ -88,7 +88,7 @@
   min-width: 15rem;
   height: 100%;
   min-height: 15rem;
-  background-color: var(--PRIMARY);
+  background-color: var(--BG_LIGHT);
 }
 
 .glass__form__image img {
