@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Auth.module.css";
 import axios from "axios";
 import { useAuth } from "../../context/Auth/AuthContext";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const defaultData = {
@@ -42,7 +42,8 @@ export default function Login() {
     }
   };
 
-  const pwdVisibiltyHandler = () => {
+  const pwdVisibiltyHandler = (e) => {
+    e.preventDefault();
     setShowPassword(() => !showPassword);
   };
   const submitHandler = (e) => {
@@ -86,14 +87,14 @@ export default function Login() {
             />
             {showPassword ? (
               <button
-                onClick={pwdVisibiltyHandler}
+                onClick={(e) => pwdVisibiltyHandler(e)}
                 className={`btn_action position-absolute ${styles.passwordIcon} btn--small flex-mid-center transparent-btn`}
               >
                 <span className="material-icons">visibility_off</span>
               </button>
             ) : (
               <button
-                onClick={pwdVisibiltyHandler}
+                onClick={(e) => pwdVisibiltyHandler(e)}
                 className={`btn_action position-absolute ${styles.passwordIcon} btn--small flex-mid-center transparent-btn`}
               >
                 <span className="material-icons">visibility</span>

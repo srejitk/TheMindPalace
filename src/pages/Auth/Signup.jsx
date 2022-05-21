@@ -41,7 +41,8 @@ export default function Signup() {
       toast.error("Something went wrong");
     }
   };
-  const pwdVisibiltyHandler = () => {
+  const pwdVisibiltyHandler = (e) => {
+    e.preventDefault();
     setShowPassword(() => !showPassword);
   };
 
@@ -125,14 +126,14 @@ export default function Signup() {
             />
             {showPassword ? (
               <button
-                onClick={pwdVisibiltyHandler}
+                onClick={(e) => pwdVisibiltyHandler(e)}
                 className={`btn_action position-absolute ${styles.passwordIcon} btn--small flex-mid-center transparent-btn`}
               >
                 <span className="material-icons">visibility_off</span>
               </button>
             ) : (
               <button
-                onClick={pwdVisibiltyHandler}
+                onClick={(e) => pwdVisibiltyHandler(e)}
                 className={`btn_action position-absolute ${styles.passwordIcon} btn--small flex-mid-center transparent-btn`}
               >
                 <span className="material-icons">visibility</span>
