@@ -159,7 +159,7 @@ export default function Signup() {
         className={`${styles.glass__form__image} flex-mid-center position-relative`}
       >
         <img
-          src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1650572791/Brain%20Dump/Sign_up-cuate_xxqv9x.svg"
+          src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653129623/TheMindPalace/Sign_up-cuate_iuznti.png"
           alt="banner-sign-up"
         />
       </div>

@@ -138,7 +138,7 @@ export default function Login() {
       </div>
       <div className={`${styles.glass__form__image} flex-mid-center`}>
         <img
-          src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1650572784/Brain%20Dump/Tablet_login-cuate_vtxaao.svg"
+          src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653129589/TheMindPalace/Tablet_login-cuate_pauxzo.png"
           alt="login-hero-illustration"
         />
       </div>
