@@ -47,7 +47,6 @@
   height: 3rem;
   border-radius: 50px;
   background-color: var(--PRIMARY);
-  border-bottom: 2px solid var(--component-grey-01);
 }
 
 :global .active span {
@@ -55,7 +54,7 @@
 }
 
 :global .active:hover {
-  background-color: var(--component-red-02);
+  background-color: var(--PRIMARY_DARK);
   filter: brightness(1);
 }
 
