@@ -29,8 +29,8 @@ export default function Header() {
               alt="BrainDump Logo"
             />
           </div>
-          <h5 className="header-5">
-            The <span className="brand-color">Mind</span>Palace
+          <h5 className={`header-5 ${styles.hero}`}>
+            The <span className={`brand-color`}>Mind</span>Palace
           </h5>
         </Link>
       </div>
@@ -45,12 +45,14 @@ export default function Header() {
         }
       />
 
-      <div className="flex-row-wrap flex-mid-center margin-left relative">
+      <div
+        className={`flex-row-wrap flex-mid-center margin-left relative ${styles.btn_wrapper}`}
+      >
         <button
           onClick={(e) => setShowSearch((prev) => !prev)}
-          className="btn btn_action "
+          className={`${styles.searchIcon} btn btn_action `}
         >
-          <span className={`material-icons`}>
+          <span className={` material-icons`}>
             {showSearch ? "close" : "search"}
           </span>
         </button>
