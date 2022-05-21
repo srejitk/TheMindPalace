@@ -57,7 +57,7 @@ export default function Signup() {
         className={`${styles.glass__form} flex-mid-center flex-column-wrap flex-gap20`}
       >
         <h4 className="header-5">Sign Up</h4>
-        <p className="body-1">Let's get you started with note making.</p>
+        <p className="body-1">Let's get you started with MindPalace.</p>
         <form
           className={`${styles.glass__form__wrapper}  flex-mid-center br-8 flex-column-wrap`}
           onSubmit={submitHandler}

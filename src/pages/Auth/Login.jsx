@@ -59,7 +59,7 @@ export default function Login() {
         className={`${styles.glass__form} flex-mid-center br-8 flex-column-wrap`}
       >
         <h4 className="header-5">Sign In</h4>
-        <p className="body-1 text--center">Login and get back to your notes.</p>
+        <p className="body-1 text--center">Login back to your MindPalace.</p>
 
         <form
           className={`${styles.glass__form__wrapper} position-relative flex-mid-center br-8 flex-column-wrap`}
