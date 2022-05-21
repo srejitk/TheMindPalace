@@ -7,11 +7,7 @@ import styles from "./Sidebar.module.css";
 export default function Sidebar() {
   const { sidebar } = useTheme();
   return (
-    <div
-      className={`${styles.sidebar} box-shadow ${
-        sidebar ? styles.showSidebar : styles.closeSidebar
-      }`}
-    >
+    <div className={`${styles.sidebar}`}>
       {sidebarItems.map((item) => (
         <div
           key={item.label}
@@ -21,9 +17,11 @@ export default function Sidebar() {
             to={item.path}
             className={`  ${styles.sidebar_item} flex-mid-center`}
           >
-            <span className="material-icons">{item.icon}</span>
+            <span className={`material-icons ${styles.sidebar_icon}`}>
+              {item.icon}
+            </span>
           </NavLink>
-          <p>{item.label}</p>
+          <p className={`subtitle-1 ${styles.sidebar_label}`}>{item.label}</p>
         </div>
       ))}
     </div>

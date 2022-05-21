@@ -9,7 +9,8 @@ const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
   const [userDetails, setUserDetails] = useState({
-    firstName: "",
+    firstName: "Damon Salvatore",
+    email: "damonSalvatore@gmail.com",
   });
   const token = localStorage.getItem("Token");
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const AuthProvider = ({ children }) => {
 
   const logoutHandler = () => {
     localStorage.removeItem("Token");
+    setIsLogged(false);
     navigate("/");
   };
 

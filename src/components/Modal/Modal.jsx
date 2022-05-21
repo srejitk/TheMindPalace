@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useUserDetails } from "../../context/User/UserContext";
 import { toast } from "react-toastify";
 import styles from "./Modal.module.css";
@@ -33,7 +33,9 @@ export default function Modal({ showModal, setShowModal, videoData }) {
         showModal ? styles.showModal : styles.hideModal
       }flex-column-wrap flex-mid-center`}
     >
-      <div className="full-width p1side flex-left-center">Save to</div>
+      <div className="full-width p1side subtitle-1 flex-left-center">
+        Save to
+      </div>
       <div className={`${styles.playlist_container}`}>
         {playlists?.map((playlist) => (
           <div

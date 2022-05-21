@@ -12,6 +12,7 @@ import {
   PlayVideo,
   Playlist,
   SinglePlaylist,
+  Profile,
 } from "../pages";
 import RequireAuth from "./RequireAuth";
 
@@ -19,48 +20,17 @@ export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<Explore />} />
-      <Route
-        path="/history"
-        element={
-          <RequireAuth>
-            <History />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/playlist"
-        element={
-          <RequireAuth>
-            <Playlist />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path={`/playlist/:playlistID`}
-        element={
-          <RequireAuth>
-            <SinglePlaylist />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/liked"
-        element={
-          <RequireAuth>
-            <Liked />
-          </RequireAuth>
-        }
-      />
-      <Route path="/video/:videoID" element={<PlayVideo />} />
+      <Route element={<RequireAuth />}>
+        {" "}
+        <Route path="/history" element={<History />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path={`/playlist/:playlistID`} element={<SinglePlaylist />} />
+        <Route path="/liked" element={<Liked />} />
+        <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/profile" element={<Profile />} />
+      </Route>
 
-      <Route
-        path="/watchlist"
-        element={
-          <RequireAuth>
-            <Watchlist />
-          </RequireAuth>
-        }
-      />
+      <Route path="/video/:videoID" element={<PlayVideo />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/mockman" element={<Mockman />} />

@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useUserDetails } from "../../context/User/UserContext";
-import {
-  addToWatchlater,
-  removeFromWatchlater,
-} from "../../context/Video/Watchlater";
+import { useEffect } from "react";
 import styles from "./VideoCard.module.css";
 
 export default function VideoCard({ video, mini, children }) {
@@ -14,6 +10,12 @@ export default function VideoCard({ video, mini, children }) {
   const optionsHandler = () => {
     setOptions((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (options) {
+      setTimeout(() => setOptions((prev) => !prev), 4000);
+    }
+  }, [options]);
 
   return (
     <div
@@ -49,16 +51,19 @@ export default function VideoCard({ video, mini, children }) {
           <img src={preview} className={styles.preview} alt="video-thumbnail" />
         </div>
       </Link>
+      <Link to={`/video/${video.videoID}`}>
+        <div className={styles.videoText}>
+          <h4 className={`${styles.title} body-2`}>{title}</h4>
+          <div className="flex-row-wrap flex-mid-left">
+            <p className="subtitle-2">{creator}</p>
+            <span className={` ${styles.verified} material-icons`}>
+              verified
+            </span>
+          </div>
 
-      <div className={styles.videoText}>
-        <h4 className={`${styles.title} body-2`}>{title}</h4>
-        <div className="flex-row-wrap flex-mid-left">
-          <p className="subtitle-2">{creator}</p>
-          <span className={` ${styles.verified} material-icons`}>verified</span>
+          <p>{views} Views</p>
         </div>
-
-        <p>{views} Views</p>
-      </div>
+      </Link>
     </div>
   );
 }
