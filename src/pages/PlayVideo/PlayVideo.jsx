@@ -45,15 +45,17 @@ export default function PlayVideo() {
   const likeHandler = (videoData, userDispatch) => {
     if (dislike) {
       setDislike(() => !dislike);
+    } else if (userState?.liked?.includes(videoData)) {
+      userDispatch({ type: "UNLIKE_VIDEO", payload: videoData });
+      toast("Unliked!", {
+        icon: "💔",
+      });
+    } else {
+      userDispatch({ type: "LIKE_VIDEO", payload: videoData });
+      toast("Liked!", {
+        icon: "❤️",
+      });
     }
-    userDispatch({ type: "LIKE_VIDEO", payload: videoData });
-    userState?.liked?.includes(videoData)
-      ? toast("Unliked!", {
-          icon: "💔",
-        })
-      : toast("Liked!", {
-          icon: "❤️",
-        });
   };
 
   const dislikeHandler = (videoData, userState) => {
