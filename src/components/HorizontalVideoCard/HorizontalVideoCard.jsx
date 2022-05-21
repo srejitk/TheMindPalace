@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useUserDetails } from "../../context/User/UserContext";
 import { Link } from "react-router-dom";
 import {
@@ -16,6 +16,12 @@ export default function HorizontalVideoCard({ video, children }) {
   const optionsHandler = () => {
     setOptions((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (options) {
+      setTimeout(() => setOptions((prev) => !prev), 4000);
+    }
+  }, [options]);
 
   return (
     <div className={`${styles.video_card} box-shadow position-relative`}>

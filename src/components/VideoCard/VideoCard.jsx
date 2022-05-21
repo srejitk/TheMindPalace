@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import styles from "./VideoCard.module.css";
 
 export default function VideoCard({ video, mini, children }) {
@@ -9,6 +10,12 @@ export default function VideoCard({ video, mini, children }) {
   const optionsHandler = () => {
     setOptions((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (options) {
+      setTimeout(() => setOptions((prev) => !prev), 4000);
+    }
+  }, [options]);
 
   return (
     <div
