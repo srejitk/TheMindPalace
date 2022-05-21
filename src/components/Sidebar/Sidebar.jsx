@@ -17,9 +17,11 @@ export default function Sidebar() {
             to={item.path}
             className={`  ${styles.sidebar_item} flex-mid-center`}
           >
-            <span className="material-icons">{item.icon}</span>
+            <span className={`material-icons ${styles.sidebar_icon}`}>
+              {item.icon}
+            </span>
           </NavLink>
-          <p className="subtitle-1">{item.label}</p>
+          <p className={`subtitle-1 ${styles.sidebar_label}`}>{item.label}</p>
         </div>
       ))}
     </div>
