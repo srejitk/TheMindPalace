@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/Auth/AuthContext";
@@ -17,6 +17,18 @@ export default function Header() {
   const handleTheme = (e) => {
     setTheme(!theme);
   };
+
+  useEffect(() => {
+    if (showOptions) {
+      setTimeout(() => setShowOptions((prev) => !prev), 4000);
+    }
+  }, [showOptions]);
+
+  useEffect(() => {
+    if (showSearch) {
+      setTimeout(() => setShowSearch((prev) => !prev), 5000);
+    }
+  }, [showSearch]);
 
   return (
     <div className={`flex-row-wrap position-relative ${styles.Navbar}`}>
