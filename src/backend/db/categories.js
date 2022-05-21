@@ -18,8 +18,8 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Self care",
-    description: "Self Preservation is just as important as Self Indulgence",
+    categoryName: "Trailers",
+    description: "All work and no play makes johnny a dull boy",
   },
   {
     _id: uuid(),
