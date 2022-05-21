@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useAuth } from "../../context/Auth/AuthContext";
 
 export default function Signup() {
   const defaultData = {
     firstName: "",
-    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -17,6 +18,7 @@ export default function Signup() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { setUserDetails } = useAuth();
 
   const handleInput = (e) => {
     const { value, name } = e.target;
@@ -27,13 +29,16 @@ export default function Signup() {
     try {
       const response = await axios.post("/api/auth/signup", userData);
       if (response.status === 201) {
+        setUserDetails(userData);
         setUserData(defaultData);
-        navigate("/login");
+        toast.success("You're signed up!");
+        navigate("../login", { replace: true });
         localStorage.setItem("Token", response.data.encodedToken);
       }
     } catch (error) {
       setError("Something went wrong");
       console.log(error);
+      toast.error("Something went wrong");
     }
   };
   const pwdVisibiltyHandler = () => {
@@ -52,7 +57,7 @@ export default function Signup() {
         className={`${styles.glass__form} flex-mid-center flex-column-wrap flex-gap20`}
       >
         <h4 className="header-5">Sign Up</h4>
-        <p className="body-1">Let's get you started with note making.</p>
+        <p className="body-1">Let's get you started with MindPalace.</p>
         <form
           className={`${styles.glass__form__wrapper}  flex-mid-center br-8 flex-column-wrap`}
           onSubmit={submitHandler}

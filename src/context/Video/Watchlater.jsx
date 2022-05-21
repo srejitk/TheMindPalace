@@ -1,6 +1,5 @@
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import Toast from "../../components/Toast/Toast";
 
 export const getWatchlater = async (userDispatch) => {
   try {
@@ -14,11 +13,10 @@ export const getWatchlater = async (userDispatch) => {
       userDispatch({ type: "GET_WATCHLATER", payload: data?.watchlater });
     }
   } catch (error) {
-    Toast({ message: "Couldn't fetch Watchlist", type: "error" });
+    toast.error("Could'nt fetch watchlist");
     console.log(error);
   }
 };
-
 
 export const addToWatchlater = async (video, userDispatch) => {
   try {

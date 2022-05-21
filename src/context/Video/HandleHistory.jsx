@@ -17,7 +17,11 @@ export const addToHistory = async (video, userDispatch) => {
       userDispatch({ type: "ADD_TO_HISTORY", payload: data?.history });
     }
   } catch (error) {
-    console.log("Couldn't add to History", error);
+    if (error.response.status === 409) {
+      //Do Nothing
+    } else {
+      console.log("Couldn't add to History", error);
+    }
   }
 };
 
@@ -38,7 +42,7 @@ export const removeFromHistory = async (video, userDispatch) => {
   }
 };
 
-export const clearHistory = async (video, userDispatch) => {
+export const clearHistory = async (userDispatch) => {
   try {
     const response = await axios.delete(`/api/user/history/all`, {
       headers: {

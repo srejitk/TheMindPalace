@@ -489,6 +489,7 @@ export const videos = [
       "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1651003981/TheMindPalace/hqdefault_acq1ej.webp",
     preview:
       "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1651003950/TheMindPalace/mqdefault_6s_cnavpi.webp",
+    category: "Informative",
     isLiked: false,
     isDisliked: false,
     watchLater: false,
@@ -511,6 +512,7 @@ export const videos = [
       "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1651003873/TheMindPalace/hq720_fs1ajr.webp",
     preview:
       "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1651003698/TheMindPalace/mqdefault_6s_bdelzc.webp",
+    category: "Informative",
     isLiked: false,
     isDisliked: false,
     watchLater: false,
@@ -519,5 +521,185 @@ export const videos = [
     published: "2022-04-25T15:05:25Z",
     channelArt:
       "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1652432431/TheMindPalace/Creator/Qs26R6RA_ZNwCyPLsdtOS-8sM6k_TFVa6vNgFWbezvDr_mN097YVwT8fKGj5P_pY6midBYy6fQ_s88-c-k-c0x00ffffff-no-rj_njivff.jpg",
+  },
+  //TRAILERS
+  {
+    _id: "b33c8026-0746-498f-9680-3058934ab38e",
+    title: "Marvel Studios' Thor: Love and Thunder",
+    channelArt:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126735/TheMindPalace/Creator/fGvQjp1vAT1R4bAKTFLaSbdsfdYFDwAzVjeRVQeikH22bvHWsGULZdwIkpZXktcXZc5gFJuA3w_s176-c-k-c0x00ffffff-no-rj-mo_hmlbid.jpg",
+
+    videoID: "tgB1wUcmbbw",
+    description:
+      " Thor: Love and Thunder arrives only in theaters July 8.\n\nThe film finds Thor (Chris Hemsworth) on a journey unlike anything he’s ever faced – a quest for inner peace. But his retirement is interrupted by a galactic killer known as Gorr the God Butcher (Christian Bale), who seeks the extinction of the gods. To combat the threat, Thor enlists the help of King Valkyrie (Tessa Thompson), Korg (Taika Waititi) and ex-girlfriend Jane Foster (Natalie Portman), who – to Thor’s surprise – inexplicably wields his magical hammer, Mjolnir, as the Mighty Thor. Together, they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.",
+    creator: "Marvel Entertainment ",
+    thumbnail:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126442/TheMindPalace/hqdefault_kwfeeu.webp",
+    preview:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126465/TheMindPalace/mqdefault_6s_dvuy8w.webp",
+    category: "Trailers",
+    isLiked: false,
+    isDisliked: false,
+    watchLater: false,
+    likes: Math.floor(Math.random() * 1000) + "K",
+    views: Math.floor(Math.random() * 1000) + "K",
+    published: "2022-05-21T09:08:24Z",
+  },
+  {
+    _id: "e9b79024-068f-425b-be1f-060ecbd2a007",
+    title: "Marvel Studios' Doctor Strange in the Multiverse of Madness",
+    channelArt:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126735/TheMindPalace/Creator/fGvQjp1vAT1R4bAKTFLaSbdsfdYFDwAzVjeRVQeikH22bvHWsGULZdwIkpZXktcXZc5gFJuA3w_s176-c-k-c0x00ffffff-no-rj-mo_hmlbid.jpg",
+
+    videoID: "aWzlQ2N6qqg",
+    description:
+      "Enter a new dimension of Strange. Watch the official trailer for Marvel Studios' Doctor Strange in the Multiverse of Madness. Only in theaters May 6.\n\nIn Marvel Studios’ “Doctor Strange in the Multiverse of Madness,” the MCU unlocks the Multiverse and pushes its boundaries further than ever before. Journey into the unknown with Doctor Strange, who, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.",
+    creator: "Marvel Entertainment ",
+    thumbnail:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126364/TheMindPalace/hq720_cwoyy2.webp",
+    preview:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126405/TheMindPalace/mqdefault_6s_dolja8.webp",
+    category: "Trailers",
+    isLiked: false,
+    isDisliked: false,
+    watchLater: false,
+    likes: Math.floor(Math.random() * 1000) + "K",
+    views: Math.floor(Math.random() * 1000) + "K",
+    published: "2022-05-21T09:09:39Z",
+  },
+  {
+    _id: "a3202e75-5935-4f59-a91f-1a99b48d3791",
+    title: "Marvel Studios’ Moon Knight",
+    channelArt:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126789/TheMindPalace/Creator/Ym_5TAhe4-1DON2kALAJfVstTrddNxXcBYzstI51AeOeed-gaYXh0t2aZx1wqCecEJzJkoI1WA_s176-c-k-c0x00ffffff-no-rj-mo_vsu3jm.jpg",
+    videoID: "x7Krla_UxRg",
+    description:
+      "Welcome to chaos 🌙 Watch the new trailer for Marvel Studios’ Moon Knight and start streaming the Original series March 30 on Disney+.",
+    creator: "Marvel Entertainment ",
+    thumbnail:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653127467/TheMindPalace/Creator/hqdefault_tp28jo.webp",
+    preview:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653127441/TheMindPalace/Creator/mqdefault_6s_tsehyp.webp",
+    category: "Trailers",
+    isLiked: false,
+    isDisliked: false,
+    watchLater: false,
+    likes: Math.floor(Math.random() * 1000) + "K",
+    views: Math.floor(Math.random() * 1000) + "K",
+    published: "2022-05-21T09:10:17Z",
+  },
+
+  {
+    _id: "f5f68477-ae99-4513-8679-53cde79b222f",
+    title: "Marvel Studios’ She-Hulk: Attorney at Law",
+    channelArt:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126789/TheMindPalace/Creator/Ym_5TAhe4-1DON2kALAJfVstTrddNxXcBYzstI51AeOeed-gaYXh0t2aZx1wqCecEJzJkoI1WA_s176-c-k-c0x00ffffff-no-rj-mo_vsu3jm.jpg",
+
+    videoID: "gim2kprjL50",
+    description:
+      "You’ll like her when she’s angry.\n\nShe-Hulk: Attorney at Law, an Original series from Marvel Studios, starts streaming August 17 on Disney+.",
+    creator: "Marvel Entertainment ",
+    thumbnail:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126512/TheMindPalace/hqdefault_ukoher.webp",
+    preview:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126530/TheMindPalace/mqdefault_6s_ce1mt4.webp",
+    category: "Trailers",
+    isLiked: false,
+    isDisliked: false,
+    watchLater: false,
+    likes: Math.floor(Math.random() * 1000) + "K",
+    views: Math.floor(Math.random() * 1000) + "K",
+    published: "2022-05-21T09:10:43Z",
+  },
+
+  {
+    _id: "c2804897-d900-46f2-af5f-73b528950e1c",
+    title: "Marvel Studios' Ms. Marvel",
+    channelArt:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126789/TheMindPalace/Creator/Ym_5TAhe4-1DON2kALAJfVstTrddNxXcBYzstI51AeOeed-gaYXh0t2aZx1wqCecEJzJkoI1WA_s176-c-k-c0x00ffffff-no-rj-mo_vsu3jm.jpg",
+
+    videoID: "BaO_h8Z56Tk",
+    description:
+      "Good is not a thing you are, it’s a thing you do.\n\nMs. Marvel, an Original series from Marvel Studios, starts streaming June 8 on Disney+.",
+    creator: "Marvel Entertainment ",
+    thumbnail:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126571/TheMindPalace/hqdefault_zkakos.webp",
+    preview:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126594/TheMindPalace/mqdefault_6s_lshx1k.webp",
+    category: "Trailers",
+    isLiked: false,
+    isDisliked: false,
+    watchLater: false,
+    likes: Math.floor(Math.random() * 1000) + "K",
+    views: Math.floor(Math.random() * 1000) + "K",
+    published: "2022-05-21T09:10:53Z",
+  },
+
+  {
+    _id: "9c2acb4c-82c2-454a-983a-5b9b95b3b41a",
+    title: "Baymax! ",
+    channelArt:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126789/TheMindPalace/Creator/Ym_5TAhe4-1DON2kALAJfVstTrddNxXcBYzstI51AeOeed-gaYXh0t2aZx1wqCecEJzJkoI1WA_s176-c-k-c0x00ffffff-no-rj-mo_vsu3jm.jpg",
+
+    videoID: "7xidOWnzSu4",
+    description:
+      "In celebration of National Streaming Day, Disney+ has released a new trailer and key art for Walt Disney Animation Studios’ “Baymax!” Streaming exclusively on Disney+ on June 29, the all-new series of healthcare capers returns to the fantastical city of San Fransokyo where the affable, inflatable, inimitable healthcare companion robot, Baymax, sets out to do what he was programmed to do: help others. ",
+    creator: "Disney+ ",
+    thumbnail:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653127074/TheMindPalace/hq720_ei03eo.webp",
+    preview:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653127096/TheMindPalace/mqdefault_6s_z0qqck.webp",
+    category: "Trailers",
+    isLiked: false,
+    isDisliked: false,
+    watchLater: false,
+    likes: Math.floor(Math.random() * 1000) + "K",
+    views: Math.floor(Math.random() * 1000) + "K",
+    published: "2022-05-21T09:12:11Z",
+  },
+  {
+    _id: "8db4867f-cfe5-4c86-8236-a258c42b7e80",
+    title: "The Umbrella Academy Season 3 ",
+    channelArt:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126827/TheMindPalace/Creator/zgMN9BuSQByG1SrpmLwcNB3MQhjDhS_pl9H1h7TaRievMfS4UpU7Z36j77z5_hnIW4N8uFX3NA_s176-c-k-c0x00ffffff-no-rj-mo_l4rcb1.jpg",
+
+    videoID: "hs6alRuY1UU",
+    description:
+      "Super. Sibling. Rivalry. Season three of The Umbrella Academy premieres June 22, only on Netflix.",
+    creator: "Netflix ",
+    thumbnail:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126854/TheMindPalace/Creator/hqdefault_kj155f.webp",
+    preview:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126894/TheMindPalace/Creator/mqdefault_6s_oxulwr.webp",
+    category: "Trailers",
+    isLiked: false,
+    isDisliked: false,
+    watchLater: false,
+    likes: Math.floor(Math.random() * 1000) + "K",
+    views: Math.floor(Math.random() * 1000) + "K",
+    published: "2022-05-21T09:11:13Z",
+  },
+
+  {
+    _id: "d5545930-18a1-46aa-9ab5-22048b566298",
+    title: "Top Gun: Maverick | NEW Official Trailer (2022 Movie) - Tom Cruise",
+    channelArt:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126929/TheMindPalace/Creator/PONSj7yNZXmRc_whSU8ihBrDAAeoWMXPXaeAdYYLldEXK4YjXPFw0Uiox6KdDOcujYqhjHSd_s176-c-k-c0x00ffffff-no-rj-mo_rye3r7.jpg",
+
+    videoID: "giXco2jaZ_4",
+    description:
+      "After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” the son of Maverick’s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka “Goose.” Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it.",
+    creator: "Paramount Pictures ",
+    thumbnail:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126996/TheMindPalace/hqdefault_qemfmf.webp",
+    preview:
+      "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653127030/TheMindPalace/mqdefault_6s_hbcp76.webp",
+    category: "Trailers",
+    isLiked: false,
+    isDisliked: false,
+    watchLater: false,
+    likes: Math.floor(Math.random() * 1000) + "K",
+    views: Math.floor(Math.random() * 1000) + "K",
+    published: "2022-05-21T09:15:11Z",
   },
 ];

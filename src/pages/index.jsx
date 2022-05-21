@@ -7,6 +7,7 @@ import Liked from "./Liked/Liked";
 import Mockman from "./Mockman/Mockman";
 import Playlist from "./Playlist/Playlist";
 import PlayVideo from "./PlayVideo/PlayVideo";
+import { Profile } from "./Profile/Profile";
 import SinglePlaylist from "./SinglePlaylist/SinglePlaylist";
 import Watchlist from "./Watchlist/Watchlist";
 
@@ -19,6 +20,7 @@ export {
   Liked,
   Watchlist,
   Mockman,
+  Profile,
   Error,
   Playlist,
   SinglePlaylist,

@@ -4,17 +4,18 @@ export const userReducer = (state, { type, payload }) => {
     case "DELETE_FROM_WATCHLATER":
     case "GET_WATCHLATER":
       return { ...state, watchlater: payload };
+    case "CLEAR_ALL_WATCHLATER":
+      return { ...state, watchlater: [] };
     case "LIKE_VIDEO":
-      if (state.liked?.includes(payload)) {
-        return {
-          ...state,
-          liked: [
-            ...state.liked.filter((video) => video?._id !== payload?._id),
-          ],
-        };
-      } else {
-        return { ...state, liked: [...state.liked, payload] };
-      }
+      return { ...state, liked: [...state.liked, payload] };
+    case "UNLIKE_VIDEO":
+      return {
+        ...state,
+        liked: [...state.liked?.filter((video) => video?._id !== payload?._id)],
+      };
+    case "CLEAR_ALL_LIKES":
+      return { ...state, liked: [] };
+
     case "ADD_TO_HISTORY":
     case "REMOVE_FROM_HISTORY":
     case "CLEAR_HISTORY":
@@ -22,19 +23,17 @@ export const userReducer = (state, { type, payload }) => {
         ...state,
         history: payload,
       };
+    case "CLEAR_ALL_PLAYLIST":
+      return { ...state, playlists: [] };
     case "ADD_PLAYLIST":
     case "DELETE_PLAYLIST":
       return { ...state, playlists: payload };
     case "ADD_TO_PLAYLIST":
+    case "DELETE_FROM_PLAYLIST":
       const updatedPlaylist = state.playlists?.map((item) =>
         item._id === payload?._id ? payload : item
       );
       return { ...state, playlists: updatedPlaylist };
-    case "DELETE_FROM_PLAYLIST":
-      const playlistUpdated = state.playlists?.map((item) =>
-        item._id === findPlaylist?._id ? payload : item
-      );
-      return { ...state, playlists: playlistUpdated };
     default:
       break;
   }

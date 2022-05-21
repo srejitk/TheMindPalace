@@ -7,14 +7,17 @@ export const getRelated = (videoData, videolist) =>
   videolist?.filter((video) => video.category === videoData.category);
 
 export const likeHandler = (videoData, userDispatch, userState) => {
-  userState.liked?.includes(videoData)
-    ? toast("Video is already Liked!", {
-        icon: "❤️",
-      })
-    : userDispatch({ type: "LIKE_VIDEO", payload: videoData });
-  toast("Liked!", {
-    icon: "❤️",
-  });
+  if (userState.liked?.includes(videoData)) {
+    userDispatch({ type: "UNLIKE_VIDEO", payload: videoData });
+    toast("Unliked!", {
+      icon: "💔",
+    });
+  } else {
+    userDispatch({ type: "LIKE_VIDEO", payload: videoData });
+    toast("Liked!", {
+      icon: "❤️",
+    });
+  }
 };
 
 export const watchlaterHandler = (video, userState) => {

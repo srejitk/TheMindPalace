@@ -1,13 +1,13 @@
 .videos_container {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-content: flex-start;
   flex-wrap: wrap;
   background-color: var(--BG);
   padding: 0 1rem;
   width: 100%;
   min-height: 100vh;
-  margin: auto;
+  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -44,6 +44,12 @@
   margin-left: auto;
 }
 
-.openSesame {
-  filter: blur(4px);
+@media only screen and (max-width: 600px) {
+  .videos_container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    flex-grow: 1;
+    padding: 0 0 8rem;
+  }
 }
