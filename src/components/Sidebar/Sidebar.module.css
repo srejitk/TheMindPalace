@@ -2,14 +2,15 @@
   position: fixed;
   grid-area: sidebar;
   top: 9rem;
-  height: 100%;
+  height: calc(100vh - 9rem);
   background-color: var(--BG);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
   z-index: 8;
   border-right: var(--BORDER);
+  overflow-y: scroll;
 }
 
 .showSidebar {
@@ -68,6 +69,7 @@
     flex-direction: row;
     justify-content: space-evenly safe;
     overflow-x: scroll;
+    overflow-y: unset;
   }
 
   .showSidebar {
