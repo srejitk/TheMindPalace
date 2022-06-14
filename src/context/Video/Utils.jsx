@@ -16,7 +16,7 @@ export const sortByLatest = (state, data) =>
 
 export const sortByOldest = (state, data) => {
   const { sortBy } = state;
-  sortBy === "Oldest"
+  return sortBy === "Oldest"
     ? [...data].sort((a, b) => new Date(a.published) - new Date(b.published))
     : data;
 };
