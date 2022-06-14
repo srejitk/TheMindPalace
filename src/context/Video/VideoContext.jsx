@@ -11,6 +11,7 @@ import {
   filterByCategory,
   searchByTitle,
   sortByLatest,
+  sortByOldest,
 } from "./Utils";
 import { VideoReducer } from "./VideoReducer";
 
@@ -40,6 +41,7 @@ const VideoProvider = ({ children }) => {
     videoState,
     filterByCategory,
     sortByLatest,
+    sortByOldest,
     searchByTitle
   )(videolist);
   return (

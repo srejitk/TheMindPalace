@@ -14,6 +14,13 @@ export const sortByLatest = (state, data) =>
     ? [...data].sort((a, b) => new Date(b.published) - new Date(a.published))
     : data;
 
+export const sortByOldest = (state, data) => {
+  const { sortBy } = state;
+  sortBy === "Oldest"
+    ? [...data].sort((a, b) => new Date(a.published) - new Date(b.published))
+    : data;
+};
+
 export const searchByTitle = (state, data) =>
   data?.filter((video) =>
     video.title.toLowerCase().includes(state.searchBy.toLowerCase())

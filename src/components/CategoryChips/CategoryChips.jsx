@@ -47,6 +47,18 @@ export default function CategoryChips() {
       >
         Latest
       </button>
+      <button
+        className={`flex-row-wrap ${styles.pill} ${
+          sortBy === "Oldest" ? styles.active : ""
+        }`}
+        onClick={() =>
+          sortBy === "Oldest"
+            ? videoDispatch({ type: "SET_SORT", payload: "" })
+            : videoDispatch({ type: "SET_SORT", payload: "Oldest" })
+        }
+      >
+        Oldest
+      </button>
     </div>
   );
 }
