@@ -8,8 +8,8 @@ import { useState } from "react";
 
 export default function Header() {
   const { isLogged, logoutHandler } = useAuth();
-  const { videoDispatch } = useVideo();
-  const [showSearch, setShowSearch] = useState(false);
+  const { videoDispatch, filteredVideos } = useVideo();
+  const [showSearch, setShowSearch] = useState(true);
   const [showOptions, setShowOptions] = useState(false);
 
   const { theme, setTheme } = useTheme();
@@ -20,15 +20,11 @@ export default function Header() {
 
   useEffect(() => {
     if (showOptions) {
-      setTimeout(() => setShowOptions((prev) => !prev), 4000);
+      setTimeout(() => setShowOptions(false), 4000);
     }
-  }, [showOptions]);
 
-  useEffect(() => {
-    if (showSearch) {
-      setTimeout(() => setShowSearch((prev) => !prev), 5000);
-    }
-  }, [showSearch]);
+    return clearTimeout();
+  }, [showOptions]);
 
   return (
     <div className={`flex-row-wrap position-relative ${styles.Navbar}`}>
@@ -46,28 +42,38 @@ export default function Header() {
           </h5>
         </Link>
       </div>
-      <input
-        type="text"
-        placeholder="Search..."
-        className={`${styles.search_bar} ${
-          showSearch ? styles.showSearch : null
-        }`}
-        onChange={(e) =>
-          videoDispatch({ type: "SET_SEARCH", payload: e.target.value })
+      <div className={`position-relative ${styles.search_bar_wrapper}`}>
+        <input
+          type="text"
+          placeholder="Search..."
+          className={`${styles.search_bar}  ${
+            showSearch ? styles.showSearch : null
+          }`}
+          onChange={(e) =>
+            videoDispatch({ type: "SET_SEARCH", payload: e.target.value })
+          }
+        />
+        {
+          <div className={styles.search_results}>
+            {filteredVideos?.slice(-5)?.map((video) => {
+              return (
+                <Link
+                  to={`/video/${video?.videoID}`}
+                  key={video?.id}
+                  className={`flex flex-row-wrap ${styles.search_result_card}`}
+                >
+                  <span className="material-icons">search</span>
+                  <p className="body-1">{video.title}</p>
+                </Link>
+              );
+            })}
+          </div>
         }
-      />
+      </div>
 
       <div
         className={`flex-row-wrap flex-mid-center margin-left relative ${styles.btn_wrapper}`}
       >
-        <button
-          onClick={(e) => setShowSearch((prev) => !prev)}
-          className={`${styles.searchIcon} btn btn_action `}
-        >
-          <span className={` material-icons`}>
-            {showSearch ? "close" : "search"}
-          </span>
-        </button>
         <button onClick={(e) => handleTheme(e)} className="btn btn_action ">
           <span className="material-icons">
             {theme ? `light_mode` : `dark_mode`}
@@ -78,7 +84,7 @@ export default function Header() {
           onClick={(e) => setShowOptions((prev) => !prev)}
           className="btn btn_action"
         >
-          <span className="material-icons">person_pin</span>
+          <span className="material-icons">person</span>
         </button>
         <div
           className={`flex-column-wrap box-shadow ${
@@ -88,26 +94,28 @@ export default function Header() {
           <div
             className={`${styles.links} full-width flex-column-wrap flex-mid-center`}
           >
-            <Link
-              to="/profile"
-              className={`${styles.link} ${
-                showOptions ? styles.showOption : null
-              } btn btn_action subtitle-1`}
-            >
-              <span className="material-icons">person</span>
-              Profile
-            </Link>
             {isLogged ? (
-              <Link
-                to="/"
-                onClick={logoutHandler}
-                className={`${styles.link} ${
-                  showOptions ? styles.showOption : null
-                } btn btn_action subtitle-1`}
-              >
-                <span className="material-icons">logout</span>
-                Logout
-              </Link>
+              <>
+                <Link
+                  to="/profile"
+                  className={`${styles.link} ${
+                    showOptions ? styles.showOption : null
+                  } btn btn_action subtitle-1`}
+                >
+                  <span className="material-icons">person</span>
+                  Profile
+                </Link>
+                <Link
+                  to="/"
+                  onClick={logoutHandler}
+                  className={`${styles.link} ${
+                    showOptions ? styles.showOption : null
+                  } btn btn_action subtitle-1`}
+                >
+                  <span className="material-icons">logout</span>
+                  Logout
+                </Link>
+              </>
             ) : (
               <>
                 <Link
