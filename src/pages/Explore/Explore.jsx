@@ -16,9 +16,7 @@ export default function Explore() {
 
   return (
     <div
-      className={`${
-        sidebar ? styles.openSesame : ""
-      } flex-column-wrap flex-mid-center content`}
+      className={`${styles.openSesame} flex-column-wrap flex-mid-center content`}
     >
       <div className={styles.page_header}>
         <h1>Explore</h1>
