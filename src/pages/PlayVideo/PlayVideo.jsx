@@ -43,31 +43,27 @@ export default function PlayVideo() {
   }, [videoID]);
 
   const likeHandler = (videoData, userDispatch) => {
-    if (dislike) {
-      setDislike(() => !dislike);
-    } else if (userState?.liked?.includes(videoData)) {
+    const isLiked = userState?.liked?.includes(videoData);
+    if (isLiked && !dislike) {
       userDispatch({ type: "UNLIKE_VIDEO", payload: videoData });
-      toast("Unliked!", {
-        icon: "💔",
-      });
-    } else {
+    } else if (!isLiked && !dislike) {
       userDispatch({ type: "LIKE_VIDEO", payload: videoData });
-      toast("Liked!", {
-        icon: "❤️",
-      });
+    } else if (!isLiked && dislike) {
+      setDislike(false);
+      userDispatch({ type: "LIKE_VIDEO", payload: videoData });
     }
   };
 
-  const dislikeHandler = (videoData, userState) => {
-    if (userState.liked?.includes(videoData)) {
-      userDispatch({ type: "LIKE_VIDEO", payload: videoData });
+  const dislikeHandler = (videoData, userState, userDispatch) => {
+    const isLiked = userState?.liked?.includes(videoData);
+    if (isLiked && !dislike) {
+      userDispatch({ type: "UNLIKE_VIDEO", payload: videoData });
+      setDislike(true);
+    } else if (!isLiked && !dislike) {
+      setDislike(true);
+    } else if (!isLiked && dislike) {
+      setDislike(false);
     }
-    setDislike(() => !dislike);
-    dislike
-      ? null
-      : toast("Disliked", {
-          icon: "💔",
-        });
   };
 
   const addToHistoryHandler = () => {
@@ -93,10 +89,7 @@ export default function PlayVideo() {
         } ${showModal ? styles.blurBG : ""}`}
       >
         <div className={styles.page_header}>
-          <h1>
-            Play |
-            <span className={`grey_text ${styles.subtext}`}>Seek joy</span>
-          </h1>
+          <h1>Play</h1>
           <button
             onClick={() => userDispatch({ type: "ADD_NOTE" })}
             className={`trash_btn`}
@@ -124,76 +117,80 @@ export default function PlayVideo() {
         >
           {" "}
           <div
-            className={`flex-column-wrap bottom_border ${styles.title_container}`}
+            className={`flex-row-wrap bottom_border ${styles.title_container}`}
           >
-            <p className="header-5">{videoData?.title}</p>
-            <p className="subtitle-1 grey_text">{videoData?.views} Views</p>
-          </div>
-          <div
-            className={`flex-row-wrap bottom_border  ${styles.btn_container}`}
-          >
-            <div
-              onClick={() => likeHandler(videoData, userDispatch)}
-              className="flex-column-wrap flex-mid-center"
-            >
-              <button
-                className={`btn btn_action  ${
-                  userState.liked?.includes(videoData) ? styles.active : ""
-                }`}
-              >
-                <span className={`material-icons`}>thumb_up</span>
-              </button>
-              <p className="subtitle-1">Like</p>
+            <div className="flex-row-wrap flex-top-center gap20 p1b">
+              <img
+                src={videoData?.channelArt}
+                alt="channel logo"
+                className={styles.channelLogo}
+              />
+              <div className="flex-column-wrap">
+                <p className="header-5">{videoData?.title}</p>
+                <p className="subtitle-1">{videoData?.creator}</p>
+                <p className="subtitle-1 grey_text">{videoData?.views} Views</p>
+                <div className="flex-row-wrap full-width gap20 flex-mid-left"></div>
+              </div>
             </div>
-            <div
-              onClick={() => dislikeHandler(videoData, userState)}
-              className="flex-column-wrap flex-mid-center"
-            >
-              <button
-                className={`btn btn_action  ${dislike ? styles.active : ""}`}
+
+            <div className={`flex-row-wrap ${styles.btn_container}`}>
+              <div
+                onClick={() => likeHandler(videoData, userDispatch)}
+                className="flex-column-wrap flex-mid-center"
               >
-                <span className={`material-icons`}>thumb_down</span>
-              </button>
-              <p className="subtitle-1">Dislike</p>
-            </div>
-            <div
-              onClick={() =>
-                watchlaterHandler(videoData, userState)
-                  ? removeFromWatchlater(videoData, userDispatch)
-                  : addToWatchlater(videoData, userDispatch)
-              }
-              className="flex-column-wrap flex-mid-center"
-            >
-              <button
-                className={`btn btn_action ${
-                  watchlaterHandler(videoData, userState) ? styles.active : ""
-                }  `}
+                <button
+                  className={`btn btn_action  ${
+                    userState.liked?.includes(videoData) ? styles.active : ""
+                  }`}
+                >
+                  <span className={`material-icons`}>thumb_up</span>
+                </button>
+                <p className="subtitle-1">Like</p>
+              </div>
+              <div
+                onClick={() =>
+                  dislikeHandler(videoData, userState, userDispatch)
+                }
+                className="flex-column-wrap flex-mid-center"
               >
-                <span className={`material-icons`}>watch_later</span>
-              </button>
-              <p className="subtitle-1">Watch Later</p>
-            </div>
-            <div
-              onClick={(e) => playlistHandler(e)}
-              className="flex-column-wrap flex-mid-center"
-            >
-              <button
-                className={`btn btn_action ${
-                  watchlaterHandler(videoData) ? styles.active : ""
-                }  `}
+                <button
+                  className={`btn btn_action  ${dislike ? styles.active : ""}`}
+                >
+                  <span className={`material-icons`}>thumb_down</span>
+                </button>
+                <p className="subtitle-1">Dislike</p>
+              </div>
+              <div
+                onClick={() =>
+                  watchlaterHandler(videoData, userState)
+                    ? removeFromWatchlater(videoData, userDispatch)
+                    : addToWatchlater(videoData, userDispatch)
+                }
+                className="flex-column-wrap flex-mid-center"
               >
-                <span className={`material-icons`}>playlist_add</span>
-              </button>
-              <p className="subtitle-1">Add To Playlist</p>
+                <button
+                  className={`btn btn_action ${
+                    watchlaterHandler(videoData, userState) ? styles.active : ""
+                  }  `}
+                >
+                  <span className={`material-icons`}>watch_later</span>
+                </button>
+                <p className="subtitle-1">Watch Later</p>
+              </div>
+              <div
+                onClick={(e) => playlistHandler(e)}
+                className="flex-column-wrap flex-mid-center"
+              >
+                <button
+                  className={`btn btn_action ${
+                    watchlaterHandler(videoData) ? styles.active : ""
+                  }  `}
+                >
+                  <span className={`material-icons`}>playlist_add_circle</span>
+                </button>
+                <p className="subtitle-1">Add To Playlist</p>
+              </div>
             </div>
-          </div>
-          <div className="flex-row-wrap p2side bottom_border p1b full-width gap20 flex-mid-left">
-            <img
-              src={videoData?.channelArt}
-              alt="channel logo"
-              className={styles.channelLogo}
-            />
-            <p className="subtitle-1">{videoData?.creator}</p>
           </div>
         </div>
         <div className={styles.page_header}>

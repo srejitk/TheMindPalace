@@ -10,10 +10,7 @@ export default function Watchlist() {
   return (
     <div className="flex-column-wrap content default">
       <div className={styles.page_header}>
-        <h1>
-          Playlists |
-          <span className={`grey_text ${styles.subtext}`}>Your curations</span>
-        </h1>
+        <h1>Playlists</h1>
         <button
           onClick={() => userDispatch({ type: "CLEAR_ALL_PLAYLIST" })}
           className={`trash_btn`}
@@ -28,6 +25,15 @@ export default function Watchlist() {
         } flex-row-wrap`}
       >
         <div className={styles.watchlist_container}>
+          <div className={`${styles.detail_card}`}>
+            <h1 className={styles.detail_title}>
+              You have {playlists?.length === 0 ? 0 : playlists?.length}{" "}
+              playlists.
+            </h1>
+            <h1 className={styles.detail_banner}>
+              {playlists?.length === 0 ? 0 : playlists?.length}
+            </h1>
+          </div>
           {playlists?.map((playlist) => (
             <Link
               to={`/playlist/${playlist._id}`}
@@ -70,19 +76,6 @@ export default function Watchlist() {
               </div>
             </Link>
           ))}
-        </div>
-        <div
-          className={`${styles.detail_card} ${
-            playlists?.length === 0 ? styles.expandbanner : null
-          }`}
-        >
-          <h1 className={styles.detail_title}>
-            You have {playlists?.length === 0 ? 0 : playlists?.length}{" "}
-            playlists.
-          </h1>
-          <h1 className={styles.detail_banner}>
-            {playlists?.length === 0 ? 0 : playlists?.length}
-          </h1>
         </div>
       </div>
     </div>

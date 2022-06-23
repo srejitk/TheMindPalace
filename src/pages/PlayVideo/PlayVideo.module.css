@@ -9,7 +9,6 @@
   padding: 0;
 }
 
-/* Create a new div with a width of 55% and another which has the notes section and the related videos */
 .videoSection {
   width: 100%;
   padding: 1rem 2rem 0;
@@ -37,12 +36,16 @@
   width: 100%;
   height: fit-content;
   padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .btn_container {
-  width: 100%;
+  width: 50%;
   flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: flex-end;
+  gap: 10px;
   padding-bottom: 1rem;
 }
 
@@ -126,6 +129,18 @@
     width: 100%;
     height: fit-content;
     padding: 1rem 4.5rem;
+  }
+}
+
+@media only screen and (max-width: 1065px) {
+  .title_container {
+    flex-wrap: wrap;
+    justify-content: unset;
+  }
+
+  .btn_container {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 

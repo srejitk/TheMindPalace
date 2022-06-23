@@ -21,12 +21,7 @@ export default function Watchlist() {
   return (
     <div className="flex-column-wrap content default">
       <div className={styles.page_header}>
-        <h1>
-          History |
-          <span className={`grey_text ${styles.subtext}`}>
-            Videos you watched
-          </span>
-        </h1>
+        <h1>History</h1>
         <button
           onClick={() => clearHistory(userDispatch)}
           className={`trash_btn`}
@@ -41,6 +36,15 @@ export default function Watchlist() {
         } flex-row-wrap`}
       >
         <div className={styles.watchlist_container}>
+          <div className={`${styles.detail_card}`}>
+            <h1 className={styles.detail_title}>
+              You have watched {history?.length === 0 ? 0 : history?.length}{" "}
+              videos.
+            </h1>
+            <h1 className={styles.detail_banner}>
+              {history?.length === 0 ? 0 : history?.length}
+            </h1>
+          </div>
           {userState.history?.map((video) => (
             <HorizontalVideoCard key={video._id} video={video}>
               <div
@@ -81,19 +85,6 @@ export default function Watchlist() {
               </div>
             </HorizontalVideoCard>
           ))}
-        </div>
-        <div
-          className={`${styles.detail_card} ${
-            history?.length === 0 ? styles.expandbanner : null
-          }`}
-        >
-          <h1 className={styles.detail_title}>
-            You have watched {history?.length === 0 ? 0 : history?.length}{" "}
-            videos.
-          </h1>
-          <h1 className={styles.detail_banner}>
-            {history?.length === 0 ? 0 : history?.length}
-          </h1>
         </div>
       </div>
     </div>

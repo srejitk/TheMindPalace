@@ -13,12 +13,7 @@ export default function Liked() {
   return (
     <div className="flex-column-wrap content default">
       <div className={styles.page_header}>
-        <h1>
-          Liked |
-          <span className={`grey_text ${styles.subtext}`}>
-            All your liked videos
-          </span>
-        </h1>
+        <h1>Liked Videos</h1>
         <button
           onClick={() => userDispatch({ type: "CLEAR_ALL_LIKES" })}
           className={`trash_btn`}
@@ -33,6 +28,16 @@ export default function Liked() {
         } flex-row-wrap`}
       >
         <div className={styles.watchlist_container}>
+          <div className={`${styles.detail_card} `}>
+            <h1 className={`${styles.detail_title}`}>
+              You have liked{" "}
+              {userState.liked?.length === 0 ? 0 : userState.liked?.length}{" "}
+              videos.
+            </h1>
+            <h1 className={styles.detail_banner}>
+              {userState.liked?.length === 0 ? 0 : userState.liked?.length}
+            </h1>
+          </div>
           {userState.liked?.map((video) => (
             <HorizontalVideoCard key={video._id} video={video}>
               <div
@@ -67,20 +72,6 @@ export default function Liked() {
               </div>
             </HorizontalVideoCard>
           ))}
-        </div>
-        <div
-          className={`${styles.detail_card} ${
-            userState.liked?.length === 0 ? styles.expandbanner : null
-          }`}
-        >
-          <h1 className={styles.detail_title}>
-            You have liked{" "}
-            {userState.liked?.length === 0 ? 0 : userState.liked?.length}{" "}
-            videos.
-          </h1>
-          <h1 className={styles.detail_banner}>
-            {userState.liked?.length === 0 ? 0 : userState.liked?.length}
-          </h1>
         </div>
       </div>
     </div>
