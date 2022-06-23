@@ -11,7 +11,6 @@ export default function Login() {
     password: "",
   };
   const navigate = useNavigate();
-  const location = useLocation();
   const [loginData, setLoginData] = useState(defaultData);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -33,7 +32,7 @@ export default function Login() {
         localStorage.setItem("Token", response.data.encodedToken);
         setLoginData(defaultData);
         toast.success("You're signed in.");
-        navigate(location.state?.from?.pathname || "/");
+        navigate("/");
       }
     } catch (error) {
       setError("No user exists!");
@@ -52,7 +51,7 @@ export default function Login() {
   };
   const handleGuest = (e) => {
     e.preventDefault();
-    setLoginData(guest);
+    handleLogin(guest);
   };
   return (
     <main className={`${styles.auth_content} content grid col2x2`}>

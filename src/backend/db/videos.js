@@ -682,7 +682,7 @@ export const videos = [
 
   {
     _id: "d5545930-18a1-46aa-9ab5-22048b566298",
-    title: "Top Gun: Maverick | NEW Official Trailer (2022 Movie) - Tom Cruise",
+    title: "Top Gun: Maverick | NEW Official Trailer",
     channelArt:
       "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126929/TheMindPalace/Creator/PONSj7yNZXmRc_whSU8ihBrDAAeoWMXPXaeAdYYLldEXK4YjXPFw0Uiox6KdDOcujYqhjHSd_s176-c-k-c0x00ffffff-no-rj-mo_rye3r7.jpg",
 

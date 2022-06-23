@@ -4,7 +4,7 @@ export const getVideoData = (videoID, videolist) =>
   videolist?.find((video) => video.videoID === videoID);
 
 export const getRelated = (videoData, videolist) =>
-  videolist?.filter((video) => video.category === videoData.category);
+  videolist?.filter((video) => video?.category === videoData?.category);
 
 export const likeHandler = (videoData, userDispatch, userState) => {
   if (userState.liked?.includes(videoData)) {
