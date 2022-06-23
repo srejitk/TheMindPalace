@@ -34,7 +34,7 @@ export default function Header() {
             <img
               className={styles.logo}
               src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1652438526/TheMindPalace/Creator/Cinema_Ticket_ulbniu.png"
-              alt="BrainDump Logo"
+              alt="MindPalace Logo"
             />
           </div>
           <h5 className={`header-5 ${styles.hero}`}>
@@ -100,7 +100,7 @@ export default function Header() {
                   to="/profile"
                   className={`${styles.link} ${
                     showOptions ? styles.showOption : null
-                  } btn btn_action subtitle-1`}
+                  } subtitle-1`}
                 >
                   <span className="material-icons">person</span>
                   Profile
@@ -110,7 +110,7 @@ export default function Header() {
                   onClick={logoutHandler}
                   className={`${styles.link} ${
                     showOptions ? styles.showOption : null
-                  } btn btn_action subtitle-1`}
+                  } subtitle-1`}
                 >
                   <span className="material-icons">logout</span>
                   Logout
@@ -122,7 +122,7 @@ export default function Header() {
                   to="/login"
                   className={` ${styles.link} ${
                     showOptions ? styles.showOption : null
-                  }  btn btn_action subtitle-1`}
+                  }  subtitle-1`}
                 >
                   {" "}
                   <span className="material-icons">login</span>
@@ -132,7 +132,7 @@ export default function Header() {
                   to="signup"
                   className={`${styles.link}  ${
                     showOptions ? styles.showOption : null
-                  } btn btn_action subtitle-1`}
+                  }subtitle-1`}
                 >
                   {" "}
                   <span className="material-icons">person_add_alt</span>

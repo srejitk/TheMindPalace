@@ -9,7 +9,7 @@
   position: sticky;
   flex-wrap: wrap;
   top: 0;
-  z-index: 10;
+  z-index: 30;
   grid-area: navbar;
   gap: 1rem;
   border-bottom: var(--BORDER);
@@ -30,23 +30,27 @@
 }
 
 .links {
-  margin-left: auto;
-  padding: 0;
+  width: 100%;
   transform: scale(1);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .link {
-  padding: 0 2rem;
+  display: flex;
+  align-items: center;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   border-radius: 0;
   transform: scale(0);
   transition: transform var(--ANIM) 100ms;
+  background-color: var(--BG_LIGHT);
 }
 
 .link:hover {
   border-radius: 0;
-  width: 100%;
+  filter: brightness(0.9);
 }
 
 .search_bar {
@@ -91,7 +95,7 @@
 }
 
 .showOptions {
-  height: 10rem;
+  height: fit-content;
   transform: scale(1);
   transition: height var(--ANIM) 500ms;
 }
@@ -151,7 +155,7 @@ ul {
 
 @media only screen and (max-width: 768px) {
   .Navbar {
-    max-height: 9rem;
+    height: 9rem;
     gap: 20px;
   }
 
