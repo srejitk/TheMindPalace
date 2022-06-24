@@ -104,7 +104,7 @@
   border: 2px solid var(--PRIMARY);
   border-radius: 12px;
   cursor: pointer;
-  z-index: 30;
+  z-index: 20;
 }
 
 .trash_btn:hover {

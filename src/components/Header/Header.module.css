@@ -58,6 +58,7 @@
   border-radius: 4px;
   border: var(--BG);
   background-color: var(--BG);
+  color: var(--TEXT);
   width: 0;
   transition: width var(--ANIM) 100ms, opacity var(--ANIM) 200ms;
 }
@@ -91,12 +92,12 @@
   padding: 0;
   background-color: var(--BG_LIGHT);
   border-radius: 8px;
+  outline: 2px solid;
   transition: height var(--ANIM) 500ms, transform var(--ANIM) 500ms;
 }
 
 .showOptions {
   height: fit-content;
-  transform: scale(1);
   transition: height var(--ANIM) 500ms;
 }
 
@@ -158,6 +159,14 @@ ul {
     height: 9rem;
     gap: 20px;
   }
+  .btn_wrapper {
+    order: 2;
+  }
+
+  .search_bar_wrapper {
+    order: 3;
+    width: 100%;
+  }
 
   .Navbar_brand {
     flex-grow: 1;
@@ -176,7 +185,6 @@ ul {
 
   .showSearch {
     width: 100%;
-    order: 2;
     transition: opacity var(--ANIM) 400ms;
   }
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth/AuthContext";
 import { useTheme } from "../../context/Theme/ThemeContext";
 import { useVideo } from "../../context/Video/VideoContext";
@@ -11,7 +11,7 @@ export default function Header() {
   const { videoDispatch, filteredVideos } = useVideo();
   const [showSearch, setShowSearch] = useState(true);
   const [showOptions, setShowOptions] = useState(false);
-
+  const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
 
   const handleTheme = (e) => {
@@ -56,15 +56,20 @@ export default function Header() {
         {
           <div className={styles.search_results}>
             {filteredVideos?.slice(-5)?.map((video) => {
+              const { videoID } = video;
               return (
-                <Link
-                  to={`/video/${video?.videoID}`}
+                <div
+                  onClick={(e) => {
+                    console.log("Clicked");
+                    e.stopPropagation();
+                    navigate(`/video/${videoID}`);
+                  }}
                   key={video?.id}
                   className={`flex flex-row-wrap ${styles.search_result_card}`}
                 >
                   <span className="material-icons">search</span>
                   <p className="body-1">{video.title}</p>
-                </Link>
+                </div>
               );
             })}
           </div>
@@ -86,62 +91,64 @@ export default function Header() {
         >
           <span className="material-icons">person</span>
         </button>
-        <div
-          className={`flex-column-wrap box-shadow ${
-            showOptions ? styles.showOptions : null
-          } ${styles.userOptions}`}
-        >
+        {showOptions && (
           <div
-            className={`${styles.links} full-width flex-column-wrap flex-mid-center`}
+            className={`flex-column-wrap box-shadow ${
+              showOptions ? styles.showOptions : null
+            } ${styles.userOptions}`}
           >
-            {isLogged ? (
-              <>
-                <Link
-                  to="/profile"
-                  className={`${styles.link} ${
-                    showOptions ? styles.showOption : null
-                  } subtitle-1`}
-                >
-                  <span className="material-icons">person</span>
-                  Profile
-                </Link>
-                <Link
-                  to="/"
-                  onClick={logoutHandler}
-                  className={`${styles.link} ${
-                    showOptions ? styles.showOption : null
-                  } subtitle-1`}
-                >
-                  <span className="material-icons">logout</span>
-                  Logout
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className={` ${styles.link} ${
-                    showOptions ? styles.showOption : null
-                  }  subtitle-1`}
-                >
-                  {" "}
-                  <span className="material-icons">login</span>
-                  Sign In
-                </Link>
-                <Link
-                  to="signup"
-                  className={`${styles.link}  ${
-                    showOptions ? styles.showOption : null
-                  }subtitle-1`}
-                >
-                  {" "}
-                  <span className="material-icons">person_add_alt</span>
-                  Sign Up
-                </Link>
-              </>
-            )}
+            <div
+              className={`${styles.links} full-width flex-column-wrap flex-mid-center`}
+            >
+              {isLogged ? (
+                <>
+                  <Link
+                    to="/profile"
+                    className={`${styles.link} ${
+                      showOptions ? styles.showOption : null
+                    } subtitle-1`}
+                  >
+                    <span className="material-icons">person</span>
+                    Profile
+                  </Link>
+                  <Link
+                    to="/"
+                    onClick={logoutHandler}
+                    className={`${styles.link} ${
+                      showOptions ? styles.showOption : null
+                    } subtitle-1`}
+                  >
+                    <span className="material-icons">logout</span>
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className={` ${styles.link} ${
+                      showOptions ? styles.showOption : null
+                    }  subtitle-1`}
+                  >
+                    {" "}
+                    <span className="material-icons">login</span>
+                    Sign In
+                  </Link>
+                  <Link
+                    to="signup"
+                    className={`${styles.link}  ${
+                      showOptions ? styles.showOption : null
+                    }subtitle-1`}
+                  >
+                    {" "}
+                    <span className="material-icons">person_add_alt</span>
+                    Sign Up
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
