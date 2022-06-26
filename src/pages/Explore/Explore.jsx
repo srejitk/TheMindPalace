@@ -7,7 +7,7 @@ import {
   addToWatchlater,
   removeFromWatchlater,
 } from "../../context/Video/Watchlater";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
@@ -20,6 +20,14 @@ export default function Explore() {
   const randomVideo =
     filteredVideos &&
     filteredVideos[Math.floor(Math.random() * filteredVideos?.length)];
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 100,
+      left: 100,
+      behavior: "smooth",
+    });
+  }, []);
 
   return isLoading ? (
     <Loader />

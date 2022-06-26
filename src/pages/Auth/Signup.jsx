@@ -78,8 +78,6 @@ export default function Signup() {
     setSubmitMode(flag);
   }, [error]);
 
-  console.log(submitMode);
-
   const handleSignup = async (userData) => {
     try {
       const response = await axios.post("/api/auth/signup", userData);
@@ -87,7 +85,6 @@ export default function Signup() {
         setUserDetails(userData);
         setUserData(defaultData);
         toast.success("You're signed up!");
-        // navigate("../login", { replace: true });
         localStorage.setItem("Token", response.data.encodedToken);
         handleLogin(userData, setIsLogged, setUserDetails, navigate);
       }
