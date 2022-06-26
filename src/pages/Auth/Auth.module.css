@@ -45,6 +45,17 @@
   transition: all var(--ANIM) 500ms;
 }
 
+.glass__btn:disabled {
+  background-color: var(--component-grey-01);
+  color: var(--TEXT);
+}
+
+.glass__btn:disabled:hover {
+  background-color: var(--component-grey-02);
+  color: var(--TEXT);
+  border-color: transparent;
+}
+
 .glass__btn_1:hover {
   color: var(--BG);
   background-color: var(--PRIMARY);
@@ -77,10 +88,16 @@
   padding: 1rem;
 }
 
-.text__terms {
-  width: 60%;
+.error_msg {
+  width: 21rem;
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+  font-size: 500;
+  font-weight: 600;
+  color: var(--PRIMARY);
+  margin: 0 auto;
 }
-
 .glass__form__image {
   border-radius: 0;
   margin: 1rem auto;
@@ -116,6 +133,7 @@
   background-color: transparent;
   border: transparent;
   color: var(--PRIMARY);
+  margin-left: auto;
 }
 
 .passwordIcon {
@@ -136,4 +154,9 @@
     grid-template-columns: 1fr;
     margin-bottom: 8rem;
   }
+
+  /* .error_msg {
+    width: 80%;
+    padding: 0 1rem;
+  } */
 }

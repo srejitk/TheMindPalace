@@ -102,27 +102,13 @@ export default function Login() {
           </div>
 
           <div className={styles.glass__input__options}>
-            <div className={`input__container ${styles.glass__form__input}`}>
-              <label htmlFor="remember-me" className="input--sidelabel">
-                Remember Me
-              </label>
-              <input
-                type="checkbox"
-                id="remember-me"
-                className=" input--field--checkbox input--demo"
-              />
-            </div>
             <button
               onClick={(e) => handleGuest(e)}
-              className={`${styles.glass__input__guest} btn subtitle-1`}
+              className={`${styles.glass__input__guest} margin-left btn subtitle-1`}
             >
               Login as guest
             </button>
           </div>
-          <p className={`${styles.text__terms} caption text--center`}>
-            By signing in you agree to accept all terms and conditions and agree
-            to abide by the platform rules
-          </p>
           <button
             type="submit"
             className={`btn btn--primary btn--large ${styles.glass__btn} ${styles.glass__btn_1}`}
