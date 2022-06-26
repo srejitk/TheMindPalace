@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   background-color: var(--BG);
   padding: 0 0 0 5rem;
-  width: calc(100vw - 7.5rem);
+  width: calc(100vw - 6rem);
   min-height: 100vh;
   margin: 0 auto;
   overflow: hidden;
@@ -35,7 +35,7 @@
 
 .page_header {
   height: fit-content;
-  width: calc(100vw - 7.5rem);
+  width: calc(100vw - 6rem);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

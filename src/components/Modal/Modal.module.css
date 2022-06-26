@@ -94,6 +94,17 @@
   background-color: var(--BG_LIGHT);
 }
 
+.playlist_container::-webkit-scrollbar {
+  display: block;
+  width: 7px;
+  background: var(--HOVER_BG);
+}
+
+.playlist_container::-webkit-scrollbar-thumb {
+  background-color: var(--HOVER_BG_ACTIVE);
+  border-radius: 10px;
+}
+
 .playlist {
   justify-content: flex-start;
   gap: 10px;
@@ -110,6 +121,7 @@
   font-weight: bold;
   background-color: inherit;
   transition: background-color var(--ANIM) 300ms;
+  cursor: pointer;
 }
 
 .dialog:hover {

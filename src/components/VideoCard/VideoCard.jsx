@@ -13,7 +13,7 @@ export default function VideoCard({ video, mini, children }) {
 
   useEffect(() => {
     if (options) {
-      setTimeout(() => setOptions(false), 4000);
+      setTimeout(() => setOptions(false), 5000);
     }
 
     return clearTimeout();
@@ -55,7 +55,9 @@ export default function VideoCard({ video, mini, children }) {
       </Link>
       <Link to={`/video/${video.videoID}`}>
         <div className={styles.videoText}>
-          <h4 className={`${styles.title} body-1`}>{title}</h4>
+          <h4 title={title} className={`${styles.title} body-1`}>
+            {title}
+          </h4>
           <div className="flex-row-wrap flex-mid-left">
             <p className="body-2">{creator}</p>
             <span className={` ${styles.verified} material-icons`}>

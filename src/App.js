@@ -1,6 +1,6 @@
 import { Toaster } from "react-hot-toast";
 import "./App.css";
-import { Header, Modal, Sidebar } from "./components";
+import { Header, Sidebar } from "./components";
 import { useTheme } from "./context/Theme/ThemeContext";
 
 import Router from "./utils/Router";

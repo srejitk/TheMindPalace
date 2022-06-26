@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
-
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 export const getVideoData = (videoID, videolist) =>
   videolist?.find((video) => video.videoID === videoID);
 
@@ -28,4 +29,25 @@ export const likeHandler = (videoData, userDispatch, userState) => {
 
 export const watchlaterHandler = (video, userState) => {
   return userState?.watchlater?.some((item) => video._id === item._id);
+};
+
+export const handleLogin = async (
+  loginData,
+  setIsLogged,
+  setUserDetails,
+  navigate
+) => {
+  try {
+    const response = await axios.post("/api/auth/login", loginData);
+    if (response.status === 200) {
+      setIsLogged(true);
+      setUserDetails(response.data.foundUser);
+      localStorage.setItem("Token", response.data.encodedToken);
+      toast.success("You're signed in.");
+      navigate("/");
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error("We couldn't sign you in.");
+  }
 };

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
-import axios from "axios";
+
 import { useAuth } from "../../context/Auth/AuthContext";
-import toast from "react-hot-toast";
+
+import { handleLogin } from "../../services/ApiCalls";
 
 export default function Login() {
   const defaultData = {
@@ -12,7 +13,6 @@ export default function Login() {
   };
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState(defaultData);
-  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { setIsLogged, setUserDetails } = useAuth();
   const guest = {
@@ -23,23 +23,6 @@ export default function Login() {
     const { value, name } = e.target;
     setLoginData((prev) => ({ ...prev, [name]: value }));
   };
-  const handleLogin = async (loginData) => {
-    try {
-      const response = await axios.post("/api/auth/login", loginData);
-      if (response.status === 200) {
-        setIsLogged(true);
-        setUserDetails(response.data.foundUser);
-        localStorage.setItem("Token", response.data.encodedToken);
-        setLoginData(defaultData);
-        toast.success("You're signed in.");
-        navigate("/");
-      }
-    } catch (error) {
-      setError("No user exists!");
-      console.log(error);
-      toast.error("We couldn't sign you in.");
-    }
-  };
 
   const pwdVisibiltyHandler = (e) => {
     e.preventDefault();
@@ -47,11 +30,13 @@ export default function Login() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    handleLogin(loginData);
+    handleLogin(loginData, setIsLogged, setUserDetails, navigate);
+    setLoginData(defaultData);
   };
   const handleGuest = (e) => {
     e.preventDefault();
-    handleLogin(guest);
+    handleLogin(guest, setIsLogged, setUserDetails, navigate);
+    setLoginData(defaultData);
   };
   return (
     <main className={`${styles.auth_content} content grid col2x2`}>

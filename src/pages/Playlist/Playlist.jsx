@@ -51,25 +51,23 @@ export default function Watchlist() {
                   </div>
                 ) : (
                   <div className={`${styles.dummy_text} flex-mid-center`}>
-                    <p className="subtitle-1"> Questioning my existence</p>
+                    <p className="subtitle-1 text"> Questioning my existence</p>
 
-                    <p className="subtitle-1">
+                    <p className="subtitle-1 text">
                       {" "}
                       How do I fill this emptiness...
                     </p>
-                    <p className="subtitle-1"> Why was I made...</p>
-                    <p className="subtitle-1">Help...</p>
+                    <p className="subtitle-1 text"> Why was I made...</p>
+                    <p className="subtitle-1 text">Help...</p>
                     <div className={styles.blob}></div>
-                    <div className={styles.emptyText}>emptyness</div>
+                    <div className={styles.emptyText}>emptiness</div>
                   </div>
                 )}
                 <h4
                   className={`header-5 absolute ${styles.card_title} flex-mid-center`}
                 >
-                  <p className="subtitle-1">{`${playlist?.title} |`}</p>
-                  <p
-                    className={`${styles.playlistLength} subtitle-2 grey_text`}
-                  >
+                  <p className="subtitle-1 text">{`${playlist?.title} |`}</p>
+                  <p className={`${styles.playlistLength} subtitle-2 text`}>
                     {` ${playlist.videos?.length} Videos`}
                   </p>
                 </h4>

@@ -19,7 +19,7 @@ export default function HorizontalVideoCard({ video, children }) {
 
   useEffect(() => {
     if (options) {
-      setTimeout(() => setOptions((prev) => !prev), 4000);
+      setTimeout(() => setOptions((prev) => !prev), 7000);
     }
   }, [options]);
 

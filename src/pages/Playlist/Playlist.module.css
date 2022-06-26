@@ -108,7 +108,7 @@
   background: linear-gradient(
     90deg,
     var(--BG) 0%,
-    var(--PRIMARY_LIGHT) 35%,
+    var(--PRIMARY_LIGHT) 90%,
     var(--PRIMARY) 100%
   );
   border-radius: 8px;
@@ -132,7 +132,7 @@
   background-color: #c40e0a;
   border-radius: 25% 75% 50%;
   filter: blur(95px);
-  animation: move 10s var(--ANIM) infinite;
+  animation: move 7s var(--ANIM) infinite;
 }
 
 .emptyText {

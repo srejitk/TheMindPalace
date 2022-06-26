@@ -33,7 +33,7 @@ export default function Header() {
           <div className={`flex-mid-center ${styles.logo_container}`}>
             <img
               className={styles.logo}
-              src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1652438526/TheMindPalace/Creator/Cinema_Ticket_ulbniu.png"
+              src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1656274814/TheMindPalace/Cinema_Ticket_1_kajonc.png"
               alt="MindPalace Logo"
             />
           </div>
@@ -130,7 +130,7 @@ export default function Header() {
                   >
                     {" "}
                     <span className="material-icons">login</span>
-                    Sign In
+                    Login
                   </Link>
                   <Link
                     to="signup"

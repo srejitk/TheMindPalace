@@ -19,7 +19,7 @@
   padding: 1rem 6rem 1rem;
   align-items: center;
   flex-wrap: wrap;
-  width: calc(100vw - 7.5rem);
+  width: calc(100vw - 6rem);
   margin: 0 auto;
   background-color: var(--BG);
 }

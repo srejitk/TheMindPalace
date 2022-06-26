@@ -159,14 +159,16 @@ export default function PlayVideo() {
           <div
             className={`flex-row-wrap bottom_border ${styles.title_container}`}
           >
-            <div className="flex-row-wrap flex-top-center gap20 p1b">
+            <div className="flex-row-nowrap flex-top-center gap20 p1b">
               <img
                 src={videoData?.channelArt}
                 alt="channel logo"
                 className={styles.channelLogo}
               />
               <div className="flex-column-wrap">
-                <p className="header-5">{videoData?.title}</p>
+                <p title={videoData?.title} className="header-5 ellipsis">
+                  {videoData?.title}
+                </p>
                 <p className="subtitle-1">{videoData?.creator}</p>
                 <p className="subtitle-1 grey_text">{videoData?.views} Views</p>
                 <div className="flex-row-wrap full-width gap20 flex-mid-left"></div>
@@ -230,9 +232,7 @@ export default function PlayVideo() {
           </div>
         </div>
         <div className={styles.page_header}>
-          <h1>
-            Related |<span className={`grey_text ${styles.subtext}`}>More</span>
-          </h1>
+          <h1>Related</h1>
           <Link to="/">
             <button className={`trash_btn`}>
               All

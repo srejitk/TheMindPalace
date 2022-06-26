@@ -90,6 +90,10 @@
   border: var(--BORDER);
 }
 
+.text {
+  color: var(--TEXT);
+}
+
 .trash_btn {
   display: flex;
   align-items: center;
@@ -114,6 +118,11 @@
 
 .content {
   grid-area: content;
+}
+
+.flex-row-nowrap {
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 .default {
@@ -174,6 +183,13 @@
 
 .absolute {
   display: absolute;
+}
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 768px) {

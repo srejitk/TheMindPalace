@@ -43,11 +43,11 @@ export default function Modal({ showModal, setShowModal, videoData }) {
           showModal ? styles.showModal : styles.hideModal
         }flex-column-wrap flex-mid-center`}
       >
-        <div className="full-width p1side subtitle-1 flex-left-center">
+        <div className="full-width p1side p1t subtitle-1 flex-left-center">
           Save to
         </div>
         {playlists?.length > 0 && (
-          <div className={`${styles.playlist_container}`}>
+          <div className={`${styles.playlist_container} playlist_container`}>
             {playlists?.map((playlist) => (
               <div
                 key={playlist._id}
