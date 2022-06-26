@@ -92,7 +92,6 @@
   padding: 0;
   background-color: var(--BG_LIGHT);
   border-radius: 8px;
-  outline: 2px solid;
   transition: height var(--ANIM) 500ms, transform var(--ANIM) 500ms;
 }
 
@@ -107,7 +106,7 @@
 }
 
 .search_results {
-  display: none;
+  display: flex;
   position: absolute;
   height: fit-content;
   width: 100%;
@@ -122,9 +121,8 @@
   border-bottom: var(--BORDER);
   border-left: var(--BORDER);
   border-right: var(--BORDER);
-}
-.search_bar:focus-visible ~ .search_results {
-  display: flex;
+  z-index: 20;
+  cursor: pointer;
 }
 
 .search_result_card {

@@ -9,10 +9,10 @@ import { useState } from "react";
 export default function Header() {
   const { isLogged, logoutHandler } = useAuth();
   const { videoDispatch, filteredVideos } = useVideo();
-  const [showSearch, setShowSearch] = useState(true);
   const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
+  const [showResults, setShowResults] = useState(false);
 
   const handleTheme = (e) => {
     setTheme(!theme);
@@ -46,23 +46,21 @@ export default function Header() {
         <input
           type="text"
           placeholder="Search..."
-          className={`${styles.search_bar}  ${
-            showSearch ? styles.showSearch : null
-          }`}
+          onClick={(e) => setShowResults((prev) => !prev)}
+          className={`${styles.search_bar}  ${styles.showSearch}`}
           onChange={(e) =>
             videoDispatch({ type: "SET_SEARCH", payload: e.target.value })
           }
         />
-        {
+        {showResults && (
           <div className={styles.search_results}>
             {filteredVideos?.slice(-5)?.map((video) => {
               const { videoID } = video;
               return (
                 <div
                   onClick={(e) => {
-                    console.log("Clicked");
-                    e.stopPropagation();
                     navigate(`/video/${videoID}`);
+                    setShowResults(false);
                   }}
                   key={video?.id}
                   className={`flex flex-row-wrap ${styles.search_result_card}`}
@@ -73,7 +71,7 @@ export default function Header() {
               );
             })}
           </div>
-        }
+        )}
       </div>
 
       <div
@@ -138,7 +136,7 @@ export default function Header() {
                     to="signup"
                     className={`${styles.link}  ${
                       showOptions ? styles.showOption : null
-                    }subtitle-1`}
+                    } subtitle-1`}
                   >
                     {" "}
                     <span className="material-icons">person_add_alt</span>
