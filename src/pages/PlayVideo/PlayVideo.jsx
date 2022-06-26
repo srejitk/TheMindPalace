@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import styles from "./PlayVideo.module.css";
 import ReactPlayer from "react-player";
 import { useVideo } from "../../context/Video/VideoContext";
-import { Modal, VideoCard } from "../../components";
+import { Loader, Modal, VideoCard } from "../../components";
 import { useUserDetails } from "../../context/User/UserContext";
 import {
   addToWatchlater,
@@ -19,6 +19,7 @@ import {
 
 export default function PlayVideo() {
   const { videoID } = useParams();
+  const { filteredVideos } = useVideo();
   const {
     videoState,
     isLoading,
@@ -29,9 +30,9 @@ export default function PlayVideo() {
   } = useVideo();
   const { userState, userDispatch } = useUserDetails();
   const { videolist } = videoState;
+  const navigate = useNavigate();
 
   const videoData = getVideoData(videoID, videolist);
-
   const related_videos = getRelated(videoData, videolist);
 
   useEffect(() => {
@@ -43,26 +44,38 @@ export default function PlayVideo() {
   }, [videoID]);
 
   const likeHandler = (videoData, userDispatch) => {
-    const isLiked = userState?.liked?.includes(videoData);
-    if (isLiked && !dislike) {
-      userDispatch({ type: "UNLIKE_VIDEO", payload: videoData });
-    } else if (!isLiked && !dislike) {
-      userDispatch({ type: "LIKE_VIDEO", payload: videoData });
-    } else if (!isLiked && dislike) {
-      setDislike(false);
-      userDispatch({ type: "LIKE_VIDEO", payload: videoData });
+    if (localStorage.getItem("Token")) {
+      const isLiked = userState?.liked?.includes(videoData);
+      if (isLiked && !dislike) {
+        userDispatch({ type: "UNLIKE_VIDEO", payload: videoData });
+      } else if (!isLiked && !dislike) {
+        userDispatch({ type: "LIKE_VIDEO", payload: videoData });
+      } else if (!isLiked && dislike) {
+        setDislike(false);
+        userDispatch({ type: "LIKE_VIDEO", payload: videoData });
+      }
+    } else {
+      toast("Please login to continue", {
+        icon: "🚫",
+      });
     }
   };
 
   const dislikeHandler = (videoData, userState, userDispatch) => {
-    const isLiked = userState?.liked?.includes(videoData);
-    if (isLiked && !dislike) {
-      userDispatch({ type: "UNLIKE_VIDEO", payload: videoData });
-      setDislike(true);
-    } else if (!isLiked && !dislike) {
-      setDislike(true);
-    } else if (!isLiked && dislike) {
-      setDislike(false);
+    if (localStorage.getItem("Token")) {
+      const isLiked = userState?.liked?.includes(videoData);
+      if (isLiked && !dislike) {
+        userDispatch({ type: "UNLIKE_VIDEO", payload: videoData });
+        setDislike(true);
+      } else if (!isLiked && !dislike) {
+        setDislike(true);
+      } else if (!isLiked && dislike) {
+        setDislike(false);
+      }
+    } else {
+      toast("Please login to continue", {
+        icon: "🚫",
+      });
     }
   };
 
@@ -71,8 +84,30 @@ export default function PlayVideo() {
   };
 
   const playlistHandler = (e) => {
-    setShowModal((showModal) => !showModal);
+    if (localStorage.getItem("Token")) {
+      setShowModal((showModal) => !showModal);
+    } else {
+      toast("Please login to continue", {
+        icon: "🚫",
+      });
+    }
   };
+
+  const handleWatchlater = () => {
+    if (localStorage.getItem("Token")) {
+      watchlaterHandler(videoData, userState)
+        ? removeFromWatchlater(videoData, userDispatch)
+        : addToWatchlater(videoData, userDispatch);
+    } else {
+      toast("Please login to continue", {
+        icon: "🚫",
+      });
+    }
+  };
+
+  const randomVideo =
+    filteredVideos &&
+    filteredVideos[Math.floor(Math.random() * filteredVideos?.length)];
 
   return (
     <>
@@ -91,25 +126,30 @@ export default function PlayVideo() {
         <div className={styles.page_header}>
           <h1>Play</h1>
           <button
-            onClick={() => userDispatch({ type: "ADD_NOTE" })}
+            onClick={() => navigate(`/video/${randomVideo?.videoID}`)}
             className={`trash_btn`}
           >
-            Note
-            <span className="material-icons">add</span>
+            Random
+            <span className="material-icons">shuffle</span>
           </button>
         </div>
         <div
           className={`${styles.videoSection} flex-column-wrap flex-mid-center`}
         >
           <div className={styles.player}>
-            <ReactPlayer
-              url={`http://www.youtube.com/watch?v=${videoID}`}
-              controls={true}
-              className={styles.video}
-              width="100%"
-              height="100%"
-              onReady={addToHistoryHandler}
-            />
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <ReactPlayer
+                url={`http://www.youtube.com/watch?v=${videoID}`}
+                controls={true}
+                className={styles.video}
+                width="100%"
+                height="100%"
+                playing={true}
+                onReady={addToHistoryHandler}
+              />
+            )}
           </div>
         </div>
         <div
@@ -161,11 +201,7 @@ export default function PlayVideo() {
                 <p className="subtitle-1">Dislike</p>
               </div>
               <div
-                onClick={() =>
-                  watchlaterHandler(videoData, userState)
-                    ? removeFromWatchlater(videoData, userDispatch)
-                    : addToWatchlater(videoData, userDispatch)
-                }
+                onClick={() => handleWatchlater()}
                 className="flex-column-wrap flex-mid-center"
               >
                 <button
@@ -228,8 +264,16 @@ export default function PlayVideo() {
                 onClick={() => likeHandler(video, userDispatch, userState)}
                 className={`${styles.dialog} flex-row-nowrap`}
               >
-                <span className="material-icons">thumb_up</span>
-                <p>Add to Liked</p>
+                <span className="material-icons">
+                  {userState?.liked?.includes(video)
+                    ? "thumb_down"
+                    : "thumb_up"}
+                </span>
+                <p>
+                  {userState?.liked?.includes(video)
+                    ? "Remove from liked"
+                    : "Add to Liked"}
+                </p>
               </div>
             </VideoCard>
           ))}
