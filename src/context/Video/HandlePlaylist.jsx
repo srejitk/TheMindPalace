@@ -1,6 +1,5 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router";
 
 export const addPlaylist = async (playlistData, userDispatch) => {
   try {

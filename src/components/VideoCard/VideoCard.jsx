@@ -36,9 +36,9 @@ export default function VideoCard({ video, mini, children }) {
       </div>
 
       <div
-        className={`${styles.dialog_container} box-shadow ${
-          options ? styles.showDialog : styles.hideDialog
-        }`}
+        className={`${styles.dialog_container} ${
+          mini ? styles.miniDialog : ""
+        } box-shadow ${options ? styles.showDialog : styles.hideDialog}`}
       >
         {children}
       </div>
