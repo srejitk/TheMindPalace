@@ -17,7 +17,7 @@ export default function Watchlist() {
   return (
     <div className="flex-column-wrap content default">
       <div className={styles.page_header}>
-        <h1>Watch Later</h1>
+        <h1>Watchlist</h1>
         <button
           onClick={() => userDispatch({ type: "CLEAR_ALL_WATCHLATER" })}
           className={`trash_btn`}
@@ -38,7 +38,7 @@ export default function Watchlist() {
               {userState.watchlater?.length === 0
                 ? 0
                 : userState.watchlater?.length}{" "}
-              videos to watchlater.
+              videos to watchlist.
             </h1>
             <h1 className={styles.detail_banner}>
               {userState.watchlater?.length === 0

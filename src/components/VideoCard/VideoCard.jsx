@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import styles from "./VideoCard.module.css";
 import Modal from "../Modal/Modal";
+import toast from "react-hot-toast";
 
 export default function VideoCard({ video, mini, children }) {
   const { thumbnail, preview, title, creator, views } = video;

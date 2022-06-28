@@ -20,14 +20,6 @@ export default function Explore() {
     filteredVideos &&
     filteredVideos[Math.floor(Math.random() * filteredVideos?.length)];
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 100,
-      left: 100,
-      behavior: "smooth",
-    });
-  }, []);
-
   return isLoading ? (
     <Loader />
   ) : (

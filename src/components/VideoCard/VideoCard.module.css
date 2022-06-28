@@ -97,7 +97,7 @@
 }
 
 .hideDialog {
-  bottom: -220px;
+  bottom: -300px;
   transition: bottom var(--ANIM) 600ms;
 }
 
