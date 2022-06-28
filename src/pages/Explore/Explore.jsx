@@ -14,7 +14,6 @@ import toast from "react-hot-toast";
 export default function Explore() {
   const { filteredVideos, isLoading } = useVideo();
   const { userState, userDispatch } = useUserDetails();
-  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const randomVideo =
@@ -96,28 +95,6 @@ export default function Explore() {
                     : "Add to Liked"}
                 </p>
               </div>
-              <div
-                onClick={() => {
-                  if (localStorage.getItem("Token")) {
-                    setShowModal(true);
-                  } else {
-                    toast("Please login to continue", {
-                      icon: "🚫",
-                    });
-                  }
-                }}
-                className={`${styles.dialog} flex-row-nowrap`}
-              >
-                <span className="material-icons">add</span>
-                <p>Add to Playlist</p>
-              </div>
-              {showModal && (
-                <Modal
-                  showModal={showModal}
-                  setShowModal={setShowModal}
-                  videoData={video}
-                />
-              )}
             </VideoCard>
           ))}
         </div>

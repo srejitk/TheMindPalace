@@ -105,6 +105,27 @@
   width: 20rem;
 }
 
+.dialog {
+  width: 80%;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.25 rem 0px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: small;
+  font-weight: bold;
+  color: var(--TEXT_INVERSE);
+  background-color: var(--PRIMARY);
+  transition: background-color var(--ANIM) 300ms;
+}
+
+.dialog:hover {
+  background-color: var(--PRIMARY_DARK);
+  transition: background-color var(--ANIM) 300ms;
+  filter: brightness(0.95);
+}
+
 @media only screen and (max-width: 768px) {
   .video_card {
     width: 22rem;
