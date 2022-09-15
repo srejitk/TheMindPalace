@@ -20,7 +20,6 @@ function App() {
 
   const { pathname } = useLocation();
 
-  console.log(pathname);
   return (
     <div className={`App ${theme ? "dark-mode" : "light-mode"}`}>
       <Header />
