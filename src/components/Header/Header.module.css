@@ -1,6 +1,6 @@
 .Navbar {
   width: 100%;
-  height: 9rem;
+  height: 5rem;
   max-width: 100vw;
   padding: 1rem 1.5rem;
   background-color: var(--BG);
@@ -9,7 +9,7 @@
   position: sticky;
   flex-wrap: wrap;
   top: 0;
-  z-index: 10;
+  z-index: 30;
   grid-area: navbar;
   gap: 1rem;
   border-bottom: var(--BORDER);
@@ -30,23 +30,27 @@
 }
 
 .links {
-  margin-left: auto;
-  padding: 0;
+  width: 100%;
   transform: scale(1);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .link {
-  padding: 0 2rem;
+  display: flex;
+  align-items: center;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   border-radius: 0;
   transform: scale(0);
   transition: transform var(--ANIM) 100ms;
+  background-color: var(--BG_LIGHT);
 }
 
 .link:hover {
   border-radius: 0;
-  width: 100%;
+  filter: brightness(0.9);
 }
 
 .search_bar {
@@ -54,6 +58,7 @@
   border-radius: 4px;
   border: var(--BG);
   background-color: var(--BG);
+  color: var(--TEXT);
   width: 0;
   transition: width var(--ANIM) 100ms, opacity var(--ANIM) 200ms;
 }
@@ -65,8 +70,13 @@
   border: 2px solid var(--PRIMARY);
 }
 
-.showSearch {
+.search_bar_wrapper {
+  position: relative;
   width: 50%;
+}
+
+.showSearch {
+  width: 100%;
   filter: opacity(1);
   border: var(--BORDER);
   background-color: var(--BG_LIGHT);
@@ -86,8 +96,7 @@
 }
 
 .showOptions {
-  height: 10rem;
-  transform: scale(1);
+  height: fit-content;
   transition: height var(--ANIM) 500ms;
 }
 
@@ -96,18 +105,65 @@
   transition: transform var(--ANIM) 500ms 100ms;
 }
 
+.search_results {
+  display: flex;
+  position: absolute;
+  height: fit-content;
+  width: 100%;
+  left: 0;
+  top: 2.8rem;
+  background-color: var(--BG);
+  border-radius: 0 0 8px 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
+  border-bottom: var(--BORDER);
+  border-left: var(--BORDER);
+  border-right: var(--BORDER);
+  z-index: 20;
+  cursor: pointer;
+}
+
+.search_result_card {
+  display: inherit;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.search_result_card:hover {
+  background-color: var(--BG_LIGHT);
+}
+
+.search_result_card p {
+  text-overflow: ellipsis;
+  word-break: break-all;
+  font-size: 1.2rem;
+}
+
 ul {
   width: 100%;
 }
 
 .search_bar::placeholder {
   font-weight: bold;
+  color: var(--GREY_TEXT);
 }
 
 @media only screen and (max-width: 768px) {
   .Navbar {
-    max-height: 9rem;
+    height: 9rem;
     gap: 20px;
+  }
+  .btn_wrapper {
+    order: 2;
+  }
+
+  .search_bar_wrapper {
+    order: 3;
+    width: 100%;
   }
 
   .Navbar_brand {
@@ -127,7 +183,6 @@ ul {
 
   .showSearch {
     width: 100%;
-    order: 2;
     transition: opacity var(--ANIM) 400ms;
   }
 

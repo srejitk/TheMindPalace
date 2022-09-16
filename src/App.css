@@ -28,7 +28,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 6rem 1fr;
-  grid-template-rows: 9rem auto;
+  grid-template-rows: 5rem auto;
   grid-template-areas: "navbar navbar" "sidebar content";
   transition: background-color var(--ANIM) 1000ms;
 }
@@ -41,7 +41,7 @@
   --PRIMARY_DARK: #c40e0a;
   --TEXT: white;
   --TEXT_INVERSE: #000;
-  --GREY_TEXT: var(--component-grey-04);
+  --GREY_TEXT: var(--component-grey-01);
   --HOVER_BG: transparent;
   --HOVER_BG_ACTIVE: hsla(0, 0%, 80%, 0.3);
   --BORDER: 2px solid var(--BG_LIGHT);
@@ -74,6 +74,12 @@
   background-color: var(--HOVER_BG);
   color: var(--TEXT);
   border-radius: 50px;
+  padding: unset;
+  margin: 0 1rem;
+}
+
+.btn_action > .material-icons {
+  font-size: 1.5rem;
 }
 
 .btn_action:hover {
@@ -82,6 +88,10 @@
   background-color: var(--HOVER_BG_ACTIVE);
   color: var(--TEXT);
   border: var(--BORDER);
+}
+
+.text {
+  color: var(--TEXT);
 }
 
 .trash_btn {
@@ -93,25 +103,26 @@
   margin-left: auto;
   padding: 0.75rem 1rem;
   font-weight: bold;
-  color: var(--TEXT_INVERSE);
-  background: var(--PRIMARY);
-  border: 2px solid transparent;
+  color: var(--PRIMARY);
+  background: var(--BG);
+  border: 2px solid var(--PRIMARY);
   border-radius: 12px;
   cursor: pointer;
+  z-index: 20;
 }
 
 .trash_btn:hover {
-  width: fit-content;
-  margin-left: auto;
-  font-weight: bold;
+  background: var(--PRIMARY_DARK);
   color: var(--TEXT_INVERSE);
-  background: var(--PRIMARY);
-  border: 2px solid var(--TEXT);
-  filter: brightness(0.95);
 }
 
 .content {
   grid-area: content;
+}
+
+.flex-row-nowrap {
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 .default {
@@ -128,6 +139,12 @@
   color: var(--GREY_TEXT);
 }
 
+.inset {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
 .bottom_border {
   border-bottom: var(--BORDER);
 }
@@ -148,6 +165,10 @@
   padding-bottom: 1rem;
 }
 
+.p1t {
+  padding-top: 1rem;
+}
+
 .brand-color {
   color: var(--PRIMARY);
 }
@@ -164,14 +185,17 @@
   display: absolute;
 }
 
-@media only screen and (max-width: 768px) {
-  .App {
-    grid-template-rows: 9rem auto;
-  }
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .App {
+    grid-template-rows: 9rem auto 5rem;
     grid-template-columns: 1fr;
+    grid-template-areas: "navbar navbar" "content content" "sidebar sidebar";
   }
 }

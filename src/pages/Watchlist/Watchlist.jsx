@@ -17,12 +17,7 @@ export default function Watchlist() {
   return (
     <div className="flex-column-wrap content default">
       <div className={styles.page_header}>
-        <h1>
-          Watch Later |
-          <span className={`grey_text ${styles.subtext}`}>
-            Videos to watch later
-          </span>
-        </h1>
+        <h1>Watchlist</h1>
         <button
           onClick={() => userDispatch({ type: "CLEAR_ALL_WATCHLATER" })}
           className={`trash_btn`}
@@ -37,6 +32,20 @@ export default function Watchlist() {
         } flex-row-wrap`}
       >
         <div className={styles.watchlist_container}>
+          <div className={`${styles.detail_card}`}>
+            <h1 className={styles.detail_title}>
+              You have added{" "}
+              {userState.watchlater?.length === 0
+                ? 0
+                : userState.watchlater?.length}{" "}
+              videos to watchlist.
+            </h1>
+            <h1 className={styles.detail_banner}>
+              {userState.watchlater?.length === 0
+                ? 0
+                : userState.watchlater?.length}
+            </h1>
+          </div>
           {userState.watchlater?.map((video) => (
             <HorizontalVideoCard key={video._id} video={video}>
               <div
@@ -71,24 +80,6 @@ export default function Watchlist() {
               </div>
             </HorizontalVideoCard>
           ))}
-        </div>
-        <div
-          className={`${styles.detail_card} ${
-            userState.watchlater?.length === 0 ? styles.expandbanner : null
-          }`}
-        >
-          <h1 className={styles.detail_title}>
-            You have added{" "}
-            {userState.watchlater?.length === 0
-              ? 0
-              : userState.watchlater?.length}{" "}
-            videos to watchlater.
-          </h1>
-          <h1 className={styles.detail_banner}>
-            {userState.watchlater?.length === 0
-              ? 0
-              : userState.watchlater?.length}
-          </h1>
         </div>
       </div>
     </div>

@@ -30,12 +30,7 @@ export default function SinglePlaylist() {
   return (
     <div className="flex-column-wrap content default">
       <div className={styles.page_header}>
-        <h1>
-          {findPlaylist?.title} |
-          <span className={`grey_text ${styles.subtext}`}>
-            Videos you curated
-          </span>
-        </h1>
+        <h1>{findPlaylist?.title}</h1>
         <button
           onClick={() => deleteHandler(findPlaylist, userDispatch)}
           className={`trash_btn`}
@@ -50,6 +45,20 @@ export default function SinglePlaylist() {
         } flex-row-wrap`}
       >
         <div className={styles.watchlist_container}>
+          <div className={`${styles.detail_card} `}>
+            <h1 className={styles.detail_title}>
+              You have added{" "}
+              {findPlaylist?.videos?.length === 0
+                ? 0
+                : findPlaylist?.videos?.length}{" "}
+              videos.
+            </h1>
+            <h1 className={styles.detail_banner}>
+              {findPlaylist?.videos?.length === 0
+                ? 0
+                : findPlaylist?.videos?.length}
+            </h1>
+          </div>
           {findPlaylist?.videos?.map((video) => (
             <HorizontalVideoCard key={video._id} video={video}>
               <div
@@ -94,24 +103,6 @@ export default function SinglePlaylist() {
               </div>
             </HorizontalVideoCard>
           ))}
-        </div>
-        <div
-          className={`${styles.detail_card} ${
-            findPlaylist?.videos?.length === 0 ? styles.expandbanner : null
-          }`}
-        >
-          <h1 className={styles.detail_title}>
-            You have added{" "}
-            {findPlaylist?.videos?.length === 0
-              ? 0
-              : findPlaylist?.videos?.length}{" "}
-            videos.
-          </h1>
-          <h1 className={styles.detail_banner}>
-            {findPlaylist?.videos?.length === 0
-              ? 0
-              : findPlaylist?.videos?.length}
-          </h1>
         </div>
       </div>
     </div>

@@ -9,7 +9,6 @@
   padding: 0;
 }
 
-/* Create a new div with a width of 55% and another which has the notes section and the related videos */
 .videoSection {
   width: 100%;
   padding: 1rem 2rem 0;
@@ -22,6 +21,7 @@
   height: fit-content;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
 }
 
 .option_container {
@@ -37,12 +37,16 @@
   width: 100%;
   height: fit-content;
   padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .btn_container {
-  width: 100%;
+  width: 50%;
   flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: flex-end;
+  gap: 10px;
   padding-bottom: 1rem;
 }
 
@@ -55,7 +59,7 @@
 
 .related_section {
   width: 100%;
-  height: 20rem;
+  height: 25rem;
   padding-left: 1rem;
   background-color: var(--BG);
   display: flex;
@@ -91,6 +95,7 @@
 }
 
 .dialog {
+  width: 80%;
   gap: 10px;
   align-items: center;
   justify-content: flex-start;
@@ -99,13 +104,15 @@
   border-radius: 8px;
   font-size: small;
   font-weight: bold;
-  background-color: inherit;
+  color: var(--TEXT_INVERSE);
+  background-color: var(--PRIMARY);
   transition: background-color var(--ANIM) 300ms;
 }
 
 .dialog:hover {
-  background-color: var(--HOVER_BG_ACTIVE);
+  background-color: var(--PRIMARY_DARK);
   transition: background-color var(--ANIM) 300ms;
+  filter: brightness(0.95);
 }
 
 .blurBG {
@@ -126,6 +133,18 @@
     width: 100%;
     height: fit-content;
     padding: 1rem 4.5rem;
+  }
+}
+
+@media only screen and (max-width: 1065px) {
+  .title_container {
+    flex-wrap: wrap;
+    justify-content: unset;
+  }
+
+  .btn_container {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 

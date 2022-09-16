@@ -47,7 +47,7 @@ export const videos = [
   },
   {
     _id: "1c65ef40-2319-42ff-8ff3-00330269e35b",
-    title: "This TRANSFORMED the Way I Learn & Take Visual Notes on the iPad",
+    title: "This TRANSFORMED the Way I Learn & Take Visual Notes",
     videoID: "n6o6URMBG8Y",
     description:
       "It's so easy to get lost in small details and specific facts when learning. This video is about the importance of getting the big picture when learning and note-taking.",
@@ -220,7 +220,7 @@ export const videos = [
   },
   {
     _id: "e7af33ee-5259-47bc-9d7f-316258985006",
-    title: "Why I started my YouTube channel - Wonderful Things",
+    title: "Why I started my YouTube channel",
 
     videoID: "VKd7DoheQ8A",
     description:
@@ -264,7 +264,7 @@ export const videos = [
   },
   {
     _id: "1d5dbf4c-7528-4508-bf97-8069c627569a",
-    title: "15 Google Calendar Tips for Productivity (in 2022)!",
+    title: "15 Google Calendar Tips for Productivity!",
 
     videoID: "QQKHhri48Ps",
     description:
@@ -306,7 +306,7 @@ export const videos = [
   },
   {
     _id: "8cbb306c-370b-40be-acda-9b4a1a10dda9",
-    title: "9+ AMAZING Google Meet Tips You Should Know (in 2022)!",
+    title: "9+ AMAZING Google Meet Tips!",
 
     videoID: "1lRsu_bHjJ0",
     description:
@@ -682,7 +682,7 @@ export const videos = [
 
   {
     _id: "d5545930-18a1-46aa-9ab5-22048b566298",
-    title: "Top Gun: Maverick | NEW Official Trailer (2022 Movie) - Tom Cruise",
+    title: "Top Gun: Maverick | NEW Official Trailer",
     channelArt:
       "https://res.cloudinary.com/dkqrmlxlg/image/upload/v1653126929/TheMindPalace/Creator/PONSj7yNZXmRc_whSU8ihBrDAAeoWMXPXaeAdYYLldEXK4YjXPFw0Uiox6KdDOcujYqhjHSd_s176-c-k-c0x00ffffff-no-rj-mo_rye3r7.jpg",
 

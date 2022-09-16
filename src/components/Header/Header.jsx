@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth/AuthContext";
 import { useTheme } from "../../context/Theme/ThemeContext";
 import { useVideo } from "../../context/Video/VideoContext";
@@ -8,11 +8,11 @@ import { useState } from "react";
 
 export default function Header() {
   const { isLogged, logoutHandler } = useAuth();
-  const { videoDispatch } = useVideo();
-  const [showSearch, setShowSearch] = useState(false);
+  const { videoDispatch, filteredVideos } = useVideo();
   const [showOptions, setShowOptions] = useState(false);
-
+  const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
+  const [showResults, setShowResults] = useState(false);
 
   const handleTheme = (e) => {
     setTheme(!theme);
@@ -20,15 +20,11 @@ export default function Header() {
 
   useEffect(() => {
     if (showOptions) {
-      setTimeout(() => setShowOptions((prev) => !prev), 4000);
+      setTimeout(() => setShowOptions(false), 4000);
     }
-  }, [showOptions]);
 
-  useEffect(() => {
-    if (showSearch) {
-      setTimeout(() => setShowSearch((prev) => !prev), 5000);
-    }
-  }, [showSearch]);
+    return clearTimeout();
+  }, [showOptions]);
 
   return (
     <div className={`flex-row-wrap position-relative ${styles.Navbar}`}>
@@ -37,8 +33,8 @@ export default function Header() {
           <div className={`flex-mid-center ${styles.logo_container}`}>
             <img
               className={styles.logo}
-              src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1652438526/TheMindPalace/Creator/Cinema_Ticket_ulbniu.png"
-              alt="BrainDump Logo"
+              src="https://res.cloudinary.com/dkqrmlxlg/image/upload/v1656274814/TheMindPalace/Cinema_Ticket_1_kajonc.png"
+              alt="MindPalace Logo"
             />
           </div>
           <h5 className={`header-5 ${styles.hero}`}>
@@ -46,28 +42,41 @@ export default function Header() {
           </h5>
         </Link>
       </div>
-      <input
-        type="text"
-        placeholder="Search..."
-        className={`${styles.search_bar} ${
-          showSearch ? styles.showSearch : null
-        }`}
-        onChange={(e) =>
-          videoDispatch({ type: "SET_SEARCH", payload: e.target.value })
-        }
-      />
+      <div className={`position-relative ${styles.search_bar_wrapper}`}>
+        <input
+          type="text"
+          placeholder="Search..."
+          onClick={(e) => setShowResults((prev) => !prev)}
+          className={`${styles.search_bar}  ${styles.showSearch}`}
+          onChange={(e) =>
+            videoDispatch({ type: "SET_SEARCH", payload: e.target.value })
+          }
+        />
+        {showResults && (
+          <div className={styles.search_results}>
+            {filteredVideos?.slice(-5)?.map((video) => {
+              const { videoID } = video;
+              return (
+                <div
+                  onClick={(e) => {
+                    navigate(`/video/${videoID}`);
+                    setShowResults(false);
+                  }}
+                  key={video?.id}
+                  className={`flex flex-row-wrap ${styles.search_result_card}`}
+                >
+                  <span className="material-icons">search</span>
+                  <p className="body-1">{video.title}</p>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
 
       <div
         className={`flex-row-wrap flex-mid-center margin-left relative ${styles.btn_wrapper}`}
       >
-        <button
-          onClick={(e) => setShowSearch((prev) => !prev)}
-          className={`${styles.searchIcon} btn btn_action `}
-        >
-          <span className={` material-icons`}>
-            {showSearch ? "close" : "search"}
-          </span>
-        </button>
         <button onClick={(e) => handleTheme(e)} className="btn btn_action ">
           <span className="material-icons">
             {theme ? `light_mode` : `dark_mode`}
@@ -78,62 +87,66 @@ export default function Header() {
           onClick={(e) => setShowOptions((prev) => !prev)}
           className="btn btn_action"
         >
-          <span className="material-icons">person_pin</span>
+          <span className="material-icons">person</span>
         </button>
-        <div
-          className={`flex-column-wrap box-shadow ${
-            showOptions ? styles.showOptions : null
-          } ${styles.userOptions}`}
-        >
+        {showOptions && (
           <div
-            className={`${styles.links} full-width flex-column-wrap flex-mid-center`}
+            className={`flex-column-wrap box-shadow ${
+              showOptions ? styles.showOptions : null
+            } ${styles.userOptions}`}
           >
-            <Link
-              to="/profile"
-              className={`${styles.link} ${
-                showOptions ? styles.showOption : null
-              } btn btn_action subtitle-1`}
+            <div
+              className={`${styles.links} full-width flex-column-wrap flex-mid-center`}
             >
-              <span className="material-icons">person</span>
-              Profile
-            </Link>
-            {isLogged ? (
-              <Link
-                to="/"
-                onClick={logoutHandler}
-                className={`${styles.link} ${
-                  showOptions ? styles.showOption : null
-                } btn btn_action subtitle-1`}
-              >
-                <span className="material-icons">logout</span>
-                Logout
-              </Link>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className={` ${styles.link} ${
-                    showOptions ? styles.showOption : null
-                  }  btn btn_action subtitle-1`}
-                >
-                  {" "}
-                  <span className="material-icons">login</span>
-                  Sign In
-                </Link>
-                <Link
-                  to="signup"
-                  className={`${styles.link}  ${
-                    showOptions ? styles.showOption : null
-                  } btn btn_action subtitle-1`}
-                >
-                  {" "}
-                  <span className="material-icons">person_add_alt</span>
-                  Sign Up
-                </Link>
-              </>
-            )}
+              {isLogged ? (
+                <>
+                  <Link
+                    to="/profile"
+                    className={`${styles.link} ${
+                      showOptions ? styles.showOption : null
+                    } subtitle-1`}
+                  >
+                    <span className="material-icons">person</span>
+                    Profile
+                  </Link>
+                  <Link
+                    to="/"
+                    onClick={logoutHandler}
+                    className={`${styles.link} ${
+                      showOptions ? styles.showOption : null
+                    } subtitle-1`}
+                  >
+                    <span className="material-icons">logout</span>
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className={` ${styles.link} ${
+                      showOptions ? styles.showOption : null
+                    }  subtitle-1`}
+                  >
+                    {" "}
+                    <span className="material-icons">login</span>
+                    Login
+                  </Link>
+                  <Link
+                    to="signup"
+                    className={`${styles.link}  ${
+                      showOptions ? styles.showOption : null
+                    } subtitle-1`}
+                  >
+                    {" "}
+                    <span className="material-icons">person_add_alt</span>
+                    Sign Up
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

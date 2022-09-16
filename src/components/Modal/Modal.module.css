@@ -1,6 +1,7 @@
 .modal_container {
   min-width: 20rem;
-  min-height: 22rem;
+  height: fit-content;
+  max-height: 22rem;
   position: fixed;
   top: 50%;
   right: 50%;
@@ -9,6 +10,13 @@
   border-radius: 8px;
   z-index: 6;
   flex-direction: column;
+}
+
+.modal_wrapper {
+  position: fixed;
+  inset: 0;
+  background: rgba(100, 116, 139, 0.01);
+  z-index: 50;
 }
 
 .hideModal {
@@ -23,12 +31,14 @@
 
 .add_playlist {
   width: 90%;
+  margin: 1rem 0;
 }
 
 .new_playlist {
   margin: 0 1rem;
   background-color: var(--BG_LIGHT);
   color: var(--TEXT);
+  border: var(--BORDER);
 }
 
 .btn {
@@ -48,9 +58,24 @@
   transition: all var(--ANIM) 500ms;
 }
 
-.btn:hover {
-  color: var(--PRIMARY);
-  border: 2px solid var(--TEXT);
+.btn:nth-child(2) {
+  background-color: var(--PRIMARY);
+  color: var(--TEXT_INVERSE);
+}
+
+.btn:nth-child(2):hover {
+  background-color: var(--PRIMARY_DARK);
+}
+
+.btn:nth-child(1) {
+  background-color: var(--BG);
+  color: var(--TEXT);
+  border: var(--BORDER);
+  border-color: var(--PRIMARY);
+}
+
+.btn:nth-child(1):hover {
+  background-color: var(--PRIMARY_LIGHT);
 }
 
 .btn_container {
@@ -69,6 +94,17 @@
   background-color: var(--BG_LIGHT);
 }
 
+.playlist_container::-webkit-scrollbar {
+  display: block;
+  width: 7px;
+  background: var(--HOVER_BG);
+}
+
+.playlist_container::-webkit-scrollbar-thumb {
+  background-color: var(--HOVER_BG_ACTIVE);
+  border-radius: 10px;
+}
+
 .playlist {
   justify-content: flex-start;
   gap: 10px;
@@ -85,6 +121,7 @@
   font-weight: bold;
   background-color: inherit;
   transition: background-color var(--ANIM) 300ms;
+  cursor: pointer;
 }
 
 .dialog:hover {

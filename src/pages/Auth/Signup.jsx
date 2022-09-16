@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/Auth/AuthContext";
+import { emailRegex, passwordRegex } from "../../utils/Constants";
+import { handleLogin } from "../../services/ApiCalls";
 
 export default function Signup() {
   const defaultData = {
@@ -15,15 +17,66 @@ export default function Signup() {
   };
 
   const [userData, setUserData] = useState(defaultData);
-  const [error, setError] = useState("");
+  const [submitMode, setSubmitMode] = useState(false);
+  const [checkPassword, setCheckPassword] = useState(false);
+  const { setIsLogged, setUserDetails } = useAuth();
+  const [error, setError] = useState({
+    email: {
+      isError: false,
+      errorMessage: "Enter a valid mail",
+    },
+    password: {
+      isError: false,
+      errorMessage:
+        "Password must contain minimum eight characters, and should be alphanumeric and contain special character.",
+    },
+    confirmPassword: {
+      isError: false,
+      errorMessage: "Password does not match",
+    },
+  });
   const [showPassword, setShowPassword] = useState(false);
+  const [showCfmPassword, setShowCfmPassword] = useState(false);
   const navigate = useNavigate();
-  const { setUserDetails } = useAuth();
 
   const handleInput = (e) => {
     const { value, name } = e.target;
+    if (name === "password") {
+      setCheckPassword(value);
+    }
+    const validateError = validateForm(name, value);
+    setError((prevValue) => ({
+      ...prevValue,
+      [name]: {
+        ...prevValue[name],
+        isError: validateError,
+      },
+    }));
     setUserData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const validateForm = (name, value) => {
+    switch (name) {
+      case "email":
+        return !emailRegex.test(value);
+      case "password":
+        return !passwordRegex.test(value);
+      case "confirmPassword":
+        return checkPassword !== value;
+      default:
+        return false;
+    }
+  };
+
+  useEffect(() => {
+    let flag = false;
+    Object.entries(error).forEach((i) => {
+      if (i[1].isError) {
+        flag = true;
+      }
+    });
+    setSubmitMode(flag);
+  }, [error]);
 
   const handleSignup = async (userData) => {
     try {
@@ -32,8 +85,8 @@ export default function Signup() {
         setUserDetails(userData);
         setUserData(defaultData);
         toast.success("You're signed up!");
-        navigate("../login", { replace: true });
         localStorage.setItem("Token", response.data.encodedToken);
+        handleLogin(userData, setIsLogged, setUserDetails, navigate);
       }
     } catch (error) {
       setError("Something went wrong");
@@ -44,6 +97,11 @@ export default function Signup() {
   const pwdVisibiltyHandler = (e) => {
     e.preventDefault();
     setShowPassword(() => !showPassword);
+  };
+
+  const cfmpwdVisibiltyHandler = (e) => {
+    e.preventDefault();
+    setShowCfmPassword(() => !showCfmPassword);
   };
 
   const submitHandler = (e) => {
@@ -85,6 +143,9 @@ export default function Signup() {
               required
             />
           </div>
+          {error?.email?.isError && (
+            <div className={styles.error_msg}>{error.email.errorMessage}</div>
+          )}
           <div className="input__container position-relative">
             <input
               type={showPassword ? "text" : "password"}
@@ -112,10 +173,15 @@ export default function Signup() {
               </button>
             )}
           </div>
+          {error.password?.isError && (
+            <div className={styles.error_msg}>
+              {error.password?.errorMessage}
+            </div>
+          )}
 
           <div className="input__container position-relative">
             <input
-              type={showPassword ? "text" : "password"}
+              type={showCfmPassword ? "text" : "password"}
               name="confirmPassword"
               placeholder="Confirm Password"
               id="pwd2"
@@ -124,29 +190,30 @@ export default function Signup() {
               onChange={handleInput}
               required
             />
-            {showPassword ? (
+            {showCfmPassword ? (
               <button
-                onClick={(e) => pwdVisibiltyHandler(e)}
+                onClick={(e) => cfmpwdVisibiltyHandler(e)}
                 className={`btn_action position-absolute ${styles.passwordIcon} btn--small flex-mid-center transparent-btn`}
               >
                 <span className="material-icons">visibility_off</span>
               </button>
             ) : (
               <button
-                onClick={(e) => pwdVisibiltyHandler(e)}
+                onClick={(e) => cfmpwdVisibiltyHandler(e)}
                 className={`btn_action position-absolute ${styles.passwordIcon} btn--small flex-mid-center transparent-btn`}
               >
                 <span className="material-icons">visibility</span>
               </button>
             )}
           </div>
-          {error && <div className={styles.error_msg}>{error}</div>}
-          <p className={`${styles.text__terms} caption text--center`}>
-            By signing up you agree to accept all terms and conditions and agree
-            to abide by the platform rules
-          </p>
+          {error.confirmPassword?.isError && (
+            <div className={styles.error_msg}>
+              {error.confirmPassword?.errorMessage}
+            </div>
+          )}
           <button
             type="submit"
+            disabled={submitMode ? true : false}
             className={`btn btn--primary btn--large ${styles.glass__btn} ${styles.glass__btn_1}`}
           >
             Sign up

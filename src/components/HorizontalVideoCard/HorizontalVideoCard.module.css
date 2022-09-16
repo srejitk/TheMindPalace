@@ -4,7 +4,7 @@
   height: fit-content;
   min-height: 8rem;
   margin: 1rem 2rem;
-  background-color: var(--BG_LIGHT);
+  background-color: var(--BG);
   display: flex;
   border-radius: 8px;
   overflow: hidden;
@@ -79,7 +79,7 @@
   height: 100%;
   background-color: var(--BG);
   border-radius: 4px;
-  padding: 1rem 0.75rem;
+  padding: 0.5rem 1rem 0;
 }
 
 .showDialog {

@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import styles from "./VideoCard.module.css";
+import Modal from "../Modal/Modal";
+import toast from "react-hot-toast";
 
 export default function VideoCard({ video, mini, children }) {
   const { thumbnail, preview, title, creator, views } = video;
   const [options, setOptions] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const optionsHandler = () => {
     setOptions((prev) => !prev);
@@ -13,8 +16,10 @@ export default function VideoCard({ video, mini, children }) {
 
   useEffect(() => {
     if (options) {
-      setTimeout(() => setOptions((prev) => !prev), 4000);
+      setTimeout(() => setOptions(false), 5000);
     }
+
+    return clearTimeout();
   }, [options]);
 
   return (
@@ -34,11 +39,33 @@ export default function VideoCard({ video, mini, children }) {
       </div>
 
       <div
-        className={`${styles.dialog_container} box-shadow ${
-          options ? styles.showDialog : styles.hideDialog
-        }`}
+        className={`${styles.dialog_container} ${
+          mini ? styles.miniDialog : ""
+        } box-shadow ${options ? styles.showDialog : styles.hideDialog}`}
       >
         {children}
+        <div
+          onClick={() => {
+            if (localStorage.getItem("Token")) {
+              setShowModal(true);
+            } else {
+              toast("Please login to continue", {
+                icon: "🚫",
+              });
+            }
+          }}
+          className={`${styles.dialog} flex-row-nowrap`}
+        >
+          <span className="material-icons">add</span>
+          <p>Add to Playlist</p>
+        </div>
+        {showModal && (
+          <Modal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            videoData={video}
+          />
+        )}
       </div>
       <Link to={`/video/${video.videoID}`}>
         <div className={styles.videoCover}>
@@ -53,15 +80,17 @@ export default function VideoCard({ video, mini, children }) {
       </Link>
       <Link to={`/video/${video.videoID}`}>
         <div className={styles.videoText}>
-          <h4 className={`${styles.title} body-2`}>{title}</h4>
+          <h4 title={title} className={`${styles.title} body-1`}>
+            {title}
+          </h4>
           <div className="flex-row-wrap flex-mid-left">
-            <p className="subtitle-2">{creator}</p>
+            <p className="body-2">{creator}</p>
             <span className={` ${styles.verified} material-icons`}>
               verified
             </span>
           </div>
 
-          <p>{views} Views</p>
+          <p className="body-2">{views} Views</p>
         </div>
       </Link>
     </div>
